@@ -1,0 +1,18 @@
+# sensors.toml — 50 IoT sensors reporting hourly for one month (timeseries mode).
+#   rgen run --config sensors.toml readings.duckdb
+[[tables]]
+name = "readings"
+mode = "timeseries"
+
+  [tables.timeseries]
+  entities = 50
+  start    = "2025-06-01"
+  end      = "2025-06-30"
+  interval = "1 hour"
+
+  [tables.columns]
+  sensor_id   = { provider = "uuid", entity_key = true }
+  recorded_at = { provider = "timestamp", timeseries_key = true }
+  temperature = { provider = "walk", params = { start = "20.0", step_std = "0.5", min = "-10.0", max = "45.0" } }
+  humidity    = { provider = "float", distribution = "normal", params = { center = "60", std_dev = "10", min = "0", max = "100" } }
+  status      = { provider = "choice", distribution = "weighted", params = { values = ["ok", "warn", "error"], weights = [0.90, 0.08, 0.02] } }

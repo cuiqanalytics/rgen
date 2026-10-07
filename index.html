@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rgen — realistic test data</title>
+<meta name="description" content="rgen generates realistic synthetic data from one command: 101 providers, foreign keys that join, time series, lifecycles and digital twins of real datasets. CSV, JSON, Parquet, Excel, DuckDB, SQLite.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cuiqanalytics.github.io/rgen/">
+<meta property="og:title" content="rgen — realistic test data, one command">
+<meta property="og:description" content="Names that match their emails, cities that exist, amounts with a real long tail, foreign keys that join.">
+<meta property="og:image" content="https://cuiqanalytics.github.io/rgen/media/rgen-hero-poster.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:video" content="https://cuiqanalytics.github.io/rgen/media/rgen-hero.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cuiqanalytics.github.io/rgen/media/rgen-hero-poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316182b'/%3E%3Cg fill='%23f5a524'%3E%3Ccircle cx='16' cy='24' r='3'/%3E%3Ccircle cx='10' cy='24' r='3'/%3E%3Ccircle cx='22' cy='24' r='3'/%3E%3Ccircle cx='16' cy='17.5' r='3'/%3E%3Ccircle cx='13' cy='11' r='3' fill='%238e9cff'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a href="#top" class="brand" aria-label="rgen home">rgen</a>
+    <div class="nav-links">
+      <a href="#demo">Demo</a>
+      <a href="#providers">Providers</a>
+      <a href="#relational">Relational</a>
+      <a href="#twin">Twins</a>
+      <a href="#skill">Claude skill</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+    </button>
+    <a href="#install" class="btn btn-solid nav-cta">Install</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section id="top" class="hero">
+    <div class="hero-copy">
+      <h1>Realistic test data. One command.</h1>
+      <p class="lede">Names that match their emails, cities that exist, order amounts with a real long tail, foreign keys that actually join. rgen runs on an embedded DuckDB engine and writes CSV, JSON, Parquet, Excel, DuckDB or SQLite. No Python environment, no Faker scripts.</p>
+
+      <div id="install" class="install" data-tabs>
+        <div class="tabs" role="tablist" aria-label="Install method">
+          <button role="tab" id="tab-linux" aria-controls="pane-linux" aria-selected="true">Linux</button>
+          <button role="tab" id="tab-docker" aria-controls="pane-docker" aria-selected="false" tabindex="-1">Docker (macOS, Windows)</button>
+        </div>
+        <div role="tabpanel" id="pane-linux" aria-labelledby="tab-linux" class="cmd">
+          <code><span class="sigil" aria-hidden="true">$</span>curl -fsSL https://cuiqanalytics.github.io/rgen/install.sh | sh</code>
+          <button class="copy" data-copy="curl -fsSL https://cuiqanalytics.github.io/rgen/install.sh | sh">Copy</button>
+        </div>
+        <div role="tabpanel" id="pane-docker" aria-labelledby="tab-docker" class="cmd" hidden>
+          <code><span class="sigil" aria-hidden="true">$</span>docker pull ghcr.io/cuiqanalytics/rgen</code>
+          <button class="copy" data-copy="docker pull ghcr.io/cuiqanalytics/rgen">Copy</button>
+        </div>
+      </div>
+      <p class="install-note">Free, with no row limits. No account, no telemetry.</p>
+    </div>
+
+    <figure class="board" aria-label="A Galton board: beads drop through pegs at random and pile up into a bell curve">
+      <canvas id="galton" width="560" height="620"></canvas>
+      <figcaption>Every bead takes a random path. Together they land in a bell curve. That's the idea behind rgen: random values, realistic shape.</figcaption>
+    </figure>
+  </section>
+
+  <section id="demo" class="demo">
+    <div class="wrap">
+      <h2>From <code>docker pull</code> to a cloned dataset in 52&nbsp;seconds</h2>
+      <p class="section-lede">Every command and every row in this video is real rgen output.</p>
+      <div class="video-frame">
+        <video poster="media/rgen-hero-poster.jpg" controls muted loop playsinline preload="metadata" autoplay aria-label="rgen demo video">
+          <source src="media/rgen-hero.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="generate" class="wrap split">
+    <div class="split-text">
+      <h2>One line in. A table out.</h2>
+      <p>List the columns you want, separated by semicolons. Rename them with <code>as</code>. Let later columns build on earlier ones: here the email is made from the generated name, so the rows hold together when someone reads them.</p>
+      <p>Pick the format with the file extension. <code>.parquet</code>, <code>.json</code> and <code>.xlsx</code> work the same way.</p>
+    </div>
+    <div class="split-demo">
+      <pre class="terminal"><code><span class="sigil">$</span> rgen run -n 1000 -p "first_name;last_name;
+  email_from_name(first_name,last_name) as email;
+  city;company as employer" customers.csv
+<span class="ok">✓ 1000 records in 86ms (102 KB)</span></code></pre>
+      <div class="table-scroll" tabindex="0" aria-label="First rows of customers.csv">
+        <table class="data">
+          <thead><tr><th>first_name</th><th>last_name</th><th>email</th><th>city</th><th>employer</th></tr></thead>
+          <tbody>
+            <tr><td>Brian</td><td>Taylor</td><td class="hl">brian.taylor@example.com</td><td>Vyazemskiy</td><td>Titan Solutions</td></tr>
+            <tr><td>Paul</td><td>Harris</td><td class="hl">paul.harris@example.com</td><td>Kavajë</td><td>Quantum Solutions</td></tr>
+            <tr><td>Ronald</td><td>Phillips</td><td class="hl">ronald.phillips@example.com</td><td>Phalodi</td><td>Pinnacle Dynamics</td></tr>
+            <tr><td>Hannah</td><td>Parker</td><td class="hl">hannah.parker@example.com</td><td>Tuttlingen</td><td>Spectrum Ventures</td></tr>
+            <tr><td>Richard</td><td>Miller</td><td class="hl">richard.miller@example.com</td><td>Kovancılar</td><td>Pinnacle Industries</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="providers" class="wrap catalog">
+    <div class="catalog-head">
+      <h2>101 providers, with values that look right</h2>
+      <p>Each sample below came out of rgen. Filter by name, category or what you need.</p>
+      <label class="filter">
+        <span class="visually-hidden">Filter providers</span>
+        <input id="provider-filter" type="search" placeholder="Try email, zip, lognormal, vehicle…" autocomplete="off">
+      </label>
+    </div>
+    <div class="table-scroll catalog-scroll" tabindex="0" aria-label="Provider catalog">
+      <table class="data catalog-table">
+        <thead><tr><th scope="col">Provider</th><th scope="col">Category</th><th scope="col">Sample values</th></tr></thead>
+        <tbody id="provider-rows"></tbody>
+      </table>
+    </div>
+    <p class="catalog-count" id="provider-count" aria-live="polite"></p>
+  </section>
+
+  <section id="dirty" class="wrap split split-flip">
+    <div class="split-text">
+      <h2>Clean data hides bugs</h2>
+      <p>Real data has nulls, shouting capitals, half-typed names, broken emails, negative amounts and dates in the wrong format. Add <code>--impurity-profile</code> and rgen breaks a share of the cells the way real systems do, so your pipeline meets those problems in testing.</p>
+      <ol class="scale" aria-label="Impurity profiles and the share of cells they corrupt">
+        <li><code>clean</code><span>0%</span></li>
+        <li><code>realistic</code><span>3%</span></li>
+        <li><code>noisy</code><span>10%</span></li>
+        <li><code>dirty</code><span>25%</span></li>
+        <li><code>chaotic</code><span>50%</span></li>
+      </ol>
+    </div>
+    <div class="split-demo">
+      <pre class="terminal"><code><span class="sigil">$</span> rgen run -n 400 --impurity-profile dirty \
+  -p "first_name;email;date(...) as signup;amount(10,500) as amount" signups.csv</code></pre>
+      <div class="table-scroll" tabindex="0" aria-label="Sample rows with injected data problems">
+        <table class="data">
+          <thead><tr><th>first_name</th><th>email</th><th>signup</th><th>amount</th></tr></thead>
+          <tbody>
+            <tr><td>Dorothy</td><td class="bad">mark.murphy56@example.com.fake.com</td><td>2024-05-25</td><td>24</td></tr>
+            <tr><td>Carol</td><td>matthew.williams14@example.com</td><td>2024-02-16</td><td class="bad">-367</td></tr>
+            <tr><td>Jessica</td><td>patricia.thompson75@example.com</td><td class="bad">11/08/2024</td><td class="bad">-250</td></tr>
+            <tr><td class="bad null">NULL</td><td>dorothy.carter71@example.com</td><td>2024-10-14</td><td>27</td></tr>
+            <tr><td>Kimberly</td><td class="bad">martha.collins74</td><td>2024-07-09</td><td class="bad">-493</td></tr>
+            <tr><td>Michelle</td><td class="bad">andrew.davis66example.com</td><td>2024-01-24</td><td>167</td></tr>
+            <tr><td class="bad">Bar</td><td>edward.brown62@example.com</td><td>2024-04-08</td><td>318</td></tr>
+            <tr><td class="bad">LISA</td><td class="bad null">NULL</td><td>2024-12-13</td><td>82</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="relational" class="relational">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Tables that reference each other</h2>
+        <p class="section-lede">Describe a schema in TOML: foreign keys, category mixes, skewed amounts, computed columns. rgen builds parents before children, so every reference points at a row that exists.</p>
+      </div>
+      <div class="rel-grid">
+        <pre class="terminal toml" aria-label="shop.toml"><code><span class="t-h">[[tables]]</span>
+<span class="t-k">name</span> = <span class="t-s">"customers"</span>
+<span class="t-k">rows</span> = <span class="t-n">2000</span>
+    <span class="t-h">[tables.columns]</span>
+    <span class="t-k">customer_id</span> = { provider = <span class="t-s">"uuid"</span>, primary_key = true }
+    <span class="t-k">name</span>        = { provider = <span class="t-s">"name"</span> }
+    <span class="t-k">country</span>     = { provider = <span class="t-s">"choice"</span>,
+                    distribution = <span class="t-s">"weighted"</span>,
+                    params = { values = [<span class="t-s">"US"</span>, <span class="t-s">"UK"</span>, <span class="t-s">"DE"</span>, <span class="t-s">"MX"</span>],
+                               weights = [<span class="t-n">0.5</span>, <span class="t-n">0.2</span>, <span class="t-n">0.2</span>, <span class="t-n">0.1</span>] } }
+
+<span class="t-h">[[tables]]</span>
+<span class="t-k">name</span> = <span class="t-s">"orders"</span>
+<span class="t-k">rows</span> = <span class="t-n">20000</span>
+    <span class="t-h">[tables.columns]</span>
+    <span class="t-k">order_id</span>    = { provider = <span class="t-s">"uuid"</span>, primary_key = true }
+<mark>    <span class="t-k">customer_id</span> = { provider = <span class="t-s">"choice"</span>,
+                    reference = <span class="t-s">"customers.customer_id"</span> }</mark>
+    <span class="t-k">ordered_at</span>  = { provider = <span class="t-s">"date"</span>,
+                    params = { from = <span class="t-s">"2025-01-01"</span>, to = <span class="t-s">"2025-12-31"</span> } }
+    <span class="t-k">amount</span>      = { provider = <span class="t-s">"amount"</span>,
+                    distribution = <span class="t-s">"lognormal"</span>,
+                    params = { min = <span class="t-n">5</span>, max = <span class="t-n">2000</span>,
+                               median = <span class="t-n">60</span>, std_dev = <span class="t-n">40</span> } }</code></pre>
+
+        <div class="rel-result">
+          <svg class="er" viewBox="0 0 420 150" role="img" aria-label="customers, 2,000 rows, is referenced by orders, 20,000 rows, through customer_id">
+            <rect x="1" y="30" width="150" height="90" rx="8" class="er-box"/>
+            <text x="18" y="62" class="er-title">customers</text>
+            <text x="18" y="86" class="er-sub">2,000 rows</text>
+            <text x="18" y="106" class="er-key">customer_id</text>
+            <rect x="269" y="30" width="150" height="90" rx="8" class="er-box"/>
+            <text x="286" y="62" class="er-title">orders</text>
+            <text x="286" y="86" class="er-sub">20,000 rows</text>
+            <text x="286" y="106" class="er-key">customer_id</text>
+            <path d="M151 101 H269" class="er-line"/>
+            <circle cx="151" cy="101" r="4" class="er-dot"/>
+            <path d="M257 93 L269 101 L257 109" class="er-line"/>
+            <text x="210" y="92" text-anchor="middle" class="er-sub">1 to many</text>
+          </svg>
+          <pre class="terminal"><code><span class="sigil">$</span> rgen run --config shop.toml shop.duckdb
+<span class="ok">  ✓ customers: 2000 rows</span>
+<span class="ok">  ✓ orders: 20000 rows</span>
+<span class="sigil">$</span> duckdb shop.duckdb -c "
+    SELECT c.country, count(*) AS orders,
+           round(avg(o.amount), 2) AS avg_amount
+    FROM orders o JOIN customers c USING (customer_id)
+    GROUP BY ALL ORDER BY orders DESC"</code></pre>
+          <table class="data compact">
+            <thead><tr><th>country</th><th class="num">orders</th><th class="num">avg_amount</th></tr></thead>
+            <tbody>
+              <tr><td>US</td><td class="num">10,402</td><td class="num">70.82</td></tr>
+              <tr><td>UK</td><td class="num">4,113</td><td class="num">71.49</td></tr>
+              <tr><td>DE</td><td class="num">3,705</td><td class="num">72.41</td></tr>
+              <tr><td>MX</td><td class="num">1,780</td><td class="num">70.73</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Every one of the 20,000 orders joins to a customer, and the 50/20/20/10 country mix carries through.</p>
+        </div>
+      </div>
+
+      <div class="modes">
+        <div class="mode">
+          <h3>Time series</h3>
+          <p>Entities × time buckets. 50 sensors reporting hourly for June is 34,850 rows, with temperatures that drift as a random walk instead of jumping around.</p>
+          <code>mode = "timeseries"</code>
+        </div>
+        <div class="mode">
+          <h3>Lifecycles</h3>
+          <p>Simulate accounts moving between states, with probabilities and delays you set. Out comes an event log:</p>
+          <div class="funnel" role="img" aria-label="3,000 trials; 1,043 converted to paid, 1,957 expired; 248 paid accounts churned">
+            <span style="--w:100%">trial <b>3,000</b></span>
+            <span style="--w:65.2%">expired <b>1,957</b></span>
+            <span style="--w:34.8%">paid <b>1,043</b></span>
+            <span style="--w:8.3%">churned <b>248</b></span>
+          </div>
+          <code>mode = "state_machine"</code>
+        </div>
+        <div class="mode">
+          <h3>Your own data</h3>
+          <p>Attach an existing DuckDB, SQLite, CSV or Parquet file and draw values from it, matched by key or picked at random.</p>
+          <code>[[attach]]</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="twin" class="wrap split">
+    <div class="split-text">
+      <h2>A twin of your real data, without the real data</h2>
+      <p>Point <code>rgen twin</code> at a CSV, Parquet, SQLite or DuckDB file. It profiles each column (distribution shape, category mix, date range, ID pattern) and generates a fresh dataset with the same shape. Share it with contractors, put it in CI, demo with it. Not a single real row comes along.</p>
+      <p>Want to adjust the result first? <code>rgen profile sales.csv</code> prints the config it inferred.</p>
+      <pre class="terminal"><code><span class="sigil">$</span> rgen twin --scale 2.0 sales.csv twin.duckdb
+Profiling sales.csv...
+Generating synthetic twin → twin.duckdb
+<span class="ok">  ✓ data: 10000 rows</span></code></pre>
+    </div>
+    <figure class="split-demo twin-chart">
+      <figcaption>Revenue per order, share of rows in each $20 bucket</figcaption>
+      <div class="legend"><span class="sw sw-real"></span>sales.csv (real, 5,000 rows) <span class="sw sw-twin"></span>twin.duckdb (10,000 rows)</div>
+      <svg id="twin-hist" viewBox="0 0 600 260" role="img" aria-label="Two nearly identical right-skewed histograms of revenue, real and twin"></svg>
+      <div class="table-scroll" tabindex="0" aria-label="Real vs twin summary"><table class="data" id="twin-stats"></table></div>
+    </figure>
+  </section>
+
+  <section id="skill" class="skill">
+    <div class="wrap split">
+      <div class="split-text">
+        <h2>Or just ask Claude</h2>
+        <p>rgen ships with a Claude Code skill. It knows the provider list, when to use a one-liner and when a TOML config, how foreign keys and distributions are written, and the mistakes to avoid. It checks its work by running rgen before it hands you the result.</p>
+        <div class="cmd">
+          <code><span class="sigil" aria-hidden="true">$</span>~/.local/lib/rgen/install-skills.sh</code>
+          <button class="copy" data-copy="~/.local/lib/rgen/install-skills.sh">Copy</button>
+        </div>
+      </div>
+      <div class="split-demo chat">
+        <p class="bubble you">Seed my dev database with 500 customers, their orders and order items. Most orders should be small, a few huge.</p>
+        <p class="bubble claude">I'll write <code>seed.toml</code> with three linked tables: <code>order_items</code> references orders, orders reference customers, and amounts follow a lognormal so most are small with a long tail. Then I'll run <code>rgen run --config seed.toml dev.duckdb</code> and check the joins before handing it over.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="wrap pricing">
+    <h2>The tool is free. Data packs are extra.</h2>
+    <div class="tiers">
+      <div class="tier">
+        <h3>rgen</h3>
+        <p class="price">$0</p>
+        <ul>
+          <li>All 101 providers, locales and dependent columns</li>
+          <li>Any number of rows: CSV, JSON, Parquet, Excel, DuckDB, SQLite</li>
+          <li>Relational configs with foreign keys</li>
+          <li>Time series, lifecycles and scenarios</li>
+          <li><code>rgen profile</code> and <code>rgen twin</code> digital twins</li>
+          <li>Impurity profiles, your own DuckDB macros, the Claude Code skill</li>
+        </ul>
+        <a class="btn btn-solid" href="#install">Install rgen</a>
+      </div>
+      <div class="tier tier-pro">
+        <h3>Data packs</h3>
+        <p class="price">Talk to us</p>
+        <ul>
+          <li>Curated lookup data with extra providers that drop straight into rgen</li>
+          <li>Industry packs, e.g. 10k+ real job titles in Jobs Pro</li>
+          <li>Locale packs for realistic regional names, addresses and IDs</li>
+          <li>Pack tables you can reference from any TOML config</li>
+          <li>Team licenses, offline and on-prem use</li>
+        </ul>
+        <a class="btn btn-outline" id="contact-link" href="mailto:CONTACT_EMAIL?subject=rgen%20data%20packs">Ask about data packs</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="brand">rgen</p>
+      <p class="footer-note">Realistic test data, one command. Linux binary and Docker image.</p>
+    </div>
+    <div class="cmd">
+      <code><span class="sigil" aria-hidden="true">$</span>curl -fsSL https://cuiqanalytics.github.io/rgen/install.sh | sh</code>
+      <button class="copy" data-copy="curl -fsSL https://cuiqanalytics.github.io/rgen/install.sh | sh">Copy</button>
+    </div>
+    <nav class="footer-links" aria-label="Resources">
+      <a href="https://github.com/cuiqanalytics/rgen">GitHub</a>
+      <a href="https://github.com/cuiqanalytics/rgen#readme">README</a>
+      <a href="https://github.com/cuiqanalytics/rgen/blob/main/QUICK_REFERENCE.md">Quick reference</a>
+      <a href="https://github.com/cuiqanalytics/rgen/tree/main/examples">Examples</a>
+      <a href="https://github.com/cuiqanalytics/rgen/blob/main/LICENSE">License</a>
+    </nav>
+  </div>
+  <p class="wrap copyright">© 2026 cuiqanalytics. The data you generate is yours.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

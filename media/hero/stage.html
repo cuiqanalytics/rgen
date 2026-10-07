@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>rgen hero stage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+/* Same system as the landing page: Ink ground, Cobalt structure, Marigold data. */
+:root {
+  --ink: #16182b; --ink-2: #1e2140; --panel: #121427; --fog: #eef0f4; --dim: #9aa0c3; --dimmer: #4a4f78;
+  --cobalt: #3046f0; --cobalt-hi: #8e9cff; --marigold: #f5a524; --rose: #e2506a; --mint: #6fdcaa;
+  --display: "Archivo", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--ink); color: var(--fog); font-family: var(--display); }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); }
+body.square #stage { width: 1080px; height: 1080px; }
+#beads { position: absolute; inset: 0; }
+
+.win { position: absolute; border-radius: 10px; overflow: hidden; background: var(--panel);
+  box-shadow: 0 24px 70px #04050dcc, 0 0 0 1px #ffffff17; }
+.bar { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: var(--ink-2);
+  border-bottom: 1px solid #ffffff12; font: 500 17px var(--display); color: var(--dim); }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: #ffffff20; }
+.bar .title { margin-left: 12px; }
+.body { position: absolute; top: 42px; left: 0; right: 0; bottom: 0; overflow: hidden; }
+
+.mono { font-family: var(--mono); font-size: 22px; line-height: 1.5; }
+body.square .mono { font-size: 19px; }
+.term .body { padding: 20px 26px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.prompt { color: var(--marigold); }
+.muted { color: var(--dim); }
+.ok { color: var(--mint); }
+.caret { display: inline-block; width: 0.58em; height: 1.1em; vertical-align: -0.2em; background: var(--marigold); }
+.box { white-space: pre; color: var(--fog); }
+
+/* data viewer */
+.grid { width: 100%; border-collapse: collapse; font: 400 19px/1 var(--mono); }
+body.square .grid { font-size: 16px; }
+.grid th { text-align: left; font: 600 16px var(--display); font-stretch: 100%; color: var(--cobalt-hi); padding: 14px 16px 12px;
+  border-bottom: 1px solid #ffffff1c; position: sticky; top: 0; background: var(--panel); }
+.grid td { padding: 11px 16px; border-bottom: 1px solid #ffffff0b; white-space: nowrap; }
+.grid td.e { color: var(--marigold); }
+
+/* toml editor */
+#edBody { padding: 18px 10px; white-space: pre; }
+.ln { display: inline-block; width: 2em; color: var(--dimmer); text-align: right; margin-right: 0.9em; }
+.k { color: var(--cobalt-hi); }
+.s { color: var(--mint); }
+.n { color: var(--marigold); }
+.h { color: var(--fog); font-weight: 600; }
+.c { color: var(--dimmer); }
+.ref { background: #f5a52426; outline: 1px solid #f5a52480; border-radius: 3px; }
+
+/* twin chart */
+#chartBody { padding: 26px 30px; }
+.legend { display: flex; gap: 28px; font: 500 19px var(--display); color: var(--dim); margin-bottom: 10px; }
+.legend i { display: inline-block; width: 18px; height: 12px; margin-right: 8px; vertical-align: 0; border-radius: 2px; }
+.stats { width: 100%; border-collapse: collapse; margin-top: 14px; font: 400 20px var(--mono); }
+body.square .stats { font-size: 17px; }
+.stats th { text-align: left; font: 500 16px var(--display); color: var(--dim); padding: 8px 10px; border-bottom: 1px solid #ffffff1c; }
+.stats td { padding: 9px 10px; border-bottom: 1px solid #ffffff0b; }
+.stats tr.t td:first-child { color: var(--marigold); }
+.stats tr.r td:first-child { color: var(--cobalt-hi); }
+
+/* captions */
+#caption { position: absolute; left: 0; right: 0; bottom: 40px; text-align: center;
+  font: 760 60px/1.05 var(--display); font-stretch: 115%; letter-spacing: -0.01em; text-shadow: 0 4px 24px #0009; }
+body.square #caption { font-size: 46px; bottom: 30px; padding: 0 30px; }
+#mark { position: absolute; top: 24px; right: 34px; font: 800 30px var(--display); font-stretch: 125%; opacity: 0.9; }
+body.square #mark { display: none; }
+
+/* end card */
+#end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; opacity: 0; }
+#end .word { font: 800 240px/0.85 var(--display); font-stretch: 125%; letter-spacing: -0.03em; }
+#end .tag { font: 500 58px var(--display); font-stretch: 100%; color: var(--fog); }
+#end .install { font: 400 30px var(--mono); padding: 18px 30px; border-radius: 10px; background: var(--panel); box-shadow: 0 0 0 1px #ffffff1c; }
+#end .install .prompt { margin-right: 14px; }
+#end .site { font: 600 34px var(--display); color: var(--cobalt-hi); }
+body.square #end .word { font-size: 190px; }
+body.square #end .tag { font-size: 44px; text-align: center; padding: 0 40px; }
+body.square #end .install { font-size: 20px; padding: 14px 18px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="beads" width="1920" height="1080"></canvas>
+  <div id="mark">rgen</div>
+
+  <div id="term" class="win term">
+    <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title" id="termTitle">~/demo</span></div>
+    <div class="body mono" id="termBody"></div>
+  </div>
+
+  <div id="viewer" class="win">
+    <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title">customers.csv — 1,000 rows</span></div>
+    <div class="body" id="viewBody"></div>
+  </div>
+
+  <div id="editor" class="win">
+    <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title">shop.toml</span></div>
+    <div class="body mono" id="edBody"></div>
+  </div>
+
+  <div id="chart" class="win">
+    <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title">revenue: sales.csv vs twin.duckdb</span></div>
+    <div class="body" id="chartBody">
+      <div class="legend"><span><i style="background:var(--cobalt)"></i>real (5,000 rows)</span><span><i style="background:var(--marigold)"></i>twin (10,000 rows)</span></div>
+      <svg id="hist" width="100%" viewBox="0 0 1000 330" preserveAspectRatio="none"></svg>
+      <table class="stats" id="stats"></table>
+    </div>
+  </div>
+
+  <div id="end">
+    <div class="word">rgen</div>
+    <div class="tag">Realistic test data. One command.</div>
+    <div class="install"><span class="prompt">$</span>docker pull ghcr.io/cuiqanalytics/rgen</div>
+    <div class="site">cuiqanalytics.github.io/rgen</div>
+  </div>
+
+  <div id="caption"></div>
+</div>
+
+<script src="content.js"></script>
+<script src="stage.js"></script>
+</body>
+</html>

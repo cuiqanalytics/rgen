@@ -1,0 +1,21 @@
+# subscriptions.toml — trial -> paid -> churned lifecycles as an event log (state_machine mode).
+#   rgen run --config subscriptions.toml events.csv
+[[tables]]
+name = "subscription_events"
+mode = "state_machine"
+rows = 3000   # number of accounts to simulate
+
+  [tables.state_machine]
+  initial     = "trial"
+  id_column   = "account_id"
+  time_column = "event_at"
+  transitions = [
+    { from = "trial", to = "paid",    probability = 0.35, delay = { distribution = "normal", params = { center = "336.0", std_dev = "48.0", min = "24.0", max = "720.0" } } },
+    { from = "trial", to = "expired", probability = 0.65, delay = { distribution = "uniform", params = { min = "330.0", max = "340.0" } } },
+    { from = "paid",  to = "churned", probability = 0.25, delay = { distribution = "exponential", params = { lambda = "0.001" } } }
+  ]
+
+  [tables.columns]
+  account_id = { provider = "uuid" }
+  event_at   = { provider = "timestamp" }
+  state      = { provider = "choice" }
