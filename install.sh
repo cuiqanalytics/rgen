@@ -22,7 +22,7 @@ esac
 echo "Downloading ${url}"
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-curl -fsSL "$url" | tar xz -C "$tmp"
+curl -fsSL --retry 3 --retry-delay 2 "$url" | tar xz -C "$tmp"
 
 rm -rf "$lib_dir"
 mkdir -p "$(dirname "$lib_dir")"

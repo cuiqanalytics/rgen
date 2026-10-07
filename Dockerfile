@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 COPY ${RGEN_TARBALL:-VERSION} /tmp/local-src
 RUN if [ -n "${RGEN_TARBALL}" ]; then tar xzf /tmp/local-src -C /opt; \
-    else curl -fsSL https://github.com/cuiqanalytics/rgen/releases/latest/download/rgen-cli-linux-x86_64.tar.gz \
+    else curl -fsSL --retry 3 --retry-delay 2 https://github.com/cuiqanalytics/rgen/releases/latest/download/rgen-cli-linux-x86_64.tar.gz \
          | tar xz -C /opt; fi \
     && mv /opt/rgen-cli-linux-x86_64 /opt/rgen
 
@@ -17,6 +17,7 @@ RUN if [ -n "${RGEN_TARBALL}" ]; then tar xzf /tmp/local-src -C /opt; \
 # libduckdb.so), so this image's glibc must be >= the release build machine's. That machine
 # runs Debian trixie (glibc 2.41); bump this if it ever moves.
 FROM debian:trixie-slim
+LABEL org.opencontainers.image.source="https://github.com/cuiqanalytics/rgen"
 COPY --from=fetch /opt/rgen/bin /usr/local/lib/rgen/bin
 RUN chmod +x /usr/local/lib/rgen/bin/rgen
 ENV LIBDUCKDB_DIR=/usr/local/lib/rgen/bin
