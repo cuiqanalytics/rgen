@@ -166,10 +166,29 @@ orders"*.
 The whole CLI is free with no row limits: all providers, relational configs, timeseries,
 state machines, scenarios, `profile` and `twin`.
 
-**Data packs** add curated lookup data and providers (industry and locale packs). Install
-them with `rgen packs install <NAME | FILE>`, and unlock them with
-`rgen license install <KEY>`. Get packs, or contact us about teams and on-prem, at
-[cuiqanalytics.github.io/rgen/#pricing](https://cuiqanalytics.github.io/rgen/#pricing).
+**Data packs** add curated reference data, extra providers and ready-made templates:
+
+| Pack | What it adds |
+|---|---|
+| `fintech` | Luhn-valid cards, IBANs for 55 countries (with national check digits), BIC, US routing, CLABE, 981 MCCs with merchants and amounts, balanced ledgers |
+| `latam` | People, IDs with valid check digits (RUT, CUIT, CURP, RFC, CPF, CNPJ, NIT, RUC, CI), 17k weighted places, postal codes and phones for CL, AR, MX, BR, CO, PE, UY |
+| `hr` | 1,016 occupations, 54k job titles, departments and ladders, BLS salaries by level and state |
+| `saas-analytics` | User agents that parse back, UTM traffic sources, event taxonomies with JSON properties, plans and MRR, funnel and A/B templates |
+| `jobs-pro` | 10k+ custom job titles and composed role names |
+
+**$79 per pack per year, or $199 per year for all packs.** To buy, email
+[rodrigo.abt@gmail.com](mailto:rodrigo.abt@gmail.com?subject=rgen%20data%20pack) with the pack you
+want; you get a license key and the pack file:
+
+```bash
+rgen license install <KEY>
+rgen packs install ./fintech.rgenpack
+rgen packs info fintech                    # providers, templates, sources
+rgen templates fintech/card-transactions   # a ready-made config
+```
+
+Licenses are checked offline. Details, sample rows and FAQ:
+[cuiqanalytics.github.io/rgen/#packs](https://cuiqanalytics.github.io/rgen/#packs).
 
 ---
 

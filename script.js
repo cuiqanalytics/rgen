@@ -52,24 +52,60 @@
     });
   });
 
-  // ---------- provider catalog ----------
+  // ---------- provider catalog (free providers + data-pack providers) ----------
+  const P = window.RGEN_PACKS || { packs: [], providers: [], prices: {}, contact: '' };
+  const catalog = D.providers.concat(P.providers);
   const rows = document.getElementById('provider-rows');
   const count = document.getElementById('provider-count');
   const filter = document.getElementById('provider-filter');
   function renderCatalog(q) {
     const term = q.trim().toLowerCase();
-    const list = D.providers.filter((p) => !term || `${p.n} ${p.c} ${p.d}`.toLowerCase().includes(term));
+    const list = catalog.filter((p) => !term || `${p.n} ${p.c} ${p.d} ${p.pack || ''}`.toLowerCase().includes(term));
     rows.innerHTML = list.map((p) => {
       const call = p.ex || `${p.n}(${p.a})`;
+      const badge = p.pack ? ` <a class="pack-badge" href="#pack-${esc(p.pack)}">${esc(p.pack)} pack</a>` : '';
       const samples = p.s ? p.s.map((v) => `<span class="sample" title="${esc(v)}">${esc(v)}</span>`).join('') : `<span class="sample">${esc(p.d)}</span>`;
-      return `<tr><td>${esc(call)}<small>${esc(p.d)}</small></td><td>${esc(p.c)}</td><td>${samples}</td></tr>`;
+      return `<tr><td>${esc(call)}${badge}<small>${esc(p.d)}</small></td><td>${esc(p.c)}</td><td>${samples}</td></tr>`;
     }).join('') || '<tr><td colspan="3">No provider matches that. Try a broader word, like <code>name</code> or <code>date</code>.</td></tr>';
-    count.textContent = term ? `${list.length} of ${D.providers.length} providers match "${q.trim()}".` : `${D.providers.length} providers.`;
+    const free = D.providers.length, paid = P.providers.length;
+    count.textContent = term
+      ? `${list.length} of ${catalog.length} providers match "${q.trim()}".`
+      : `${free} free providers` + (paid ? ` + ${paid} in data packs (marked with a badge).` : '.');
   }
   if (rows) {
     renderCatalog('');
     filter.addEventListener('input', () => renderCatalog(filter.value));
   }
+
+  // ---------- data packs ----------
+  const grid = document.getElementById('pack-grid');
+  if (grid && P.packs.length) {
+    const single = P.prices.single || {};
+    grid.innerHTML = P.packs.map((k) => {
+      const mail = `mailto:${P.contact}?subject=${encodeURIComponent('rgen data pack: ' + k.name)}&body=${encodeURIComponent('Pack: ' + k.name + '\nName or company: \n')}`;
+      const head = k.sample.columns.map((c) => `<th>${esc(c)}</th>`).join('');
+      const body = k.sample.rows.map((r) => `<tr>${r.map((v) => `<td title="${esc(v)}">${esc(v)}</td>`).join('')}</tr>`).join('');
+      const tmpl = k.templates.map((t) => `<li><code>${esc(k.name)}/${esc(t.name)}</code> ${esc(t.description)}</li>`).join('');
+      const src = k.sources.map((x) => `${esc(x.source)} (${esc(x.license)})`).join('; ');
+      return `<article class="pack" id="pack-${esc(k.name)}">
+        <header><h3>${esc(k.title)}</h3><code class="pack-name">${esc(k.name)}</code></header>
+        <p class="pack-pitch">${esc(k.pitch)}</p>
+        <ul class="pack-bullets">${k.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>
+        <div class="table-scroll pack-sample" tabindex="0" aria-label="Sample rows from the ${esc(k.name)} pack"><table class="data compact"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+        <details class="pack-more"><summary>${k.providers} providers${k.templates.length ? `, ${k.templates.length} templates` : ''}, sources</summary>
+          ${tmpl ? `<ul class="pack-templates">${tmpl}</ul>` : ''}
+          <p class="pack-sources">Sources: ${src}</p>
+        </details>
+        <footer><span class="pack-price">${esc(single.price || '')} <small>${esc(single.period || '')}</small></span><a class="btn btn-outline" href="${mail}">Buy ${esc(k.name)}</a></footer>
+      </article>`;
+    }).join('');
+  }
+  document.querySelectorAll('[data-price]').forEach((el) => {
+    const pr = P.prices[el.dataset.price];
+    if (!pr) return;
+    el.querySelector('.price-value').textContent = pr.price;
+    el.querySelector('.price-period').textContent = pr.period;
+  });
 
   // ---------- twin histogram ----------
   const svg = document.getElementById('twin-hist');

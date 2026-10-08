@@ -15,6 +15,7 @@
 | `rgen ask "REQUEST"` | Natural language → data (needs `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`) |
 | `rgen packs list\|install\|info\|remove` | Manage data packs (`install` takes a pack name or a `.rgenpack` file) |
 | `rgen license install KEY` | Install a license that unlocks data packs (stored in `~/.cuiq/license.json`) |
+| `rgen templates PACK/NAME` | Print a data pack's ready-made config, e.g. `fintech/card-transactions` |
 
 All flags go **before** positional arguments.
 

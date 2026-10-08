@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>rgen — realistic test data</title>
-<meta name="description" content="rgen generates realistic synthetic data from one command: 101 providers, foreign keys that join, time series, lifecycles and digital twins of real datasets. CSV, JSON, Parquet, Excel, DuckDB, SQLite.">
+<meta name="description" content="rgen generates realistic synthetic data from one command: 101 providers, foreign keys that join, time series, lifecycles and digital twins of real datasets. CSV, JSON, Parquet, Excel, DuckDB, SQLite. Data packs add fintech, Latin America, HR and product analytics data.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cuiqanalytics.github.io/rgen/">
 <meta property="og:title" content="rgen — realistic test data, one command">
-<meta property="og:description" content="Names that match their emails, cities that exist, amounts with a real long tail, foreign keys that join.">
+<meta property="og:description" content="Names that match their emails, cities that exist, amounts with a real long tail, foreign keys that join. Free CLI, optional data packs.">
 <meta property="og:image" content="https://cuiqanalytics.github.io/rgen/media/rgen-hero-poster.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
@@ -33,9 +33,10 @@
       <a href="#demo">Demo</a>
       <a href="#providers">Providers</a>
       <a href="#relational">Relational</a>
-      <a href="#twin">Twins</a>
-      <a href="#skill">Claude skill</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#packs">Data packs</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
     <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
@@ -292,9 +293,69 @@ Generating synthetic twin → twin.duckdb
     </div>
   </section>
 
+  <section id="recipes" class="wrap recipes">
+    <h2>Start with a recipe</h2>
+    <p class="section-lede">Copy one, run it, then change it. Every command works on the free CLI.</p>
+    <ul class="usecases">
+      <li><a href="#recipe-orders"><strong>CI and QA fixtures</strong> Reproducible tables your tests can join.</a></li>
+      <li><a href="#recipe-users"><strong>Demo and sandbox accounts</strong> Data that looks real in a sales demo.</a></li>
+      <li><a href="#recipe-timeseries"><strong>Dashboard prototypes</strong> Metrics with trends before the real pipeline exists.</a></li>
+      <li><a href="#recipe-dirty"><strong>Data-quality testing</strong> Known errors to check your cleaning code.</a></li>
+      <li><a href="#recipe-twin"><strong>Privacy-safe sharing</strong> A twin of production data to hand to contractors.</a></li>
+    </ul>
+    <div class="recipe-grid">
+      <article class="recipe" id="recipe-users">
+        <h3>A users table for a seed script</h3>
+        <p>Names, matching emails and real cities. Change <code>-n</code> for more rows.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen run -n 1000 -p &quot;uuid;first_name;last_name;email;city;country&quot; users.csv</code><button class="copy" data-copy="rgen run -n 1000 -p &quot;uuid;first_name;last_name;email;city;country&quot; users.csv">Copy</button></div>
+      </article>
+      <article class="recipe" id="recipe-preview">
+        <h3>Look before you write</h3>
+        <p>Print a few rows to the terminal instead of a file while you pick columns.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen run --preview -p &quot;name;email;phone;company&quot;</code><button class="copy" data-copy="rgen run --preview -p &quot;name;email;phone;company&quot;">Copy</button></div>
+      </article>
+      <article class="recipe" id="recipe-orders">
+        <h3>Customers, products and orders that join</h3>
+        <p>A built-in template with foreign keys. Edit the TOML to add columns or change row counts.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen templates orders &gt; orders.toml &amp;&amp; rgen run --config orders.toml shop.duckdb</code><button class="copy" data-copy="rgen templates orders &gt; orders.toml &amp;&amp; rgen run --config orders.toml shop.duckdb">Copy</button></div>
+      </article>
+      <article class="recipe" id="recipe-dirty">
+        <h3>Messy data for QA</h3>
+        <p>Blanks, typos and malformed values in about a quarter of the cells, to test validation and cleaning code.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen run -n 5000 --impurity-profile dirty -p &quot;uuid;email;first_name;city&quot; dirty.csv</code><button class="copy" data-copy="rgen run -n 5000 --impurity-profile dirty -p &quot;uuid;email;first_name;city&quot; dirty.csv">Copy</button></div>
+      </article>
+      <article class="recipe" id="recipe-timeseries">
+        <h3>Sensor readings over time</h3>
+        <p>50 sensors with hourly random-walk temperatures, from the examples folder.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>curl -fsSLO https://raw.githubusercontent.com/cuiqanalytics/rgen/main/examples/sensors.toml &amp;&amp; rgen run --config sensors.toml readings.duckdb</code><button class="copy" data-copy="curl -fsSLO https://raw.githubusercontent.com/cuiqanalytics/rgen/main/examples/sensors.toml &amp;&amp; rgen run --config sensors.toml readings.duckdb">Copy</button></div>
+      </article>
+      <article class="recipe" id="recipe-twin">
+        <h3>A safe copy of a real dataset</h3>
+        <p>Profile a CSV, Parquet, SQLite or DuckDB file and generate synthetic rows with the same shape.</p>
+        <div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen twin --scale 2.0 sales.csv twin.duckdb</code><button class="copy" data-copy="rgen twin --scale 2.0 sales.csv twin.duckdb">Copy</button></div>
+      </article>
+    </div>
+    <p class="section-foot">More in the <a href="https://github.com/cuiqanalytics/rgen/blob/main/QUICK_REFERENCE.md">quick reference</a> and the <a href="https://github.com/cuiqanalytics/rgen/tree/main/examples">examples folder</a>. <code>rgen templates</code> lists the built-in configs.</p>
+  </section>
+
+  <section id="packs" class="wrap packs">
+    <h2>Data packs</h2>
+    <p class="section-lede">Packs add curated reference data, new providers and ready-made templates on top of the free CLI. Every pack is checked with automated tests, and identifiers are verified with independent validators.</p>
+    <div class="pack-grid" id="pack-grid"></div>
+    <div class="pack-steps">
+      <h3>How packs work</h3>
+      <ol>
+        <li><strong>Email us</strong> the pack you want. We reply with a license key and the pack file.</li>
+        <li><strong>Install both:</strong><div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen license install &lt;KEY&gt; &amp;&amp; rgen packs install ./fintech.rgenpack</code><button class="copy" data-copy="rgen license install &lt;KEY&gt; &amp;&amp; rgen packs install ./fintech.rgenpack">Copy</button></div></li>
+        <li><strong>Use it:</strong> the pack's providers show up in <code>rgen providers</code>, and its configs in <code>rgen templates</code>.<div class="cmd"><code><span class="sigil" aria-hidden="true">$</span>rgen templates fintech/card-transactions &gt; cards.toml &amp;&amp; rgen run --config cards.toml cards.duckdb</code><button class="copy" data-copy="rgen templates fintech/card-transactions &gt; cards.toml &amp;&amp; rgen run --config cards.toml cards.duckdb">Copy</button></div></li>
+      </ol>
+      <p class="pack-note">Licenses are checked offline. If one lapses, the pack stops loading; the free CLI and everything you already generated stay yours.</p>
+    </div>
+  </section>
+
   <section id="pricing" class="wrap pricing">
     <h2>The tool is free. Data packs are extra.</h2>
-    <div class="tiers">
+    <div class="tiers tiers-3">
       <div class="tier">
         <h3>rgen</h3>
         <p class="price">$0</p>
@@ -308,18 +369,44 @@ Generating synthetic twin → twin.duckdb
         </ul>
         <a class="btn btn-solid" href="#install">Install rgen</a>
       </div>
-      <div class="tier tier-pro">
-        <h3>Data packs</h3>
-        <p class="price">Talk to us</p>
+      <div class="tier tier-pro" data-price="single">
+        <h3>Single pack</h3>
+        <p class="price"><span class="price-value">$79</span> <span class="price-period">per year</span></p>
         <ul>
-          <li>Curated lookup data with extra providers that drop straight into rgen</li>
-          <li>Industry packs, e.g. 10k+ real job titles in Jobs Pro</li>
-          <li>Locale packs for realistic regional names, addresses and IDs</li>
-          <li>Pack tables you can reference from any TOML config</li>
-          <li>Team licenses, offline and on-prem use</li>
+          <li>One data pack of your choice</li>
+          <li>Its providers, lookup tables and templates</li>
+          <li>Updates to that pack for the year</li>
+          <li>Works offline, on any machine you use</li>
         </ul>
-        <a class="btn btn-outline" id="contact-link" href="mailto:CONTACT_EMAIL?subject=rgen%20data%20packs">Ask about data packs</a>
+        <a class="btn btn-outline" href="mailto:rodrigo.abt@gmail.com?subject=rgen%20data%20pack&amp;body=Which%20pack%3A%20%0AName%20or%20company%3A%20">Buy a pack</a>
       </div>
+      <div class="tier tier-pro" data-price="all">
+        <h3>All packs</h3>
+        <p class="price"><span class="price-value">$199</span> <span class="price-period">per year</span></p>
+        <ul>
+          <li>Every current pack: fintech, latam, hr, saas-analytics, jobs-pro</li>
+          <li>New packs as they ship, at no extra cost</li>
+          <li>Updates for the year</li>
+          <li>Works offline, on any machine you use</li>
+        </ul>
+        <a class="btn btn-solid" href="mailto:rodrigo.abt@gmail.com?subject=rgen%20all%20data%20packs&amp;body=Name%20or%20company%3A%20">Get all packs</a>
+      </div>
+    </div>
+    <p class="pricing-note">Teams, on-prem use or invoicing: <a href="mailto:rodrigo.abt@gmail.com?subject=rgen%20team%20license">write to us</a>.</p>
+  </section>
+
+  <section id="faq" class="wrap faq">
+    <h2>Questions</h2>
+    <div class="faq-list">
+      <details><summary>Is any of the generated data real?</summary><p>No. Every row is generated. Reference lists such as city names, occupations, merchant categories and wage statistics come from public datasets, but the people, accounts and IDs are random. A generated ID can still match a real one by chance, so never use it to contact, verify or charge anyone.</p></details>
+      <details><summary>Can I use the data commercially?</summary><p>Yes. The data you generate is yours: put it in demos, tests, docs or products. <code>rgen packs info &lt;pack&gt;</code> lists the public sources inside each pack and their licenses.</p></details>
+      <details><summary>Does rgen need internet access or an account?</summary><p>No. It's a single binary that runs offline, and pack licenses are verified offline too. No telemetry.</p></details>
+      <details><summary>Does it run on macOS and Windows?</summary><p>The native binary is for Linux (x86-64). On macOS and Windows, use the Docker image: <code>docker pull ghcr.io/cuiqanalytics/rgen</code>.</p></details>
+      <details><summary>Are the IDs and bank numbers valid?</summary><p>Pack identifiers pass the same checks real systems use: Luhn for cards, IBAN mod-97 with national check digits, US routing numbers, CLABE, and the check digits of RUT, CUIT, CURP, RFC, CPF, CNPJ, NIT, RUC and CI. We test them against python-stdnum and schwifty on every pack build.</p></details>
+      <details><summary>What happens when a pack license expires?</summary><p>That pack stops loading. Everything else keeps working, and data you already generated is unaffected.</p></details>
+      <details><summary>How do I buy a pack?</summary><p>Email <a href="mailto:rodrigo.abt@gmail.com?subject=rgen%20data%20pack">rodrigo.abt@gmail.com</a> with the pack you want. You'll get a license key and the pack file, usually within a business day. Card checkout is coming.</p></details>
+      <details><summary>Can I get a refund, a team license or an invoice?</summary><p>Yes. Write to us and we'll sort it out.</p></details>
+      <details><summary>Can an AI assistant use rgen?</summary><p>Yes. Install the Claude Code skill and ask for the data you need; Claude picks the providers or writes the TOML config and runs rgen for you.</p></details>
     </div>
   </section>
 
@@ -347,6 +434,7 @@ Generating synthetic twin → twin.duckdb
 </footer>
 
 <script src="data.js"></script>
+<script src="packs.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
