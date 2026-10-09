@@ -22,7 +22,7 @@ BANKING
 ────────────────────────────────────────
 bank_account(): bank account number
 bank_name(): bank name
-iban(): IBAN
+iban(): valid IBAN (check digits and format) for DE, GB, NL, AT, IE, CH, LU or DK; the fintech pack covers 55 countries
 
 COLORS
 ────────────────────────────────────────

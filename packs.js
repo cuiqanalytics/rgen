@@ -69,28 +69,28 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
+      "American Express",
+      "371424*****2587",
+      "DE21047825657074362764",
+      "Fuel",
+      "Sterling Fuel",
+      "46.21"
+     ],
+     [
       "Visa",
-      "422466******7889",
-      "FR7677336435362399443902649",
-      "Books & hobbies",
-      "Bennett Booksellers",
-      "24.11"
+      "439743******1126",
+      "FI4178774617282683",
+      "Groceries",
+      "Clark Market",
+      "97.71"
      ],
      [
-      "Mastercard",
-      "527308******9251",
-      "AT337362897859993363",
-      "Restaurants",
-      "Trattoria Jones",
-      "23.29"
-     ],
-     [
-      "Mastercard",
-      "535692******6612",
-      "BR6026752371081097986015508OT",
-      "Restaurants",
-      "Evans's Bakehouse",
-      "6.81"
+      "American Express",
+      "341904*****5750",
+      "AE645590063764944253120",
+      "Fast food",
+      "River Burger",
+      "13.12"
      ]
     ]
    }
@@ -154,28 +154,28 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "PE",
-      "José Rojas Vargas",
-      "18816188",
-      "San Martin, PE-PIU",
-      "20599",
-      "+51 946 459 284"
+      "BR",
+      "Thiago Ramos Silva",
+      "053.786.151-35",
+      "Ibaté, BR-SP",
+      "15772-437",
+      "+55 14 96104-2760"
      ],
      [
       "MX",
-      "José Cruz Álvarez",
-      "CUAJ880605HMCRLS60",
-      "Tlalnepantla, MX-MEX",
-      "52131",
-      "+52 722 902 7752"
+      "Carlos Aguilar García",
+      "AUGC920616HGTGRR69",
+      "Romita, MX-GUA",
+      "37437",
+      "+52 461 304 6053"
      ],
      [
-      "BR",
-      "Ana Pinto Almeida",
-      "293.064.652-70",
-      "Acará, BR-PA",
-      "67704-424",
-      "+55 94 97290-3250"
+      "AR",
+      "Juan Ledesma González",
+      "12.349.879",
+      "Puerto Madryn, AR-U",
+      "U1300BXO",
+      "+54 9 297 073-3640"
      ]
     ]
    }
@@ -191,7 +191,7 @@ window.RGEN_PACKS = {
     "Salaries from BLS wage data by occupation, level and US state",
     "Templates: employees, org chart, compensation, recruiting pipeline"
    ],
-   "providers": 19,
+   "providers": 20,
    "templates": [
     {
      "name": "compensation",
@@ -242,27 +242,27 @@ window.RGEN_PACKS = {
     "rows": [
      [
       "Customer Support",
-      "Customer Complaints Clerk",
-      "Junior",
+      "Call Center Representative",
+      "Mid-level",
       "CA",
-      "35600.0",
-      "GroupMe"
+      "53700.0",
+      "Microsoft Teams"
      ],
      [
-      "Sales",
-      "Outside Sales Representative",
-      "Mid-level",
-      "OR",
-      "75300.0",
-      "Microsoft Project"
+      "Marketing",
+      "Content Strategist",
+      "Senior",
+      "IL",
+      "100300.0",
+      "Microsoft Office software"
      ],
      [
       "Engineering",
-      "Mobile Engineer",
-      "Mid-level",
-      "WA",
-      "160100.0",
-      "LogMeIn GoToMeeting"
+      "Data Center Product Director",
+      "Junior",
+      "ID",
+      "66400.0",
+      "Microsoft Visual Basic"
      ]
     ]
    }
@@ -319,25 +319,25 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "hubspot / email",
-      "Email",
-      "Chrome / Windows / desktop",
-      "logged_in",
-      "{}"
-     ],
-     [
-      "chatgpt.com / referral",
-      "AI Assistants",
-      "Safari / iOS / mobile",
-      "signed_up",
-      "{}"
-     ],
-     [
       "facebook / paid_social",
       "Paid Social",
       "Chrome / Android / mobile",
       "page_viewed",
-      "{\"path\":\"/pricing\",\"load_ms\":411}"
+      "{\"path\":\"/pricing\",\"load_ms\":370}"
+     ],
+     [
+      "linkedin / paid_social",
+      "Paid Social",
+      "Chrome / Android / mobile",
+      "logged_in",
+      "{}"
+     ],
+     [
+      "linkedin / social",
+      "Organic Social",
+      "Chrome / Android / mobile",
+      "feature_used",
+      "{\"feature\":\"Comments\",\"duration_s\":64.8}"
      ]
     ]
    }
@@ -368,16 +368,16 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "Integrity Assessor",
-      "Product Advisor"
+      "Fire Protection Engineer",
+      "Pet Affiliate"
      ],
      [
-      "Carbider",
-      "Equity Activist"
+      "Radiology Physician Assistant",
+      "Ophthalmic Adjuster"
      ],
      [
-      "Design Consultant",
-      "Chain Worker"
+      "Pinner",
+      "Ramp Agent"
      ]
     ]
    }
@@ -390,9 +390,9 @@ window.RGEN_PACKS = {
    "d": "chart-of-accounts code",
    "pack": "fintech",
    "s": [
-    "6000",
-    "6400",
-    "6100"
+    "7100",
+    "2300",
+    "1400"
    ],
    "c": "accounting"
   },
@@ -437,9 +437,9 @@ window.RGEN_PACKS = {
    "d": "journal entry type (credit_sale, supplier_payment, payroll_accrual, ...) weighted by frequency",
    "pack": "fintech",
    "s": [
-    "cogs",
-    "cash_receipt",
-    "depreciation"
+    "credit_sale",
+    "professional",
+    "prepaid"
    ],
    "c": "accounting"
   },
@@ -449,9 +449,9 @@ window.RGEN_PACKS = {
    "d": "US ABA routing number with valid check digit",
    "pack": "fintech",
    "s": [
-    "269571765",
-    "039351212",
-    "693858135"
+    "246750473",
+    "216493359",
+    "317866021"
    ],
    "c": "banking"
   },
@@ -468,9 +468,9 @@ window.RGEN_PACKS = {
    "d": "Mexican CLABE (18 digits, real bank code, valid check digit)",
    "pack": "fintech",
    "s": [
-    "127024485373169864",
-    "014390380663655755",
-    "638272573067599485"
+    "002215138824395588",
+    "137066796791324177",
+    "127593951900253593"
    ],
    "c": "banking"
   },
@@ -494,9 +494,9 @@ window.RGEN_PACKS = {
    "d": "valid IBAN for a random IBAN country, weighted toward SEPA economies",
    "pack": "fintech",
    "s": [
-    "GB41PINH11476213992272",
-    "SA39736E4OB99FHUYINEVDV9",
-    "GR828184955BG7AFR3Y508M6RFS"
+    "CZ6735930000002329439448",
+    "FR7625608928685171431384749",
+    "ES4840947948113402337765"
    ],
    "c": "banking"
   },
@@ -506,9 +506,9 @@ window.RGEN_PACKS = {
    "d": "country code using IBANs, weighted toward SEPA economies",
    "pack": "fintech",
    "s": [
-    "FI",
-    "RO",
-    "AT"
+    "PT",
+    "IT",
+    "ES"
    ],
    "c": "banking"
   },
@@ -532,9 +532,9 @@ window.RGEN_PACKS = {
    "d": "US bank account number, 8-12 digits",
    "pack": "fintech",
    "s": [
-    "67605440",
-    "062915994",
-    "166292669852"
+    "495247529",
+    "694919055",
+    "4013979100"
    ],
    "c": "banking"
   },
@@ -544,9 +544,9 @@ window.RGEN_PACKS = {
    "d": "job title from 54k real-world titles across all occupations",
    "pack": "hr",
    "s": [
-    "Milk Pickup Truck Driver",
-    "Sheet Music Salesperson",
-    "Call Center Specialist"
+    "Exterior Designer",
+    "Desk Reporter",
+    "Orthotic Clinician"
    ],
    "c": "hr"
   },
@@ -557,8 +557,8 @@ window.RGEN_PACKS = {
    "pack": "hr",
    "s": [
     "Careers site",
-    "Referral",
-    "Job board"
+    "LinkedIn",
+    "Careers site"
    ],
    "c": "hr"
   },
@@ -568,9 +568,9 @@ window.RGEN_PACKS = {
    "d": "company department, weighted by typical headcount share",
    "pack": "hr",
    "s": [
-    "Data & Analytics",
-    "Marketing",
-    "Customer Support"
+    "Engineering",
+    "Sales",
+    "Marketing"
    ],
    "c": "hr"
   },
@@ -587,9 +587,9 @@ window.RGEN_PACKS = {
    "d": "employment type (Full-time, Part-time, Contractor, Intern)",
    "pack": "hr",
    "s": [
-    "Full-time",
-    "Full-time",
-    "Full-time"
+    "Part-time",
+    "Part-time",
+    "Contractor"
    ],
    "c": "hr"
   },
@@ -615,14 +615,21 @@ window.RGEN_PACKS = {
    "c": "hr"
   },
   {
+   "n": "hr_level_for",
+   "a": "dept",
+   "d": "level that fits a department: management levels (Team Lead to C-level) for Executive, Intern to Principal elsewhere — dependent: hr_level_for(department)",
+   "pack": "hr",
+   "c": "hr"
+  },
+  {
    "n": "hr_management_level",
    "a": "",
    "d": "management level (Team Lead to C-level), pyramid-shaped mix",
    "pack": "hr",
    "s": [
-    "Senior Manager",
     "Director",
-    "Team Lead"
+    "Team Lead",
+    "Manager"
    ],
    "c": "hr"
   },
@@ -667,9 +674,9 @@ window.RGEN_PACKS = {
    "d": "individual-contributor level (Intern to Principal), realistic mix",
    "pack": "hr",
    "s": [
+    "Senior",
     "Mid-level",
-    "Mid-level",
-    "Senior"
+    "Junior"
    ],
    "c": "hr"
   },
@@ -679,9 +686,9 @@ window.RGEN_PACKS = {
    "d": "O*NET-SOC occupation code of a typical company role, e.g. 15-1252.00",
    "pack": "hr",
    "s": [
-    "27-1024.00",
-    "41-3091.00",
-    "13-1081.02"
+    "13-1081.00",
+    "43-4051.00",
+    "43-4051.00"
    ],
    "c": "hr"
   },
@@ -726,9 +733,9 @@ window.RGEN_PACKS = {
    "d": "Colombian cédula de ciudadanía (8 or 10 digits)",
    "pack": "latam",
    "s": [
-    "1056405210",
-    "75512906",
-    "1120720128"
+    "26467847",
+    "89197307",
+    "1153644014"
    ],
    "c": "latam"
   },
@@ -738,9 +745,9 @@ window.RGEN_PACKS = {
    "d": "Uruguayan cédula de identidad with valid check digit, formatted 1.234.567-8",
    "pack": "latam",
    "s": [
-    "1.022.942-4",
-    "1.952.674-0",
-    "4.520.873-0"
+    "5.789.977-7",
+    "2.973.550-3",
+    "6.970.186-7"
    ],
    "c": "latam"
   },
@@ -757,8 +764,8 @@ window.RGEN_PACKS = {
    "d": "Chilean pension fund (AFP) weighted by affiliates",
    "pack": "latam",
    "s": [
-    "AFP Modelo",
     "AFP Cuprum",
+    "AFP Provida",
     "AFP Modelo"
    ],
    "c": "latam"
@@ -777,7 +784,7 @@ window.RGEN_PACKS = {
    "pack": "latam",
    "s": [
     "Fonasa",
-    "Isapre Nueva Masvida",
+    "Fonasa",
     "Fonasa"
    ],
    "c": "latam"
@@ -788,9 +795,9 @@ window.RGEN_PACKS = {
    "d": "Brazilian CNPJ (head office /0001) with valid check digits, formatted 12.345.678/0001-95",
    "pack": "latam",
    "s": [
-    "97.043.697/0001-10",
-    "69.959.648/0001-96",
-    "42.057.022/0001-38"
+    "81.287.524/0001-07",
+    "06.164.236/0001-40",
+    "58.944.795/0001-76"
    ],
    "c": "latam"
   },
@@ -807,9 +814,9 @@ window.RGEN_PACKS = {
    "d": "country code CL, AR, MX, BR, CO, PE or UY, weighted by population",
    "pack": "latam",
    "s": [
+    "AR",
     "BR",
-    "MX",
-    "MX"
+    "BR"
    ],
    "c": "latam"
   },
@@ -833,9 +840,9 @@ window.RGEN_PACKS = {
    "d": "Brazilian CPF with valid check digits, formatted 123.456.789-09",
    "pack": "latam",
    "s": [
-    "717.153.222-40",
-    "674.373.497-79",
-    "287.096.502-88"
+    "503.146.292-20",
+    "571.478.361-11",
+    "026.740.949-40"
    ],
    "c": "latam"
   },
@@ -866,9 +873,9 @@ window.RGEN_PACKS = {
    "d": "Argentine DNI, formatted 12.345.678",
    "pack": "latam",
    "s": [
-    "27.690.067",
-    "14.996.229",
-    "43.668.942"
+    "13.369.144",
+    "31.799.387",
+    "16.733.096"
    ],
    "c": "latam"
   },
@@ -878,9 +885,9 @@ window.RGEN_PACKS = {
    "d": "Peruvian DNI (8 digits)",
    "pack": "latam",
    "s": [
-    "52310173",
-    "13745955",
-    "29617864"
+    "58515011",
+    "85821893",
+    "26608323"
    ],
    "c": "latam"
   },
@@ -946,9 +953,9 @@ window.RGEN_PACKS = {
    "d": "Colombian company NIT with valid verification digit, formatted 900.123.456-7",
    "pack": "latam",
    "s": [
-    "916.630.885-7",
-    "845.540.071-5",
-    "882.544.892-8"
+    "964.893.628-3",
+    "978.463.780-1",
+    "804.549.246-9"
    ],
    "c": "latam"
   },
@@ -1007,9 +1014,9 @@ window.RGEN_PACKS = {
    "d": "Mexican RFC for a company (12 chars), valid check digit",
    "pack": "latam",
    "s": [
-    "MYP061104MU0",
-    "TQK9604304V2",
-    "FBI031103D81"
+    "FKU120503SR7",
+    "NZC1502072N5",
+    "NOP200123ED2"
    ],
    "c": "latam"
   },
@@ -1033,9 +1040,9 @@ window.RGEN_PACKS = {
    "d": "Uruguayan company RUT (12 digits) with valid check digit",
    "pack": "latam",
    "s": [
-    "107931560016",
-    "119580090016",
-    "107735900012"
+    "218245900018",
+    "214137560012",
+    "119245880019"
    ],
    "c": "latam"
   },
@@ -1053,8 +1060,8 @@ window.RGEN_PACKS = {
    "pack": "latam",
    "s": [
     "F",
-    "F",
-    "M"
+    "M",
+    "F"
    ],
    "c": "latam"
   },
@@ -1099,9 +1106,9 @@ window.RGEN_PACKS = {
    "d": "Luhn-valid test card number, networks in a US consumer mix",
    "pack": "fintech",
    "s": [
-    "6011121287399396",
-    "4318584312282173",
-    "4936026165759883"
+    "4016236985217003",
+    "5598215366151596",
+    "4684012510296320"
    ],
    "c": "payments"
   },
@@ -1111,9 +1118,9 @@ window.RGEN_PACKS = {
    "d": "any of 981 merchant category codes, uniform",
    "pack": "fintech",
    "s": [
-    "3088",
-    "7276",
-    "3260"
+    "3624",
+    "3239",
+    "2791"
    ],
    "c": "payments"
   },
@@ -1123,9 +1130,9 @@ window.RGEN_PACKS = {
    "d": "6-character authorization code",
    "pack": "fintech",
    "s": [
-    "SKRNVJ",
-    "IDR752",
-    "15FKA9"
+    "5VWQ87",
+    "BC63O0",
+    "YJQYOZ"
    ],
    "c": "payments"
   },
@@ -1142,9 +1149,9 @@ window.RGEN_PACKS = {
    "d": "card expiry MM/YY, 1 to 60 months ahead",
    "pack": "fintech",
    "s": [
-    "12/27",
-    "08/30",
-    "05/31"
+    "03/29",
+    "02/31",
+    "10/30"
    ],
    "c": "payments"
   },
@@ -1155,8 +1162,8 @@ window.RGEN_PACKS = {
    "pack": "fintech",
    "s": [
     "Mastercard",
-    "American Express",
-    "Visa"
+    "Visa",
+    "Mastercard"
    ],
    "c": "payments"
   },
@@ -1180,9 +1187,9 @@ window.RGEN_PACKS = {
    "d": "card decline reason, realistic mix",
    "pack": "fintech",
    "s": [
-    "Exceeds limit",
-    "Insufficient funds",
-    "Do not honor"
+    "Expired card",
+    "Incorrect CVV",
+    "Insufficient funds"
    ],
    "c": "payments"
   },
@@ -1206,9 +1213,9 @@ window.RGEN_PACKS = {
    "d": "merchant category code weighted by consumer card activity",
    "pack": "fintech",
    "s": [
-    "5964",
-    "5411",
-    "5251"
+    "7832",
+    "5814",
+    "5542"
    ],
    "c": "payments"
   },
@@ -1267,9 +1274,9 @@ window.RGEN_PACKS = {
    "d": "employee-count band (1-10 ... 5000+), SMB-heavy mix",
    "pack": "saas-analytics",
    "s": [
-    "1-10",
-    "1-10",
-    "1-10"
+    "11-50",
+    "11-50",
+    "201-1000"
    ],
    "c": "saas"
   },
@@ -1314,9 +1321,9 @@ window.RGEN_PACKS = {
    "d": "experiment key such as pricing_page_v2_202605",
    "pack": "saas-analytics",
    "s": [
-    "onboarding_checklist_202606",
-    "upgrade_modal_timing_202510",
-    "upgrade_modal_timing_202607"
+    "pricing_page_v2_202511",
+    "empty_state_templates_202604",
+    "trial_length_14_vs_30_202609"
    ],
    "c": "saas"
   },
@@ -1327,8 +1334,8 @@ window.RGEN_PACKS = {
    "pack": "saas-analytics",
    "s": [
     "Custom roles",
-    "Custom fields",
-    "AI assistant"
+    "Forms",
+    "Audit log"
    ],
    "c": "saas"
   },
@@ -1338,9 +1345,9 @@ window.RGEN_PACKS = {
    "d": "customer industry for B2B accounts",
    "pack": "saas-analytics",
    "s": [
-    "Manufacturing",
     "Software",
-    "Manufacturing"
+    "Education",
+    "Marketing & Advertising"
    ],
    "c": "saas"
   },
@@ -1364,9 +1371,9 @@ window.RGEN_PACKS = {
    "d": "subscription plan (Free, Starter, Pro, Business, Enterprise), freemium-shaped mix",
    "pack": "saas-analytics",
    "s": [
-    "Starter",
     "Free",
-    "Free"
+    "Free",
+    "Pro"
    ],
    "c": "saas"
   },
@@ -1378,7 +1385,7 @@ window.RGEN_PACKS = {
    "s": [
     "web",
     "ios",
-    "ios"
+    "web"
    ],
    "c": "saas"
   },
@@ -1409,9 +1416,9 @@ window.RGEN_PACKS = {
    "d": "traffic source as \"source / medium\" (google / organic, (direct) / (none), ...), realistic mix",
    "pack": "saas-analytics",
    "s": [
+    "google / cpc",
     "google / organic",
-    "newsletter / email",
-    "linkedin / social"
+    "google / cpc"
    ],
    "c": "saas"
   },
@@ -1421,9 +1428,9 @@ window.RGEN_PACKS = {
    "d": "realistic browser user agent, weighted by device/OS/browser share",
    "pack": "saas-analytics",
    "s": [
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0",
+    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"
    ],
    "c": "saas"
   },
@@ -1435,7 +1442,7 @@ window.RGEN_PACKS = {
    "s": [
     "member",
     "member",
-    "member"
+    "admin"
    ],
    "c": "saas"
   },
@@ -1473,9 +1480,9 @@ window.RGEN_PACKS = {
    "d": "composed job title: modifier + base role",
    "pack": "jobs-pro",
    "s": [
-    "Retail Actress",
-    "Program Anglesmith",
-    "Insurance Actress"
+    "Artist Agitator",
+    "Planning Anthropologist",
+    "Personalized Anatomist"
    ],
    "c": "work"
   },
@@ -1485,9 +1492,9 @@ window.RGEN_PACKS = {
    "d": "job title from 10k+ real-world titles",
    "pack": "jobs-pro",
    "s": [
-    "Recoverer",
-    "Cost Accountant",
-    "Programming Jobs"
+    "Theatre Director",
+    "Relationship Associate",
+    "Manager Army"
    ],
    "c": "work"
   }
