@@ -69,28 +69,28 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "American Express",
-      "371424*****2587",
-      "DE21047825657074362764",
-      "Fuel",
-      "Sterling Fuel",
-      "46.21"
+      "Mastercard",
+      "511302******1152",
+      "PL72004556119205643315343205",
+      "Restaurants",
+      "Trattoria Thompson",
+      "23.15"
      ],
      [
-      "Visa",
-      "439743******1126",
-      "FI4178774617282683",
+      "Mastercard",
+      "525060******4888",
+      "FR7600009317572631202796024",
       "Groceries",
-      "Clark Market",
-      "97.71"
+      "Eastside Supermarket",
+      "67.42"
      ],
      [
-      "American Express",
-      "341904*****5750",
-      "AE645590063764944253120",
-      "Fast food",
-      "River Burger",
-      "13.12"
+      "Discover",
+      "653625******9119",
+      "LV55YZXPTGRP2L74PY9TS",
+      "Subscriptions & streaming",
+      "Highland Stream",
+      "48.76"
      ]
     ]
    }
@@ -154,28 +154,28 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "BR",
-      "Thiago Ramos Silva",
-      "053.786.151-35",
-      "Ibaté, BR-SP",
-      "15772-437",
-      "+55 14 96104-2760"
+      "CO",
+      "Yesenia Valencia García",
+      "61680108",
+      "Mompós, CO-BOL",
+      "135091",
+      "+57 317 296 1029"
      ],
      [
-      "MX",
-      "Carlos Aguilar García",
-      "AUGC920616HGTGRR69",
-      "Romita, MX-GUA",
-      "37437",
-      "+52 461 304 6053"
+      "BR",
+      "João Oliveira",
+      "840.077.161-37",
+      "Santos, BR-SP",
+      "01347-344",
+      "+55 16 99652-9031"
      ],
      [
       "AR",
-      "Juan Ledesma González",
-      "12.349.879",
-      "Puerto Madryn, AR-U",
-      "U1300BXO",
-      "+54 9 297 073-3640"
+      "Nicolás Fernández González",
+      "20.992.845",
+      "Villa de Mayo, AR-B",
+      "B1489PKW",
+      "+54 9 11 3435-8036"
      ]
     ]
    }
@@ -241,28 +241,28 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "Customer Support",
-      "Call Center Representative",
+      "Engineering",
+      "Software Application Architect",
       "Mid-level",
-      "CA",
-      "53700.0",
-      "Microsoft Teams"
-     ],
-     [
-      "Marketing",
-      "Content Strategist",
-      "Senior",
-      "IL",
-      "100300.0",
-      "Microsoft Office software"
+      "NC",
+      "138600.0",
+      "Loom"
      ],
      [
       "Engineering",
-      "Data Center Product Director",
-      "Junior",
-      "ID",
-      "66400.0",
+      "Implementation Specialist",
+      "Senior",
+      "OH",
+      "123700.0",
       "Microsoft Visual Basic"
+     ],
+     [
+      "Administration",
+      "Administrative Coordinator",
+      "Senior",
+      "KY",
+      "80000.0",
+      "Microsoft Word"
      ]
     ]
    }
@@ -319,25 +319,943 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "facebook / paid_social",
-      "Paid Social",
-      "Chrome / Android / mobile",
+      "(direct) / (none)",
+      "Direct",
+      "Chrome / Windows / desktop",
       "page_viewed",
-      "{\"path\":\"/pricing\",\"load_ms\":370}"
+      "{\"path\":\"/login\",\"load_ms\":501}"
      ],
      [
-      "linkedin / paid_social",
-      "Paid Social",
+      "producthunt / referral",
+      "Referral",
       "Chrome / Android / mobile",
-      "logged_in",
+      "trial_started",
       "{}"
      ],
      [
-      "linkedin / social",
-      "Organic Social",
-      "Chrome / Android / mobile",
+      "google / cpc",
+      "Paid Search",
+      "Samsung Internet / Android / mobile",
       "feature_used",
-      "{\"feature\":\"Comments\",\"duration_s\":64.8}"
+      "{\"feature\":\"Two-factor auth\",\"duration_s\":75.8}"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "weather",
+   "title": "Weather & Climate",
+   "version": "1.0.0",
+   "pitch": "Weather that behaves like weather, for demand, energy and IoT models.",
+   "bullets": [
+    "Stations in 105 cities across tropical, arid, temperate, continental and polar climates",
+    "Sky conditions weighted by season and climate (no tropical snow), temperatures following each station’s seasonal curve, flipped south of the equator",
+    "Consistent daily and hourly series: warm and cold spells persist, snow only when cold, clear skies at night",
+    "Templates: station catalog, daily, hourly, and an IoT sensor feed with dropouts and error codes"
+   ],
+   "providers": 35,
+   "templates": [
+    {
+     "name": "daily",
+     "description": "One row per station and day for a year: min/max/mean temperature, prevailing sky, precipitation, snowfall, humidity, wind, pressure, daylight"
+    },
+    {
+     "name": "hourly",
+     "description": "Hourly readings per station for a quarter: temperature, sky (clear at night), precipitation, humidity, dew point, wind, pressure, visibility, feels-like"
+    },
+    {
+     "name": "sensor-feed",
+     "description": "IoT-style feed: random stations and irregular timestamps over a year, with sensor faults (dropouts, error codes) and corrupted battery values"
+    },
+    {
+     "name": "stations",
+     "description": "Station catalog: id, name, city, country, coordinates, elevation, climate zone, hemisphere"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "station locations, climate zones, monthly climate curves, sky-condition frequencies, weather element relationships",
+     "source": "Cuiq Analytics (curated; approximate public-domain climate knowledge, illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "city",
+     "zone",
+     "day",
+     "sky",
+     "temp_c"
+    ],
+    "rows": [
+     [
+      "Rio de Janeiro",
+      "tropical",
+      "2025-03-01",
+      "cloudy",
+      "24.0"
+     ],
+     [
+      "Darwin",
+      "tropical",
+      "2025-12-07",
+      "sunny",
+      "28.1"
+     ],
+     [
+      "Fairbanks",
+      "polar",
+      "2025-04-22",
+      "cloudy",
+      "-3.7"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "healthcare",
+   "title": "Healthcare",
+   "version": "1.0.0",
+   "pitch": "Patients, diagnoses, prescriptions, labs and claims that agree with each other.",
+   "bullets": [
+    "Real ICD-10-CM codes that respect age and sex (no pregnancy codes for men, no newborn codes for adults), weighted by how common each condition is",
+    "Real FDA NDC drug packages matched to the condition, with strength, form, days supply and refills",
+    "Lab results (LOINC) that shift with disease: high HbA1c for diabetics, high TSH for hypothyroidism, flagged against reference ranges",
+    "NPIs with valid check digits, Medicare MBI-format member IDs, places of service, payers by age, charges, allowed and paid amounts, denials; templates for patients, a full patient journey and claims"
+   ],
+   "providers": 33,
+   "templates": [
+    {
+     "name": "claims",
+     "description": "Professional claims with diagnosis codes, place of service, provider NPIs, charges, allowed and paid amounts, denials and HCPCS supply/drug lines"
+    },
+    {
+     "name": "patient-journey",
+     "description": "Patients, encounters with diagnoses and claims, prescriptions and lab results that agree with each other"
+    },
+    {
+     "name": "patients",
+     "description": "Patients with demographics, MRN, payer by age and member ID"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "ICD-10-CM diagnosis codes and descriptions (FY2027)",
+     "source": "Centers for Medicare & Medicaid Services (CMS) / NCHS",
+     "url": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "HCPCS Level II codes (October 2026)",
+     "source": "Centers for Medicare & Medicaid Services (CMS)",
+     "url": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "National Drug Codes, products and packages",
+     "source": "U.S. Food and Drug Administration (FDA) NDC Directory",
+     "url": "https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "Lab test codes",
+     "source": "LOINC",
+     "url": "https://loinc.org",
+     "license": "LOINC license (free, attribution)"
+    },
+    {
+     "dataset": "condition groups, prevalence and age/sex profiles, condition-drug mapping, lab effects, places of service shares, payer mix, charges",
+     "source": "Cuiq Analytics (curated; illustrative, not clinical guidance)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "age",
+     "diagnosis",
+     "condition",
+     "ndc",
+     "drug",
+     "payer"
+    ],
+    "rows": [
+     [
+      "38",
+      "J06.9",
+      "upper_respiratory",
+      "65862-017-50",
+      "amoxicillin 500 mg",
+      "Commercial PPO"
+     ],
+     [
+      "46",
+      "F41.9",
+      "anxiety",
+      "76420-809-05",
+      "buspirone 15 mg",
+      "Medicaid"
+     ],
+     [
+      "27",
+      "E66.9",
+      "obesity",
+      "50090-1679-3",
+      "phentermine 37.5 mg",
+      "Medicaid"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "security-logs",
+   "title": "Security logs",
+   "version": "1.0.0",
+   "pitch": "Security logs with labelled attacks, for detection rules, SIEM demos and ML.",
+   "bullets": [
+    "Web access (NGINX combined), sshd auth.log, firewall flows and CloudTrail-style JSON in real formats",
+    "13 attack scenarios with ground-truth labels: scans, SQL injection, Log4Shell, credential stuffing, SSH brute force, port scans, exfiltration, C2 beacons, cloud key abuse and logging tampering",
+    "Attackers recur from fixed IPs and strike in bursts; C2 beacons every minute; normal traffic follows the working day",
+    "MITRE ATT&CK techniques and tactics, CISA KEV CVEs, and a SIEM alert queue template"
+   ],
+   "providers": 42,
+   "templates": [
+    {
+     "name": "cloud-audit",
+     "description": "CloudTrail-style JSON audit events with key abuse, bulk storage downloads and logging tampering by compromised identities"
+    },
+    {
+     "name": "firewall",
+     "description": "Firewall flow log with port scans, large exfiltration transfers and periodic C2 beacons from compromised hosts"
+    },
+    {
+     "name": "siem-alerts",
+     "description": "SOC alert queue: detections with rule, severity, ATT&CK technique and tactic, attacker IP, host, CVE and triage status"
+    },
+    {
+     "name": "ssh-auth",
+     "description": "sshd auth.log with SSH brute force bursts (invalid users, failed passwords, a rare success) among normal key-based logins"
+    },
+    {
+     "name": "web-access",
+     "description": "NGINX combined access log with 5% labelled attacks (scans, SQL injection, traversal, Log4Shell, credential stuffing, web shells) in bursts per attacker"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "MITRE ATT&CK Enterprise techniques",
+     "source": "The MITRE Corporation",
+     "url": "https://attack.mitre.org",
+     "license": "ATT&CK Terms of Use (royalty-free, research, development and commercial use)"
+    },
+    {
+     "dataset": "Known Exploited Vulnerabilities catalog",
+     "source": "CISA",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+     "license": "CC0 1.0"
+    },
+    {
+     "dataset": "IPv4 address space registry (/8 to registry)",
+     "source": "IANA",
+     "url": "https://www.iana.org/assignments/ipv4-address-space",
+     "license": "Public registry"
+    },
+    {
+     "dataset": "attack scenarios, payloads, paths, user agents, accounts, ports, cloud events, mixes and timing",
+     "source": "Cuiq Analytics (curated)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "scenario",
+     "client_ip",
+     "method",
+     "path",
+     "status",
+     "technique"
+    ],
+    "rows": [
+     [
+      "normal",
+      "42.22.37.84",
+      "HEAD",
+      "/static/js/app.26ead763.js",
+      "304",
+      ""
+     ],
+     [
+      "normal",
+      "29.40.68.43",
+      "POST",
+      "/",
+      "200",
+      ""
+     ],
+     [
+      "normal",
+      "23.77.167.59",
+      "GET",
+      "/static/js/app.2a408470.js",
+      "200",
+      ""
+     ]
+    ]
+   }
+  },
+  {
+   "name": "insurance",
+   "title": "Insurance",
+   "version": "1.0.0",
+   "pitch": "Policies, premiums and claims for auto, home, renters and term life.",
+   "bullets": [
+    "Premiums driven by rating factors: driver age, vehicle value, deductible, state, prior claims, home age and roof, tobacco class and term",
+    "VINs with real manufacturer codes, model-year codes and valid check digits for 55 popular models (checked against NHTSA vPIC)",
+    "Claim causes that follow the coverage and the state’s peril: hurricanes in Florida, hail in Oklahoma, wildfire in California",
+    "A consistent claim lifecycle: report and close dates, open, litigation and closed statuses, deductibles, paid amounts and reserves"
+   ],
+   "providers": 45,
+   "templates": [
+    {
+     "name": "auto",
+     "description": "Personal auto policies (driver, vehicle with VIN, coverage, limits, deductible, premium) and their claims with causes, amounts and lifecycle"
+    },
+    {
+     "name": "home",
+     "description": "Homeowners policies (home value, dwelling coverage, construction, roof, deductible, premium by state) and claims whose causes follow the state's peril"
+    },
+    {
+     "name": "life",
+     "description": "Term life policies (issue age, sex, tobacco, risk class, face amount, term, premium) and death claims paying the face amount"
+    },
+    {
+     "name": "vehicles",
+     "description": "Vehicle list for fleet or telematics tests: VIN with valid check digit, make, model, model year, body and value"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "Vehicle makes, models, model years and manufacturer identifiers (WMI)",
+     "source": "NHTSA Product Information Catalog and Vehicle Listing (vPIC), checked with check_vehicles.py",
+     "url": "https://vpic.nhtsa.dot.gov",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "VIN structure and check digit",
+     "source": "49 CFR Part 565",
+     "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part-565",
+     "license": "Public domain (U.S. regulation)"
+    },
+    {
+     "dataset": "vehicle popularity and prices, state rating factors, home values and perils, loss causes, severities, claim timing, premium formulas",
+     "source": "Cuiq Analytics (curated; illustrative, not filed rates)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "vehicle",
+     "model_year",
+     "vin",
+     "car",
+     "state",
+     "peril",
+     "cause"
+    ],
+    "rows": [
+     [
+      "21",
+      "2022",
+      "5NPZHTK66NM509899",
+      "Hyundai Elantra",
+      "MI",
+      "winter",
+      "water_damage"
+     ],
+     [
+      "50",
+      "2026",
+      "2T32HRU46TK839421",
+      "Toyota RAV4",
+      "VA",
+      "general",
+      "water_damage"
+     ],
+     [
+      "43",
+      "2025",
+      "5YJ3UJMP0SX340312",
+      "Tesla Model 3",
+      "FL",
+      "hurricane",
+      "water_damage"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "logistics",
+   "title": "Logistics",
+   "version": "1.0.0",
+   "pitch": "Containers, air cargo, parcels and warehouse moves on real lanes.",
+   "bullets": [
+    "ISO 6346 container numbers, IATA air waybills, UPS and USPS tracking numbers and GS1 SSCC labels, all with valid check digits",
+    "The 66 largest container ports and 3,000+ airports, with sea distances that follow Suez, Panama and transpacific routes",
+    "Transit times, ETAs and delays, ocean and air rates, parcel zones, costs and outcomes",
+    "JSON tracking histories (pickup, hub scans, exceptions, delivery) and a warehouse movement log"
+   ],
+   "providers": 45,
+   "templates": [
+    {
+     "name": "air-cargo",
+     "description": "Air waybills between real airports: airline, flight, origin and destination, distance, pieces, actual and chargeable weight, rate and charges"
+    },
+    {
+     "name": "ocean-containers",
+     "description": "Container bookings on real lanes: ISO 6346 container numbers, type, carrier, bill of lading, ports, distance, ETD/ETA/actual arrival, rate and Incoterm"
+    },
+    {
+     "name": "parcels",
+     "description": "US parcel shipments: carrier, service, tracking number, origin and destination states, zone, weight, cost, transit, outcome, delivery time and JSON tracking history"
+    },
+    {
+     "name": "warehouse-moves",
+     "description": "Warehouse movement log: SSCC labels, SKUs, bin locations, movement types and quantities by operator and shift"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "Airports (IATA/ICAO codes, names, cities, coordinates)",
+     "source": "OurAirports",
+     "url": "https://ourairports.com/data/",
+     "license": "Public domain"
+    },
+    {
+     "dataset": "Container port UN/LOCODEs and coordinates",
+     "source": "UN/LOCODE (UNECE) codes; coordinates and volumes curated by Cuiq Analytics",
+     "url": "https://unece.org/trade/cefact/unlocode-code-list-country-and-territory",
+     "license": "Codes are a public standard; curation proprietary"
+    },
+    {
+     "dataset": "Check-digit rules",
+     "source": "ISO 6346 (containers), GS1 General Specifications (SSCC, USPS IMpb), IATA Cargo (air waybill mod 7), UPS 1Z",
+     "url": "https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications",
+     "license": "Published algorithms"
+    },
+    {
+     "dataset": "airline cargo prefixes, container owner prefixes, carriers, container mix, rates, transit and service models, state centroids",
+     "source": "Cuiq Analytics (curated; illustrative rates)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "container",
+     "pol",
+     "pod",
+     "lane",
+     "nm",
+     "carrier",
+     "service",
+     "tracking"
+    ],
+    "rows": [
+     [
+      "HDMU7063867",
+      "USORF",
+      "SGSIN",
+      "Norfolk > Singapore",
+      "13626",
+      "USPS",
+      "USPS Ground Advantage",
+      "9400111412991326239522"
+     ],
+     [
+      "EMCU3813845",
+      "AEJEA",
+      "USLGB",
+      "Jebel Ali > Long Beach",
+      "9436",
+      "UPS",
+      "UPS Ground",
+      "1ZEBD9210347709850"
+     ],
+     [
+      "CAIU3391831",
+      "KRPUS",
+      "USLAX",
+      "Busan > Los Angeles",
+      "5469",
+      "USPS",
+      "USPS Priority Mail",
+      "9205590584936616378327"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "retail",
+   "title": "Retail",
+   "version": "1.0.0",
+   "pitch": "Product catalogs, orders, returns and store inventory that agree with each other.",
+   "bullets": [
+    "63 categories in 17 departments: names, sizes, colors and prices that fit the category (shoe sizes by gender, TVs by screen, no colors on groceries)",
+    "GTIN-13, UPC-A, case GTIN-14 and ISBN-13 with valid check digits and one GS1 company prefix per brand",
+    "Orders on the retail calendar (December, weekends, Black Friday, Cyber Monday) with seasonal categories, channels, fulfilment, payment and discounts",
+    "Returns by category and channel with fitting reasons (too small, defective, expired), and store inventory with demand, lead times, reorder points and stock status"
+   ],
+   "providers": 47,
+   "templates": [
+    {
+     "name": "catalog",
+     "description": "Product catalog: SKU, GTIN-13, UPC-A, case GTIN-14, department, category, type, brand, name with color and size, list price, cost, weight"
+    },
+    {
+     "name": "inventory",
+     "description": "Store inventory snapshot: 20 stores x 500 items with format, daily demand, lead time, safety stock, reorder point, on hand, on order, status and value"
+    },
+    {
+     "name": "orders",
+     "description": "Customers, orders (channel, store, time, fulfilment, payment, delivery, status) and order lines with seasonal items, discounts and category-driven returns"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "GTIN-13, UPC-A, GTIN-14 and ISBN-13 structure and check digits",
+     "source": "GS1 General Specifications (check digit calculation); ISO 2108 (ISBN)",
+     "url": "https://www.gs1.org/standards/barcodes-epcglobal-tag-data-standards",
+     "license": "Published standard (algorithm only, no data copied)"
+    },
+    {
+     "dataset": "GS1 prefixes by member organisation",
+     "source": "GS1 company prefix list",
+     "url": "https://www.gs1.org/standards/id-keys/company-prefix",
+     "license": "Public reference list"
+    },
+    {
+     "dataset": "categories, product types, sizes, colors, prices, costs, return rates and reasons, demand, seasonality, invented brand names",
+     "source": "Cuiq Analytics (curated; illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "item",
+     "gtin",
+     "name",
+     "category",
+     "price",
+     "channel",
+     "returned",
+     "reason"
+    ],
+    "rows": [
+     [
+      "4300026",
+      "7506198547752",
+      "Sol de Campo Decaf Green Tea, 12 oz",
+      "Coffee & Tea",
+      "11.99",
+      "store",
+      "false",
+      ""
+     ],
+     [
+      "2000007",
+      "6913373851145",
+      "Zentro 120Hz QLED 4K TV - Black, 50 in",
+      "TVs",
+      "359.99",
+      "app",
+      "false",
+      ""
+     ],
+     [
+      "4600004",
+      "0155859917570",
+      "Harvest Table Local Blueberries",
+      "Fresh Produce",
+      "4.49",
+      "web",
+      "false",
+      ""
+     ]
+    ]
+   }
+  },
+  {
+   "name": "telecom",
+   "title": "Telecom",
+   "version": "1.0.0",
+   "pitch": "Mobile subscribers, CDRs, data sessions and churn on real operators.",
+   "bullets": [
+    "51 operators in 14 countries with their real MCC/MNC; mobile numbers that libphonenumber accepts for the country",
+    "IMSI, ICCID and IMEI with valid check digits; handsets and plans that fit the segment (budget phones on prepaid, Cat-M1 modules on IoT)",
+    "Call and SMS detail records with Q.850 causes, drops by radio technology, roaming and charges; data sessions sized by app and 5G/LTE",
+    "Activation and churn driven by plan and complaints, churn reasons, and a subscriber-by-month usage and billing grid with taxes"
+   ],
+   "providers": 52,
+   "templates": [
+    {
+     "name": "cdr",
+     "description": "Call and SMS detail records for September 2026 from subscribers active then: type, direction, numbers, destination, RAT, cell, outcome, Q.850 cause, duration, roaming, charge"
+    },
+    {
+     "name": "data-sessions",
+     "description": "Mobile data sessions for September 2026: subscriber, APN, RAT, cell, app category, duration, downlink and uplink bytes"
+    },
+    {
+     "name": "monthly-usage",
+     "description": "One row per subscriber and month (Oct 2025 - Sep 2026): active flag, data, minutes, SMS, overage, bill with taxes, payment status"
+    },
+    {
+     "name": "subscribers",
+     "description": "Subscriber base: country, operator, MCC/MNC, MSISDN, IMSI, ICCID, IMEI, handset, plan, fee, activation, status, churn date and reason, complaints"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "mobile number prefixes and lengths per country",
+     "source": "libphonenumber metadata (prefixes derived by validating sample numbers)",
+     "url": "https://github.com/google/libphonenumber",
+     "license": "Apache License 2.0"
+    },
+    {
+     "dataset": "operator MCC/MNC codes",
+     "source": "ITU-T E.212 assignments as published by national regulators; cross-checked with python-stdnum",
+     "url": "https://www.itu.int/pub/T-SP-E.212B",
+     "license": "Facts (codes and operator names)"
+    },
+    {
+     "dataset": "IMEI, IMSI and ICCID structure and check digits",
+     "source": "3GPP TS 23.003; ITU-T E.118",
+     "url": "https://www.3gpp.org/dynareport/23003.htm",
+     "license": "Published standard (algorithm only)"
+    },
+    {
+     "dataset": "release cause codes",
+     "source": "ITU-T Q.850",
+     "url": "https://www.itu.int/rec/T-REC-Q.850",
+     "license": "Published standard (code values)"
+    },
+    {
+     "dataset": "handsets, plans, prices, 5G shares, tax rates, usage, call, session and churn models",
+     "source": "Cuiq Analytics (curated; illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "sub",
+     "country",
+     "operator",
+     "msisdn",
+     "imei",
+     "plan",
+     "status"
+    ],
+    "rows": [
+     [
+      "1363",
+      "ES",
+      "Orange Spain",
+      "+34698278422",
+      "350732060777541",
+      "PRE-25",
+      "churned"
+     ],
+     [
+      "188",
+      "CO",
+      "Tigo",
+      "+573006740666",
+      "357790945096472",
+      "PRE-25",
+      "churned"
+     ],
+     [
+      "833",
+      "IT",
+      "WindTre",
+      "+393935756829",
+      "351054394447868",
+      "POST-PREM",
+      "active"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "energy",
+   "title": "Energy",
+   "version": "1.0.0",
+   "pitch": "Smart-meter reads, solar, bills and outages that follow the weather and the sun.",
+   "bullets": [
+    "Residential, commercial and industrial premises in 23 cities with AC, heating type, EVs and rooftop solar that fit the climate",
+    "Hourly or 15-minute reads: evening peaks at home, office hours at work, cooling above 22 C, electric heat below 15 C, evening EV charging",
+    "Solar output from the sun’s elevation by latitude, season and hour, with cloudy days; net import and export; utility plants with tracking",
+    "Monthly totals that sum the same hourly reads, bills on flat, tiered, time-of-use and demand tariffs, and an outage log by cause"
+   ],
+   "providers": 30,
+   "templates": [
+    {
+     "name": "interval-reads",
+     "description": "Hourly smart-meter reads for 20 meters over July 2025: temperature, consumption, solar, grid import and export, read quality"
+    },
+    {
+     "name": "meters",
+     "description": "Premises: meter ID, city, class, home size, AC, heating, EV, rooftop solar kW, tariff"
+    },
+    {
+     "name": "monthly-bills",
+     "description": "One row per meter and month of 2025: consumption, solar, import, export, peak kWh, max kW, average temperature, tariff and bill"
+    },
+    {
+     "name": "outages",
+     "description": "Grid outage log for 2025: feeder, cause, start, restoration, duration and customers affected"
+    },
+    {
+     "name": "solar-plants",
+     "description": "Hourly output of 8 utility solar plants over June 2025, with city, capacity and tracking"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "city latitudes and climate (mean temperature, seasonal amplitude, daily range, share of sunny days)",
+     "source": "Cuiq Analytics curation from public climate normals",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    },
+    {
+     "dataset": "solar position",
+     "source": "Standard solar declination and hour-angle formulas (Cooper 1969)",
+     "url": "https://www.pveducation.org/pvcdrom/properties-of-sunlight/declination-angle",
+     "license": "Formula (no data copied)"
+    },
+    {
+     "dataset": "load shapes, premise mix, AC, heating, EV and solar adoption, tariffs, outage causes and durations",
+     "source": "Cuiq Analytics (curated; illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "meter",
+     "city",
+     "class",
+     "solar_kw",
+     "tariff",
+     "kwh_7pm"
+    ],
+    "rows": [
+     [
+      "1319",
+      "Las Vegas",
+      "commercial",
+      "0.0",
+      "demand",
+      "30.061"
+     ],
+     [
+      "9245",
+      "Houston",
+      "residential",
+      "0.0",
+      "ev_tou",
+      "1.612"
+     ],
+     [
+      "906",
+      "Los Angeles",
+      "residential",
+      "0.0",
+      "tiered",
+      "1.086"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "education",
+   "title": "Education",
+   "version": "1.0.0",
+   "pitch": "Students, programs, grades and LMS activity for higher-ed analytics.",
+   "bullets": [
+    "Real CIP 2020 programs weighted by national IPEDS completions, from associate to doctoral, with gender mixes that follow each program",
+    "Cohorts, retention, graduation and withdrawal driven by ability, first-generation status and level; GPAs, credits and class years that agree",
+    "Course catalogs by subject, letter grades shaped by ability and course difficulty, absences that track grades",
+    "LMS clickstreams with midterm and finals peaks and Sunday-night submissions before the deadline"
+   ],
+   "providers": 31,
+   "templates": [
+    {
+     "name": "enrollments",
+     "description": "Fall 2025 course enrollments of currently enrolled students: course code and title, section, mode, credit hours, letter grade, grade points, absences"
+    },
+    {
+     "name": "lms-events",
+     "description": "Learning-platform clickstream for fall 2025: student, course, event, timestamp (deadline peaks), device, late flag"
+    },
+    {
+     "name": "programs",
+     "description": "Program catalog: CIP 2020 code and title, field, subject code, award level, national completions (IPEDS 2024) and share of awards to women"
+    },
+    {
+     "name": "students",
+     "description": "Student records: ID, level, CIP program and field, sex, entry age and term, residency, first-generation, Pell, high-school GPA, status, exit date, class year, credits, GPA"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "program codes and titles",
+     "source": "NCES Classification of Instructional Programs (CIP) 2020",
+     "url": "https://nces.ed.gov/ipeds/cipcode/",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "program popularity and share of awards to women by level",
+     "source": "NCES IPEDS 2024 Completions survey (first majors)",
+     "url": "https://nces.ed.gov/ipeds/datacenter/",
+     "license": "Public domain (U.S. Government work)"
+    },
+    {
+     "dataset": "subject codes, course titles, difficulty, retention, grading, attendance and LMS activity models",
+     "source": "Cuiq Analytics (curated; illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "student",
+     "level",
+     "cip",
+     "program",
+     "status",
+     "gpa"
+    ],
+    "rows": [
+     [
+      "1415",
+      "bachelor",
+      "50.0701",
+      "Art/Art Studies, General",
+      "enrolled",
+      "2.37"
+     ],
+     [
+      "4385",
+      "bachelor",
+      "45.0901",
+      "International Relations and Affairs",
+      "withdrawn",
+      "2.1"
+     ],
+     [
+      "6565",
+      "bachelor",
+      "42.0101",
+      "Psychology, General",
+      "enrolled",
+      "2.61"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "travel",
+   "title": "Travel",
+   "version": "1.0.0",
+   "pitch": "Flights, bookings, fares, delays and hotel stays on real routes.",
+   "bullets": [
+    "23 real airlines with IATA codes, ticketing prefixes and hubs flying to 3,000+ real airports: domestic spokes for US carriers, gateways for Gulf and Asian carriers",
+    "Great-circle distances, aircraft for the stage length, departure banks and block times",
+    "Bookings with PNRs, 13-digit ticket numbers, cabins, fare classes, seats, fares by distance, lead time and season, loyalty miles, cancellations and refunds",
+    "Delays and cancellations with BTS-style causes and load factors, plus hotel stays with rates by class, country and season"
+   ],
+   "providers": 46,
+   "templates": [
+    {
+     "name": "bookings",
+     "description": "Air bookings on 2000 flights departing in 2026: PNR, ticket number, passenger, purpose, channel, lead time, cabin, fare class, seat, fare, taxes, loyalty miles, status and refund"
+    },
+    {
+     "name": "flight-ops",
+     "description": "Daily operations of 100 flights over 90 days: status, departure delay, cause, load factor and gate"
+    },
+    {
+     "name": "flights",
+     "description": "Flight schedule: flight number, airline, origin and destination (IATA, city), distance, international flag, aircraft, seats, departure time, block minutes"
+    },
+    {
+     "name": "hotel-stays",
+     "description": "Hotel bookings in 2026: city, hotel and class, channel, rate plan, check-in, nights, room type, guests, nightly rate, total and status"
+    }
+   ],
+   "sources": [
+    {
+     "dataset": "Airports (IATA codes, names, cities, coordinates)",
+     "source": "OurAirports",
+     "url": "https://ourairports.com/data/",
+     "license": "Public domain"
+    },
+    {
+     "dataset": "airline designators, ticketing prefixes and hubs",
+     "source": "Cuiq Analytics curation (public facts)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Facts"
+    },
+    {
+     "dataset": "fares, booking behaviour, delays and causes, hotel chains (invented names), rates and cancellations",
+     "source": "Cuiq Analytics (curated; illustrative)",
+     "url": "https://cuiqanalytics.com/rgen",
+     "license": "Proprietary (rgen pack license)"
+    }
+   ],
+   "sample": {
+    "columns": [
+     "flight",
+     "flight_no",
+     "origin",
+     "destination",
+     "km",
+     "aircraft",
+     "pnr"
+    ],
+    "rows": [
+     [
+      "1608",
+      "NH5026",
+      "MYJ",
+      "HND",
+      "676",
+      "Airbus A220-300",
+      "SVZ9VM"
+     ],
+     [
+      "1812",
+      "DL664",
+      "OAK",
+      "DTW",
+      "3321",
+      "Boeing 737-800",
+      "KAPPRM"
+     ],
+     [
+      "628",
+      "WN3630",
+      "MCW",
+      "LAS",
+      "2020",
+      "Boeing 737-700",
+      "WTVER4"
      ]
     ]
    }
@@ -368,16 +1286,16 @@ window.RGEN_PACKS = {
     ],
     "rows": [
      [
-      "Fire Protection Engineer",
-      "Pet Affiliate"
+      "Note Taker",
+      "Hardware Airman"
      ],
      [
-      "Radiology Physician Assistant",
-      "Ophthalmic Adjuster"
+      "Backup Administrator",
+      "IT Ambassador"
      ],
      [
-      "Pinner",
-      "Ramp Agent"
+      "Review Jobs",
+      "Team Engineer"
      ]
     ]
    }
@@ -390,9 +1308,9 @@ window.RGEN_PACKS = {
    "d": "chart-of-accounts code",
    "pack": "fintech",
    "s": [
-    "7100",
-    "2300",
-    "1400"
+    "3100",
+    "2400",
+    "7900"
    ],
    "c": "accounting"
   },
@@ -437,9 +1355,9 @@ window.RGEN_PACKS = {
    "d": "journal entry type (credit_sale, supplier_payment, payroll_accrual, ...) weighted by frequency",
    "pack": "fintech",
    "s": [
-    "credit_sale",
-    "professional",
-    "prepaid"
+    "cash_receipt",
+    "inventory_purchase",
+    "cogs"
    ],
    "c": "accounting"
   },
@@ -449,9 +1367,9 @@ window.RGEN_PACKS = {
    "d": "US ABA routing number with valid check digit",
    "pack": "fintech",
    "s": [
-    "246750473",
-    "216493359",
-    "317866021"
+    "093049515",
+    "693608783",
+    "703841142"
    ],
    "c": "banking"
   },
@@ -468,9 +1386,9 @@ window.RGEN_PACKS = {
    "d": "Mexican CLABE (18 digits, real bank code, valid check digit)",
    "pack": "fintech",
    "s": [
-    "002215138824395588",
-    "137066796791324177",
-    "127593951900253593"
+    "002292868874878762",
+    "137744345689954788",
+    "072045786982619635"
    ],
    "c": "banking"
   },
@@ -494,9 +1412,9 @@ window.RGEN_PACKS = {
    "d": "valid IBAN for a random IBAN country, weighted toward SEPA economies",
    "pack": "fintech",
    "s": [
-    "CZ6735930000002329439448",
-    "FR7625608928685171431384749",
-    "ES4840947948113402337765"
+    "BE35289471322537",
+    "ES6425431296377160748374",
+    "GI41BXUW93XKDCSK501DBRY"
    ],
    "c": "banking"
   },
@@ -506,9 +1424,9 @@ window.RGEN_PACKS = {
    "d": "country code using IBANs, weighted toward SEPA economies",
    "pack": "fintech",
    "s": [
-    "PT",
-    "IT",
-    "ES"
+    "FI",
+    "DK",
+    "NL"
    ],
    "c": "banking"
   },
@@ -532,11 +1450,709 @@ window.RGEN_PACKS = {
    "d": "US bank account number, 8-12 digits",
    "pack": "fintech",
    "s": [
-    "495247529",
-    "694919055",
-    "4013979100"
+    "31905423",
+    "416156083",
+    "44644387"
    ],
    "c": "banking"
+  },
+  {
+   "n": "edu_absences",
+   "a": "s,grade",
+   "d": "class meetings missed in a term (of about 30): few for strong students, many behind D, F and W grades — dependent: edu_absences(student, grade)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_cip",
+   "a": "s",
+   "d": "CIP 2020 code of the major (52.0201), weighted by national completions at the level (IPEDS) — dependent: edu_cip(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_class_year",
+   "a": "s,as_of_year",
+   "d": "class standing of enrolled students (freshman to senior, first or second year, year_N for graduate students); NULL otherwise — dependent: edu_class_year(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_cohort_year",
+   "a": "s,as_of_year",
+   "d": "fall the student entered (up to 6 years before as_of_year, default 2025) — dependent: edu_cohort_year(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_course",
+   "a": "s,as_of_year",
+   "d": "course the student takes this term (STRUCT code, title, diff): general education early in an undergraduate degree, then courses of the major's subject at the student's level (BIOL 201 Cell Biology, CS 501 Advanced Algorithms) — dependent: edu_course(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_credit_hours",
+   "a": "course_code",
+   "d": "credit hours: 3 for most courses, 4 for many lab sciences — dependent: edu_credit_hours(course_code)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_credits",
+   "a": "s,as_of_year",
+   "d": "credits earned: the full program (60, 120, 36 or 72) once graduated, progress so far otherwise — dependent: edu_credits(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_enrolled_student",
+   "a": "n,as_of_year",
+   "d": "random student number (1 to n) enrolled in fall of as_of_year, for enrollments and LMS events — dependent: edu_enrolled_student(n, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_entry_age",
+   "a": "s",
+   "d": "age at entry: 18-19 for most bachelor's students, older and spread out for associate and graduate students — dependent: edu_entry_age(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_entry_term",
+   "a": "s,as_of_year",
+   "d": "entry term (Fall 2022) — dependent: edu_entry_term(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_exit_date",
+   "a": "s,as_of_year",
+   "d": "graduation date (mid-May) or withdrawal date; NULL while enrolled — dependent: edu_exit_date(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_field",
+   "a": "s",
+   "d": "broad field (CIP family): Business, Health Professions, Engineering, ... — dependent: edu_field(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_first_gen",
+   "a": "s",
+   "d": "first-generation college student (neither parent has a bachelor's degree) — dependent: edu_first_gen(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_gpa",
+   "a": "s",
+   "d": "cumulative GPA (0-4): higher for stronger students, lower in hard programs, about 0.4 higher for graduate students — dependent: edu_gpa(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_grade",
+   "a": "s,course_diff",
+   "d": "letter grade (A to F, W for withdrawal) from the student's ability, the course's difficulty and the day: about a third As, harder STEM courses grade lower — dependent: edu_grade(student, course_difficulty)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_grade_points",
+   "a": "grade",
+   "d": "quality points of a letter grade (A 4.0 ... F 0.0); NULL for W — dependent: edu_grade_points(grade)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_hs_gpa",
+   "a": "s",
+   "d": "high-school GPA of undergraduates (NULL for graduate students), tracking the student's ability — dependent: edu_hs_gpa(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_instruction_mode",
+   "a": "section",
+   "d": "in_person, evening or online, from the section number — dependent: edu_instruction_mode(section)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_late_submission",
+   "a": "s,event",
+   "d": "whether a submission came after the deadline (about 12 percent, fewer for strong students); NULL for other events — dependent: edu_late_submission(student, event)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_level",
+   "a": "s",
+   "d": "degree level sought: associate, bachelor, master or doctoral — dependent: edu_level(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_lms_device",
+   "a": "",
+   "d": "device used: laptop, desktop, phone or tablet",
+   "pack": "education",
+   "s": [
+    "phone",
+    "tablet",
+    "laptop"
+   ],
+   "c": "education"
+  },
+  {
+   "n": "edu_lms_event",
+   "a": "",
+   "d": "learning-platform event: course_view, content_view, video_play, assignment_view/submit, quiz_start/submit, forum_view/post, grade_view, file_download",
+   "pack": "education",
+   "s": [
+    "video_play",
+    "content_view",
+    "file_download"
+   ],
+   "c": "education"
+  },
+  {
+   "n": "edu_lms_time",
+   "a": "event,term_start",
+   "d": "event timestamp in a 16-week term from term_start (a Monday): busier before midterms and finals, submissions bunched on Sunday nights before the deadline — dependent: edu_lms_time(event, term_start)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_pell",
+   "a": "s",
+   "d": "Pell Grant recipient (undergraduates; more likely for first-generation students) — dependent: edu_pell(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_program",
+   "a": "s",
+   "d": "program title from CIP 2020 (Registered Nursing/Registered Nurse) — dependent: edu_program(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_residency",
+   "a": "s",
+   "d": "in_state, out_of_state or international (international students are mostly graduate students) — dependent: edu_residency(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_section",
+   "a": "course_code",
+   "d": "section number (W01 online, 501 evening) — dependent: edu_section(course_code)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_sex",
+   "a": "s",
+   "d": "F, M or X, following the program's share of awards to women (nursing mostly F, engineering mostly M) — dependent: edu_sex(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_status",
+   "a": "s,as_of_year",
+   "d": "status in fall of as_of_year: enrolled, graduated or withdrawn (dropout likelier for lower ability, first-generation and associate students, mostly in the first two years) — dependent: edu_status(student, as_of_year)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_student",
+   "a": "n",
+   "d": "random student number from 1 to n (default 10000); every other provider derives the student from it",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "edu_student_id",
+   "a": "s",
+   "d": "student ID (S + 8 digits), unique per student number — dependent: edu_student_id(student)",
+   "pack": "education",
+   "c": "education"
+  },
+  {
+   "n": "energy_bill_amount",
+   "a": "m,usage",
+   "d": "monthly bill in USD on the meter's tariff from energy_monthly_usage: fixed charge plus energy (flat, tiered over 600 kWh, peak and off-peak, or a demand charge on max kW), less export credits — dependent: energy_bill_amount(meter, usage)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_city",
+   "a": "m",
+   "d": "city of the premise: 23 cities from hot deserts to cold continental climates, both hemispheres — dependent: energy_city(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_country",
+   "a": "m",
+   "d": "country of the premise (ISO 3166 alpha-2) — dependent: energy_country(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_customer_class",
+   "a": "m",
+   "d": "residential (85 percent), commercial or industrial — dependent: energy_customer_class(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_customers_affected",
+   "a": "cause",
+   "d": "customers interrupted: thousands in storms, a street for planned work — dependent: energy_customers_affected(cause)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_export_kwh",
+   "a": "m,ts,minutes",
+   "d": "solar energy sent to the grid in the interval (solar minus consumption, at least 0) — dependent: energy_export_kwh(meter, ts, minutes)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_feeder",
+   "a": "",
+   "d": "distribution feeder code (FDR-C117)",
+   "pack": "energy",
+   "s": [
+    "FDR-F109",
+    "FDR-A013",
+    "FDR-C125"
+   ],
+   "c": "energy"
+  },
+  {
+   "n": "energy_has_ac",
+   "a": "m",
+   "d": "whether the premise has air conditioning: almost all homes in hot cities, few in cool coastal ones — dependent: energy_has_ac(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_has_ev",
+   "a": "m",
+   "d": "whether the household charges an electric vehicle at home (about 9 percent of homes; 7.2 kW evening sessions) — dependent: energy_has_ev(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_heating",
+   "a": "m",
+   "d": "heating: gas, heat_pump, electric_resistance or oil (gas dominates in cold cities, heat pumps in warm ones) — dependent: energy_heating(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_home_sqft",
+   "a": "m",
+   "d": "home floor area in square feet (residential only, NULL otherwise); scales the load — dependent: energy_home_sqft(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_import_kwh",
+   "a": "m,ts,minutes",
+   "d": "energy drawn from the grid in the interval (consumption minus solar, at least 0) — dependent: energy_import_kwh(meter, ts, minutes)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_kwh",
+   "a": "m,ts,minutes",
+   "d": "electricity consumed in the interval starting at ts (kWh; minutes default 60, use 15 for quarter-hours): load shape by class and weekday, cooling above 22 C, electric heating below 15 C, EV charging — dependent: energy_kwh(meter, ts, minutes)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_latitude",
+   "a": "m",
+   "d": "latitude of the premise's city — dependent: energy_latitude(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_meter",
+   "a": "n",
+   "d": "random meter number from 1 to n (default 10000); every other provider derives the premise from it",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_meter_id",
+   "a": "m",
+   "d": "meter serial (MTR + 8 digits), unique per meter number — dependent: energy_meter_id(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_monthly_usage",
+   "a": "m,month_start",
+   "d": "STRUCT of a month's totals from the same hourly values as energy_kwh: kwh, solar_kwh, import_kwh, export_kwh, peak_kwh (weekdays 16-21), max_kw, avg_temp_c; read fields with struct_extract — dependent: energy_monthly_usage(meter, month_start)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_outage_cause",
+   "a": "",
+   "d": "outage cause: weather, equipment_failure, vegetation, animal, vehicle_accident, planned or unknown",
+   "pack": "energy",
+   "s": [
+    "equipment_failure",
+    "weather",
+    "equipment_failure"
+   ],
+   "c": "energy"
+  },
+  {
+   "n": "energy_outage_minutes",
+   "a": "cause",
+   "d": "outage duration in minutes: long-tailed for storms, short for animals and unknown causes, about 4 hours for planned work — dependent: energy_outage_minutes(cause)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_outage_start",
+   "a": "cause,yr",
+   "d": "outage start in a year (default 2025): weather outages peak in summer afternoons (storms), planned work on weekday mornings — dependent: energy_outage_start(cause, year)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_plant_capacity_mw",
+   "a": "p",
+   "d": "AC capacity of a solar plant in MW (5-200, most under 50) — dependent: energy_plant_capacity_mw(plant)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_plant_city",
+   "a": "p",
+   "d": "city nearest a utility solar plant number — dependent: energy_plant_city(plant)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_plant_mwh",
+   "a": "p,ts",
+   "d": "plant output in the hour starting at ts (MWh): sun elevation, cloud, tracking gain, and occasional days with half the inverters down — dependent: energy_plant_mwh(plant, ts)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_plant_tracking",
+   "a": "p",
+   "d": "mounting: single_axis trackers (more output morning and evening) or fixed_tilt — dependent: energy_plant_tracking(plant)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_read_quality",
+   "a": "m,ts",
+   "d": "read quality flag: actual, estimated (0.4 percent) or missing (0.1 percent) — dependent: energy_read_quality(meter, ts)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_reading",
+   "a": "m,ts,minutes",
+   "d": "STRUCT with every value of one interval (temp_c, kwh, solar_kwh, import_kwh, export_kwh), computed once: faster than calling the single-value providers side by side; read fields with struct_extract — dependent: energy_reading(meter, ts, minutes)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_solar_kw",
+   "a": "m",
+   "d": "rooftop solar capacity in kW (0 when none): more installs in sunny cities; 30-250 kW on some commercial roofs — dependent: energy_solar_kw(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_solar_kwh",
+   "a": "m,ts,minutes",
+   "d": "rooftop solar generation in the interval (kWh): follows the sun's elevation for the latitude, season and hour, cut on cloudy days, 0 at night or without panels — dependent: energy_solar_kwh(meter, ts, minutes)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_tariff",
+   "a": "m",
+   "d": "rate plan: flat, tiered or tou for homes, ev_tou for EV owners, demand for commercial and industrial — dependent: energy_tariff(meter)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "energy_temperature_c",
+   "a": "m,ts",
+   "d": "outdoor temperature (C) at the premise: the city's season, a persistent daily anomaly and the daily cycle (same for every meter in the city) — dependent: energy_temperature_c(meter, ts)",
+   "pack": "energy",
+   "c": "energy"
+  },
+  {
+   "n": "healthcare_age",
+   "a": "",
+   "d": "patient age in years, following the US population pyramid",
+   "pack": "healthcare",
+   "s": [
+    "61",
+    "33",
+    "75"
+   ],
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_allowed",
+   "a": "charge,pay",
+   "d": "allowed amount for a charge under a payer type — dependent: healthcare_allowed(charge, payer)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_birthdate",
+   "a": "age",
+   "d": "birth date for an age in years — dependent: healthcare_birthdate(age)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_charge",
+   "a": "pos",
+   "d": "billed charge (USD) typical of a place of service — dependent: healthcare_charge(pos)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_claim_status",
+   "a": "pay",
+   "d": "claim status: paid, denied or pending; patient billed for self-pay — e.g. healthcare_claim_status(payer)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_condition",
+   "a": "dx",
+   "d": "condition group of a diagnosis code (hypertension, type2_diabetes, ...) — dependent: healthcare_condition(diagnosis)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_condition_label",
+   "a": "cond",
+   "d": "readable condition name — dependent: healthcare_condition_label(condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_days_supply",
+   "a": "cond",
+   "d": "days supply: 30 or 90 for chronic conditions, 5-14 for acute ones — dependent: healthcare_days_supply(condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_dea_schedule",
+   "a": "ndc",
+   "d": "DEA controlled-substance schedule of an NDC (CII..CV) or NULL — dependent: healthcare_dea_schedule(ndc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_denial_reason",
+   "a": "",
+   "d": "claim denial reason with its CARC code",
+   "pack": "healthcare",
+   "s": [
+    "CO-29 Filed after the time limit",
+    "CO-97 Included in another paid service",
+    "CO-197 Prior authorization missing"
+   ],
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_diagnosis",
+   "a": "sex,age",
+   "d": "ICD-10-CM diagnosis code valid for the sex (F/M) and age, weighted by outpatient prevalence — dependent: healthcare_diagnosis(sex, age)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_drug_brand",
+   "a": "ndc",
+   "d": "proprietary (brand or labeler) name of an NDC — dependent: healthcare_drug_brand(ndc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_drug_form",
+   "a": "ndc",
+   "d": "dosage form of an NDC (TABLET, CAPSULE, ...) — dependent: healthcare_drug_form(ndc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_drug_generic",
+   "a": "ndc",
+   "d": "generic drug name of an NDC — dependent: healthcare_drug_generic(ndc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_drug_strength",
+   "a": "ndc",
+   "d": "strength of an NDC (e.g. 10 mg) — dependent: healthcare_drug_strength(ndc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_hcpcs",
+   "a": "hkind",
+   "d": "HCPCS Level II code; kind J (drugs), A (supplies), E (equipment), G (services), L (orthotics) or any",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_icd_description",
+   "a": "dx",
+   "d": "official ICD-10-CM description of any code (dotted, e.g. E11.9) — dependent: healthcare_icd_description(diagnosis)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_flag",
+   "a": "test,val",
+   "d": "abnormal flag L, H or N for a value against the reference range — dependent: healthcare_lab_flag(loinc, value)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_name",
+   "a": "test",
+   "d": "name of a lab test — dependent: healthcare_lab_name(loinc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_range",
+   "a": "test",
+   "d": "reference range of a lab test, low-high — dependent: healthcare_lab_range(loinc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_test",
+   "a": "cond",
+   "d": "LOINC code of a common lab test; with a condition, tests it affects are likelier — e.g. healthcare_lab_test(condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_unit",
+   "a": "test",
+   "d": "unit of a lab test (UCUM) — dependent: healthcare_lab_unit(loinc)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_lab_value",
+   "a": "test,cond",
+   "d": "result value of a lab test, shifted for a condition (HbA1c high in diabetes, TSH high in hypothyroidism, ...) — dependent: healthcare_lab_value(loinc, condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_member_id",
+   "a": "payer",
+   "d": "member ID for a payer: Medicare MBI format for Medicare, NULL for self-pay — dependent: healthcare_member_id(payer)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_mrn",
+   "a": "",
+   "d": "medical record number, MRN plus 8 digits",
+   "pack": "healthcare",
+   "s": [
+    "MRN02819978",
+    "MRN48692512",
+    "MRN35765967"
+   ],
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_ndc",
+   "a": "cond",
+   "d": "11-digit NDC package of a real drug used for a condition (NULL if none) — dependent: healthcare_ndc(condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_npi",
+   "a": "kind",
+   "d": "10-digit NPI with valid check digit (Luhn with the 80840 prefix); kind individual or organization",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_patient_responsibility",
+   "a": "allowed,payer",
+   "d": "patient share (copay, coinsurance, or all of it for self-pay), never above the allowed amount — dependent: healthcare_patient_responsibility(allowed, payer)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_payer",
+   "a": "age",
+   "d": "insurance type for an age: Medicare at 65+, Medicaid-heavy for children — dependent: healthcare_payer(age)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_pos",
+   "a": "",
+   "d": "CMS place-of-service code (11 office, 23 emergency room, ...), realistic mix",
+   "pack": "healthcare",
+   "s": [
+    "10",
+    "11",
+    "23"
+   ],
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_pos_name",
+   "a": "pos",
+   "d": "name of a place-of-service code — dependent: healthcare_pos_name(pos)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_refills",
+   "a": "cond",
+   "d": "refills: several for chronic conditions, none for acute ones — dependent: healthcare_refills(condition)",
+   "pack": "healthcare",
+   "c": "healthcare"
+  },
+  {
+   "n": "healthcare_specialty",
+   "a": "cond,age",
+   "d": "provider specialty that treats a condition; Pediatrics only under 18 — dependent: healthcare_specialty(condition, age)",
+   "pack": "healthcare",
+   "c": "healthcare"
   },
   {
    "n": "hr_any_job_title",
@@ -544,9 +2160,9 @@ window.RGEN_PACKS = {
    "d": "job title from 54k real-world titles across all occupations",
    "pack": "hr",
    "s": [
-    "Exterior Designer",
-    "Desk Reporter",
-    "Orthotic Clinician"
+    "Research Chef",
+    "Cable Systems Maintainer",
+    "Skate Maker"
    ],
    "c": "hr"
   },
@@ -557,8 +2173,8 @@ window.RGEN_PACKS = {
    "pack": "hr",
    "s": [
     "Careers site",
-    "LinkedIn",
-    "Careers site"
+    "Careers site",
+    "LinkedIn"
    ],
    "c": "hr"
   },
@@ -568,9 +2184,9 @@ window.RGEN_PACKS = {
    "d": "company department, weighted by typical headcount share",
    "pack": "hr",
    "s": [
-    "Engineering",
-    "Sales",
-    "Marketing"
+    "IT",
+    "Product & Design",
+    "Engineering"
    ],
    "c": "hr"
   },
@@ -587,9 +2203,9 @@ window.RGEN_PACKS = {
    "d": "employment type (Full-time, Part-time, Contractor, Intern)",
    "pack": "hr",
    "s": [
-    "Part-time",
-    "Part-time",
-    "Contractor"
+    "Full-time",
+    "Full-time",
+    "Full-time"
    ],
    "c": "hr"
   },
@@ -627,9 +2243,9 @@ window.RGEN_PACKS = {
    "d": "management level (Team Lead to C-level), pyramid-shaped mix",
    "pack": "hr",
    "s": [
-    "Director",
     "Team Lead",
-    "Manager"
+    "Vice President",
+    "Team Lead"
    ],
    "c": "hr"
   },
@@ -674,9 +2290,9 @@ window.RGEN_PACKS = {
    "d": "individual-contributor level (Intern to Principal), realistic mix",
    "pack": "hr",
    "s": [
-    "Senior",
     "Mid-level",
-    "Junior"
+    "Junior",
+    "Mid-level"
    ],
    "c": "hr"
   },
@@ -686,9 +2302,9 @@ window.RGEN_PACKS = {
    "d": "O*NET-SOC occupation code of a typical company role, e.g. 15-1252.00",
    "pack": "hr",
    "s": [
-    "13-1081.00",
-    "43-4051.00",
-    "43-4051.00"
+    "13-1141.00",
+    "13-2011.00",
+    "15-1251.00"
    ],
    "c": "hr"
   },
@@ -714,6 +2330,396 @@ window.RGEN_PACKS = {
    "c": "hr"
   },
   {
+   "n": "ins_adjuster",
+   "a": "",
+   "d": "claims adjuster ID from a team of 60",
+   "pack": "insurance",
+   "s": [
+    "ADJ-1308",
+    "ADJ-1210",
+    "ADJ-1168"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_annual_miles",
+   "a": "vuse",
+   "d": "annual miles driven for a vehicle use — dependent: ins_annual_miles(use)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_auto_coverage",
+   "a": "",
+   "d": "auto coverage: full (with collision and comprehensive) or liability only",
+   "pack": "insurance",
+   "s": [
+    "full",
+    "full",
+    "liability only"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_auto_premium",
+   "a": "driver_age,coverage,vehicle_value,deductible,st,prior_claims,term_months",
+   "d": "auto premium (USD per term) from driver age, coverage, vehicle value, deductible, state and prior claims — dependent: ins_auto_premium(driver_age, coverage, vehicle_value, deductible, state, prior_claims, term_months)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_body",
+   "a": "vid",
+   "d": "body style: Sedan, SUV, Pickup, Minivan, Coupe or Wagon — dependent: ins_body(vehicle)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_claim_number",
+   "a": "line,report_date",
+   "d": "claim number with line prefix and report year — dependent: ins_claim_number(line, report_date)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_claim_status",
+   "a": "lc,close_date,loss,deductible",
+   "d": "claim status: open or in_litigation until closed, then closed_paid or closed_no_payment (always when the loss is under the deductible) — dependent: ins_claim_status(cause, close_date, loss, deductible)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_close_date",
+   "a": "report_date,lc,as_of",
+   "d": "date the claim closed, or NULL while still open on the as_of date (default 2026-09-30) — dependent: ins_close_date(report_date, cause, as_of)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_construction",
+   "a": "",
+   "d": "home construction type",
+   "pack": "insurance",
+   "s": [
+    "frame",
+    "masonry_veneer",
+    "frame"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_deductible",
+   "a": "line,coverage",
+   "d": "deductible (USD) for a line; NULL for liability-only auto and for life — dependent: ins_deductible(line, coverage)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_driver_age",
+   "a": "",
+   "d": "age of the rated driver, 16 to 89",
+   "pack": "insurance",
+   "s": [
+    "62",
+    "70",
+    "60"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_dwelling_coverage",
+   "a": "home_value",
+   "d": "dwelling coverage A (rebuild cost, below market value) — dependent: ins_dwelling_coverage(home_value)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_face_amount",
+   "a": "",
+   "d": "life face amount (USD)",
+   "pack": "insurance",
+   "s": [
+    "250000",
+    "250000",
+    "250000"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_home_form",
+   "a": "",
+   "d": "homeowners policy form: HO-3, HO-5 or HO-8",
+   "pack": "insurance",
+   "s": [
+    "HO-3",
+    "HO-3",
+    "HO-5"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_home_premium",
+   "a": "dwelling,deductible,st,year_built,roof_age,prior_claims",
+   "d": "annual homeowners premium (USD) from dwelling coverage, deductible, state, age of home, roof and prior claims — dependent: ins_home_premium(dwelling, deductible, state, year_built, roof_age, prior_claims)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_home_value",
+   "a": "st",
+   "d": "market value (USD) of a home, typical for the state — dependent: ins_home_value(state)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_insured_age",
+   "a": "",
+   "d": "issue age of a life insured, 18 to 77, mostly 25 to 50",
+   "pack": "insurance",
+   "s": [
+    "42",
+    "46",
+    "41"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_liability_limits",
+   "a": "",
+   "d": "auto liability limits in thousands (bodily injury per person / per accident / property damage)",
+   "pack": "insurance",
+   "s": [
+    "50/100/50",
+    "100/300/100",
+    "100/300/100"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_life_premium",
+   "a": "age,sex,risk_class,face_amount,term_years",
+   "d": "annual term life premium (USD) from age, sex, risk class, face amount and term — dependent: ins_life_premium(age, sex, risk_class, face_amount, term_years)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_line",
+   "a": "",
+   "d": "line of business: auto, home, renters or life",
+   "pack": "insurance",
+   "s": [
+    "home",
+    "auto",
+    "auto"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_loss_amount",
+   "a": "lc,face_amount",
+   "d": "ground-up loss (USD) typical of a cause (glass hundreds, fires and wildfires tens to hundreds of thousands); the face amount for life — dependent: ins_loss_amount(cause, face_amount)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_loss_cause",
+   "a": "line,coverage,st",
+   "d": "loss cause for a line: liability-only auto has only liability causes, home causes follow the state's peril (hurricane, hail, wildfire, winter) — dependent: ins_loss_cause(line, coverage, state)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_make",
+   "a": "vid",
+   "d": "vehicle make — dependent: ins_make(vehicle)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_model",
+   "a": "vid",
+   "d": "vehicle model — dependent: ins_model(vehicle)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_model_year",
+   "a": "vid",
+   "d": "model year the model was sold in, leaning recent — dependent: ins_model_year(vehicle)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_paid",
+   "a": "lc,loss,deductible,status",
+   "d": "amount paid to date (USD): loss net of the deductible when paid, partial payments on some open claims, 0 otherwise — dependent: ins_paid(cause, loss, deductible, status)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_peril",
+   "a": "st",
+   "d": "dominant property peril of a US state: hurricane, hail, wildfire, winter or general — dependent: ins_peril(state)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_policy_number",
+   "a": "line",
+   "d": "policy number with a line prefix (PA, HO, RT, TL) and 10 digits ending in a Luhn check digit — dependent: ins_policy_number(line)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_policy_status",
+   "a": "",
+   "d": "policy status: active, cancelled, lapsed or non_renewed",
+   "pack": "insurance",
+   "s": [
+    "lapsed",
+    "active",
+    "non_renewed"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_prior_claims",
+   "a": "",
+   "d": "claims in the last 3 years",
+   "pack": "insurance",
+   "s": [
+    "0",
+    "0",
+    "0"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_renters_premium",
+   "a": "property_limit,deductible,st",
+   "d": "annual renters premium (USD) — dependent: ins_renters_premium(property_limit, deductible, state)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_renters_property_limit",
+   "a": "",
+   "d": "renters personal property limit (USD)",
+   "pack": "insurance",
+   "s": [
+    "60000",
+    "40000",
+    "40000"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_report_date",
+   "a": "loss_date,lc,as_of",
+   "d": "date the claim was reported: days after the loss, longer for injuries and liability, never after as_of — dependent: ins_report_date(loss_date, cause, as_of)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_reserve",
+   "a": "lc,loss,deductible,status,paid",
+   "d": "outstanding case reserve (USD) on open claims, higher in litigation; 0 once closed — dependent: ins_reserve(cause, loss, deductible, status, paid)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_risk_class",
+   "a": "tobacco",
+   "d": "life underwriting class; tobacco classes for smokers — dependent: ins_risk_class(tobacco)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_roof_age",
+   "a": "year_built",
+   "d": "roof age in years, never older than the home — dependent: ins_roof_age(year_built)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_siu_referral",
+   "a": "lc,loss_date,report_date",
+   "d": "referral to the special investigations unit: rare, likelier for theft, fire, injuries and late reports — dependent: ins_siu_referral(cause, loss_date, report_date)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_subrogation",
+   "a": "lc",
+   "d": "whether the insurer pursues recovery from a third party (common for collisions) — dependent: ins_subrogation(cause)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_term_months",
+   "a": "line",
+   "d": "policy term in months: 6 or 12 for auto, 12 otherwise — dependent: ins_term_months(line)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_term_years",
+   "a": "age",
+   "d": "term length (10, 20 or 30 years) available at an issue age — dependent: ins_term_years(age)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_vehicle",
+   "a": "",
+   "d": "vehicle id (make and model) weighted by US popularity; drives the other vehicle providers",
+   "pack": "insurance",
+   "s": [
+    "27",
+    "36",
+    "3"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_vehicle_use",
+   "a": "",
+   "d": "vehicle use: commute, pleasure, business or rideshare",
+   "pack": "insurance",
+   "s": [
+    "commute",
+    "pleasure",
+    "commute"
+   ],
+   "c": "insurance"
+  },
+  {
+   "n": "ins_vehicle_value",
+   "a": "vid,model_year",
+   "d": "current market value (USD) of a vehicle and model year, depreciated from its price — dependent: ins_vehicle_value(vehicle, model_year)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_vin",
+   "a": "vid,model_year",
+   "d": "17-character VIN with the make's real manufacturer code (WMI), the model-year code and a valid check digit — dependent: ins_vin(vehicle, model_year)",
+   "pack": "insurance",
+   "c": "insurance"
+  },
+  {
+   "n": "ins_year_built",
+   "a": "",
+   "d": "year a home was built, following the US housing stock",
+   "pack": "insurance",
+   "s": [
+    "1966",
+    "1987",
+    "1964"
+   ],
+   "c": "insurance"
+  },
+  {
    "n": "latam_bank",
    "a": "cc",
    "d": "bank of a country weighted by customer base — dependent: latam_bank(country)",
@@ -733,9 +2739,9 @@ window.RGEN_PACKS = {
    "d": "Colombian cédula de ciudadanía (8 or 10 digits)",
    "pack": "latam",
    "s": [
-    "26467847",
-    "89197307",
-    "1153644014"
+    "28610813",
+    "1025876142",
+    "1027669772"
    ],
    "c": "latam"
   },
@@ -745,9 +2751,9 @@ window.RGEN_PACKS = {
    "d": "Uruguayan cédula de identidad with valid check digit, formatted 1.234.567-8",
    "pack": "latam",
    "s": [
-    "5.789.977-7",
-    "2.973.550-3",
-    "6.970.186-7"
+    "3.326.765-9",
+    "2.296.493-1",
+    "3.920.827-5"
    ],
    "c": "latam"
   },
@@ -764,9 +2770,9 @@ window.RGEN_PACKS = {
    "d": "Chilean pension fund (AFP) weighted by affiliates",
    "pack": "latam",
    "s": [
-    "AFP Cuprum",
-    "AFP Provida",
-    "AFP Modelo"
+    "AFP Modelo",
+    "AFP Uno",
+    "AFP Uno"
    ],
    "c": "latam"
   },
@@ -784,7 +2790,7 @@ window.RGEN_PACKS = {
    "pack": "latam",
    "s": [
     "Fonasa",
-    "Fonasa",
+    "Isapre Cruz Blanca",
     "Fonasa"
    ],
    "c": "latam"
@@ -795,9 +2801,9 @@ window.RGEN_PACKS = {
    "d": "Brazilian CNPJ (head office /0001) with valid check digits, formatted 12.345.678/0001-95",
    "pack": "latam",
    "s": [
-    "81.287.524/0001-07",
-    "06.164.236/0001-40",
-    "58.944.795/0001-76"
+    "59.149.598/0001-28",
+    "89.489.406/0001-93",
+    "16.526.336/0001-22"
    ],
    "c": "latam"
   },
@@ -814,9 +2820,9 @@ window.RGEN_PACKS = {
    "d": "country code CL, AR, MX, BR, CO, PE or UY, weighted by population",
    "pack": "latam",
    "s": [
+    "CO",
     "AR",
-    "BR",
-    "BR"
+    "MX"
    ],
    "c": "latam"
   },
@@ -840,9 +2846,9 @@ window.RGEN_PACKS = {
    "d": "Brazilian CPF with valid check digits, formatted 123.456.789-09",
    "pack": "latam",
    "s": [
-    "503.146.292-20",
-    "571.478.361-11",
-    "026.740.949-40"
+    "475.956.811-54",
+    "655.486.852-60",
+    "497.849.667-51"
    ],
    "c": "latam"
   },
@@ -873,9 +2879,9 @@ window.RGEN_PACKS = {
    "d": "Argentine DNI, formatted 12.345.678",
    "pack": "latam",
    "s": [
-    "13.369.144",
-    "31.799.387",
-    "16.733.096"
+    "24.699.799",
+    "36.404.018",
+    "22.041.147"
    ],
    "c": "latam"
   },
@@ -885,9 +2891,9 @@ window.RGEN_PACKS = {
    "d": "Peruvian DNI (8 digits)",
    "pack": "latam",
    "s": [
-    "58515011",
-    "85821893",
-    "26608323"
+    "58953049",
+    "38835268",
+    "38198104"
    ],
    "c": "latam"
   },
@@ -953,9 +2959,9 @@ window.RGEN_PACKS = {
    "d": "Colombian company NIT with valid verification digit, formatted 900.123.456-7",
    "pack": "latam",
    "s": [
-    "964.893.628-3",
-    "978.463.780-1",
-    "804.549.246-9"
+    "877.953.859-0",
+    "834.457.351-8",
+    "885.666.050-8"
    ],
    "c": "latam"
   },
@@ -1014,9 +3020,9 @@ window.RGEN_PACKS = {
    "d": "Mexican RFC for a company (12 chars), valid check digit",
    "pack": "latam",
    "s": [
-    "FKU120503SR7",
-    "NZC1502072N5",
-    "NOP200123ED2"
+    "WPL990409B84",
+    "ZFA090808F43",
+    "BMB160630UG1"
    ],
    "c": "latam"
   },
@@ -1040,9 +3046,9 @@ window.RGEN_PACKS = {
    "d": "Uruguayan company RUT (12 digits) with valid check digit",
    "pack": "latam",
    "s": [
-    "218245900018",
-    "214137560012",
-    "119245880019"
+    "026875800010",
+    "023284960011",
+    "213256670018"
    ],
    "c": "latam"
   },
@@ -1060,7 +3066,7 @@ window.RGEN_PACKS = {
    "pack": "latam",
    "s": [
     "F",
-    "M",
+    "F",
     "F"
    ],
    "c": "latam"
@@ -1094,6 +3100,391 @@ window.RGEN_PACKS = {
    "c": "latam"
   },
   {
+   "n": "logistics_air_distance_km",
+   "a": "a1,a2",
+   "d": "great-circle distance in km between two airports — dependent: logistics_air_distance_km(origin, destination)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_air_rate_per_kg",
+   "a": "distance_km",
+   "d": "air freight rate (USD per chargeable kg) for a distance — dependent: logistics_air_rate_per_kg(distance_km)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airline",
+   "a": "",
+   "d": "3-digit IATA cargo prefix of a cargo airline (157 Qatar, 023 FedEx, 176 Emirates, ...)",
+   "pack": "logistics",
+   "s": [
+    "157",
+    "235",
+    "057"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airline_name",
+   "a": "prefix",
+   "d": "airline name for a cargo prefix — dependent: logistics_airline_name(prefix)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airport",
+   "a": "",
+   "d": "IATA code of an airport with scheduled service, cargo hubs (HKG, MEM, ANC, ...) much likelier",
+   "pack": "logistics",
+   "s": [
+    "OUL",
+    "ORD",
+    "CKG"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airport_city",
+   "a": "ap",
+   "d": "city an airport serves — dependent: logistics_airport_city(iata)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airport_country",
+   "a": "ap",
+   "d": "country of an airport — dependent: logistics_airport_country(iata)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airport_icao",
+   "a": "ap",
+   "d": "ICAO code of an airport — dependent: logistics_airport_icao(iata)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_airport_name",
+   "a": "ap",
+   "d": "airport name — dependent: logistics_airport_name(iata)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_arrival_delay_days",
+   "a": "",
+   "d": "days a vessel arrives after its ETA (about half on time, a long tail of delays)",
+   "pack": "logistics",
+   "s": [
+    "0",
+    "0",
+    "0"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_awb",
+   "a": "prefix",
+   "d": "air waybill number: airline prefix, 7-digit serial and mod-7 check digit (e.g. 157-12345675) — dependent: logistics_awb(airline)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_bin_location",
+   "a": "",
+   "d": "warehouse bin location zone-aisle-bay-level (e.g. C-14-07-B)",
+   "pack": "logistics",
+   "s": [
+    "C-32-11-A",
+    "F-38-13-A",
+    "F-04-18-C"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_bl_number",
+   "a": "carrier_name",
+   "d": "bill of lading number starting with the carrier's SCAC — dependent: logistics_bl_number(carrier)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_carrier",
+   "a": "cn",
+   "d": "ocean carrier moving a container: its owner, or a carrier that leased it — dependent: logistics_carrier(container_number)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_chargeable_weight",
+   "a": "actual_kg,length_cm,width_cm,height_cm",
+   "d": "chargeable weight in kg: the greater of actual and volumetric (cm³ / 6000), rounded up to 0.5 kg steps — dependent: logistics_chargeable_weight(kg, length, width, height)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_container_description",
+   "a": "ctype",
+   "d": "description of a size-type code — dependent: logistics_container_description(type)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_container_number",
+   "a": "",
+   "d": "ISO 6346 container number: a carrier or lessor owner code, 6-digit serial and valid check digit",
+   "pack": "logistics",
+   "s": [
+    "APZU1113799",
+    "HDMU1802424",
+    "MEDU9297103"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_container_operator",
+   "a": "cn",
+   "d": "ocean carrier that owns a container (or leased for lessor boxes) — dependent: logistics_container_operator(container_number)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_container_type",
+   "a": "",
+   "d": "ISO 6346 size-type code (45G1 40ft high cube, 22G1 20ft dry, 45R1 reefer, ...) in a realistic mix",
+   "pack": "logistics",
+   "s": [
+    "22G1",
+    "22G1",
+    "45R1"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_delivered_at",
+   "a": "ship_ts,transit_days,outcome",
+   "d": "delivery timestamp from ship time, transit days and outcome (later for late and exceptions, NULL when lost or damaged, weekends skipped) — dependent: logistics_delivered_at(ship_ts, transit_days, outcome)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_delivery_outcome",
+   "a": "",
+   "d": "delivery outcome: on_time, late, an exception (address, damage, weather) or lost",
+   "pack": "logistics",
+   "s": [
+    "on_time",
+    "on_time",
+    "on_time"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_destination_airport",
+   "a": "origin",
+   "d": "destination airport for an origin: another continent 70% of the time, never the origin — dependent: logistics_destination_airport(origin)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_destination_port",
+   "a": "origin",
+   "d": "port of discharge for an origin port: another trade region 85% of the time, never the origin — dependent: logistics_destination_port(origin)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_flight_number",
+   "a": "prefix",
+   "d": "flight number with the airline's IATA code — dependent: logistics_flight_number(airline)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_incoterm",
+   "a": "",
+   "d": "Incoterms 2020 rule in a realistic mix",
+   "pack": "logistics",
+   "s": [
+    "EXW",
+    "DAP",
+    "CIF"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_movement_qty",
+   "a": "mtype",
+   "d": "units moved for a movement type: case multiples for receipts, a few units per pick, signed for adjustments — dependent: logistics_movement_qty(type)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_movement_type",
+   "a": "",
+   "d": "warehouse movement type, picks most common",
+   "pack": "logistics",
+   "s": [
+    "transfer",
+    "transfer",
+    "transfer"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_ocean_rate",
+   "a": "pol,pod,ctype",
+   "d": "all-in ocean freight per container (USD): distance-based, dearer from Asia (headhaul) than back, reefers dearer — dependent: logistics_ocean_rate(pol, pod, type)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_ocean_transit_days",
+   "a": "distance_nm",
+   "d": "scheduled port-to-port transit in days for a distance at 16 knots plus port calls — dependent: logistics_ocean_transit_days(distance_nm)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_parcel_carrier",
+   "a": "",
+   "d": "US parcel carrier: USPS or UPS",
+   "pack": "logistics",
+   "s": [
+    "USPS",
+    "USPS",
+    "UPS"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_parcel_cost",
+   "a": "service,zone,weight_lb",
+   "d": "shipping cost (USD) for a service, zone and weight — dependent: logistics_parcel_cost(service, zone, weight_lb)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_parcel_service",
+   "a": "carrier",
+   "d": "service level of a parcel carrier (Ground, 2nd Day Air, Priority Mail, ...) — dependent: logistics_parcel_service(carrier)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_parcel_weight_lb",
+   "a": "",
+   "d": "parcel weight in pounds (median about 2, long tail to 150)",
+   "pack": "logistics",
+   "s": [
+    "1.1",
+    "1.9",
+    "2.2"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_port",
+   "a": "",
+   "d": "UN/LOCODE of a major container port, weighted by annual TEU",
+   "pack": "logistics",
+   "s": [
+    "MYPKG",
+    "INMUN",
+    "CNSZX"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_port_country",
+   "a": "pc",
+   "d": "country of a port — dependent: logistics_port_country(locode)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_port_name",
+   "a": "pc",
+   "d": "port name — dependent: logistics_port_name(locode)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_port_region",
+   "a": "pc",
+   "d": "trade region of a port (East Asia, Northern Europe, North America West, ...) — dependent: logistics_port_region(locode)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_sea_distance_nm",
+   "a": "pol,pod",
+   "d": "sailing distance in nautical miles between two ports (great circle times a detour factor for the trade lane: Suez, Panama, Cape) — dependent: logistics_sea_distance_nm(pol, pod)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_sscc",
+   "a": "",
+   "d": "18-digit SSCC pallet or case label with a recurring company prefix and valid GS1 check digit",
+   "pack": "logistics",
+   "s": [
+    "961377023776152509",
+    "861377022823873025",
+    "870348993709467471"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_teu",
+   "a": "ctype",
+   "d": "twenty-foot equivalent units of a container type — dependent: logistics_teu(type)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_tracking_events",
+   "a": "ship_ts,delivered_at,outcome,zone",
+   "d": "tracking history as a JSON array of {ts, status, location}: label created, pickup, hub scans by zone, exceptions, out for delivery, delivered — dependent: logistics_tracking_events(ship_ts, delivered_at, outcome, zone)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_tracking_number",
+   "a": "service",
+   "d": "tracking number in the carrier's format with a valid check digit: UPS 1Z (recurring shipper numbers), USPS 22-digit IMpb, else 10-digit mod 7 — dependent: logistics_tracking_number(service)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_transit_days",
+   "a": "service,zone",
+   "d": "scheduled transit in business days for a service and zone — dependent: logistics_transit_days(service, zone)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_voyage",
+   "a": "",
+   "d": "voyage number with direction suffix (e.g. 045E)",
+   "pack": "logistics",
+   "s": [
+    "026E",
+    "019W",
+    "047N"
+   ],
+   "c": "logistics"
+  },
+  {
+   "n": "logistics_zone",
+   "a": "from_state,to_state",
+   "d": "US shipping zone 1-8 from the distance between two states (8 to and from Alaska and Hawaii) — dependent: logistics_zone(from_state, to_state)",
+   "pack": "logistics",
+   "c": "logistics"
+  },
+  {
    "n": "fin_amount",
    "a": "code",
    "d": "card transaction amount (USD) with a realistic lognormal ticket size for an MCC — dependent: fin_amount(mcc)",
@@ -1106,9 +3497,9 @@ window.RGEN_PACKS = {
    "d": "Luhn-valid test card number, networks in a US consumer mix",
    "pack": "fintech",
    "s": [
-    "4016236985217003",
-    "5598215366151596",
-    "4684012510296320"
+    "2261207185374197",
+    "4761340386297122",
+    "6011744729070182"
    ],
    "c": "payments"
   },
@@ -1118,9 +3509,9 @@ window.RGEN_PACKS = {
    "d": "any of 981 merchant category codes, uniform",
    "pack": "fintech",
    "s": [
-    "3624",
-    "3239",
-    "2791"
+    "3022",
+    "3297",
+    "3077"
    ],
    "c": "payments"
   },
@@ -1130,9 +3521,9 @@ window.RGEN_PACKS = {
    "d": "6-character authorization code",
    "pack": "fintech",
    "s": [
-    "5VWQ87",
-    "BC63O0",
-    "YJQYOZ"
+    "GJOGHI",
+    "VEIJTI",
+    "S3W8CC"
    ],
    "c": "payments"
   },
@@ -1149,9 +3540,9 @@ window.RGEN_PACKS = {
    "d": "card expiry MM/YY, 1 to 60 months ahead",
    "pack": "fintech",
    "s": [
-    "03/29",
-    "02/31",
-    "10/30"
+    "11/30",
+    "10/29",
+    "09/30"
    ],
    "c": "payments"
   },
@@ -1161,9 +3552,9 @@ window.RGEN_PACKS = {
    "d": "card network (Visa, Mastercard, American Express, ...), US consumer mix",
    "pack": "fintech",
    "s": [
-    "Mastercard",
     "Visa",
-    "Mastercard"
+    "American Express",
+    "Visa"
    ],
    "c": "payments"
   },
@@ -1187,8 +3578,8 @@ window.RGEN_PACKS = {
    "d": "card decline reason, realistic mix",
    "pack": "fintech",
    "s": [
-    "Expired card",
-    "Incorrect CVV",
+    "Insufficient funds",
+    "Invalid merchant",
     "Insufficient funds"
    ],
    "c": "payments"
@@ -1213,9 +3604,9 @@ window.RGEN_PACKS = {
    "d": "merchant category code weighted by consumer card activity",
    "pack": "fintech",
    "s": [
-    "7832",
-    "5814",
-    "5542"
+    "4899",
+    "5541",
+    "5815"
    ],
    "c": "payments"
   },
@@ -1239,6 +3630,345 @@ window.RGEN_PACKS = {
    "d": "plausible fictional merchant name for an MCC — dependent: fin_merchant_name(mcc)",
    "pack": "fintech",
    "c": "payments"
+  },
+  {
+   "n": "retail_brand",
+   "a": "item",
+   "d": "brand of an item (invented names, 3-8 per department; publishers for books) — dependent: retail_brand(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_bcountry",
+   "a": "item",
+   "d": "home country of the item's brand (ISO 3166 alpha-2, UK for the United Kingdom); sets the GS1 prefix — dependent: retail_brand_country(item)",
+   "pack": "retail",
+   "c": "pack"
+  },
+  {
+   "n": "retail_btier",
+   "a": "item",
+   "d": "price tier of the item's brand: value, mid or premium — dependent: retail_brand_tier(item)",
+   "pack": "retail",
+   "c": "pack"
+  },
+  {
+   "n": "retail_case_pack",
+   "a": "item",
+   "d": "units per shipping case (1 for furniture, TVs and other bulky goods) — dependent: retail_case_pack(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_category",
+   "a": "item",
+   "d": "category of an item (63 categories) — dependent: retail_category(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_channel",
+   "a": "",
+   "d": "sales channel: store, web, app or marketplace",
+   "pack": "retail",
+   "s": [
+    "app",
+    "web",
+    "marketplace"
+   ],
+   "c": "retail"
+  },
+  {
+   "n": "retail_color",
+   "a": "item",
+   "d": "color from the category's palette (shades for makeup, finishes for jewelry), NULL for groceries, books and other uncolored goods — dependent: retail_color(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_daily_demand",
+   "a": "item,fmt",
+   "d": "expected units sold per day of an item in a store format: high for produce and dairy, low for TVs and furniture, more for value brands and best sellers — dependent: retail_daily_demand(item, store_format)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_delivery_date",
+   "a": "order_time,fulfil",
+   "d": "date the customer receives the order: same day in store and for same-day delivery, same or next day for pickup, about 3 days shipped — dependent: retail_delivery_date(order_time, fulfillment)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_department",
+   "a": "item",
+   "d": "department of an item (Apparel, Electronics, Grocery, ...) — dependent: retail_department(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_discount_pct",
+   "a": "item,order_date",
+   "d": "discount percent on the line: promotions peak in November, December, January and July; out-of-season items clear at 30-70 percent; groceries stay shallow — dependent: retail_discount_pct(item, order_date)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_fulfillment",
+   "a": "chan",
+   "d": "fulfilment: in_store for store sales; ship_to_home, pickup_in_store, curbside or same_day_delivery online — dependent: retail_fulfillment(channel)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_gender",
+   "a": "item",
+   "d": "Men's, Women's or Kids' for apparel and footwear, NULL otherwise — dependent: retail_gender(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_gtin",
+   "a": "item",
+   "d": "GTIN-13 (EAN) with a valid check digit: GS1 prefix of the brand's country, one company prefix per brand, unique per item; ISBN-13 (978) for books — dependent: retail_gtin(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_gtin14",
+   "a": "item,indicator",
+   "d": "GTIN-14 of a case of the item (indicator digit 1-8, default 1) with a recomputed check digit — dependent: retail_gtin14(item, indicator)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_item",
+   "a": "catalog,month",
+   "d": "item sold from a catalog of the given size (default 2000): categories weighted by sales and, with month (1-12), by season; a few items per category sell most — dependent: retail_item(catalog, month)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_item_nth",
+   "a": "n,catalog",
+   "d": "n-th item (1 to catalog) of a catalog of the given size (default 2000, at least 63): number the rows with row_number() to list a whole catalog — dependent: retail_item_nth(n, catalog)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_lead_time_days",
+   "a": "item,level",
+   "d": "replenishment lead time in days: stores restock from the distribution centre in 2-7 days; level 'dc' gives the vendor lead time, 4-11 days for North American brands and 25-50 for imports; fresh food 1-2 — dependent: retail_lead_time_days(item, level)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_list_price",
+   "a": "item",
+   "d": "list price (USD) with charm endings (.99, .49, 129.99): typical of the category, higher for premium brands and bigger sizes — dependent: retail_list_price(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_loyalty_tier",
+   "a": "",
+   "d": "loyalty tier: none, member, silver, gold or platinum",
+   "pack": "retail",
+   "s": [
+    "member",
+    "silver",
+    "member"
+   ],
+   "c": "retail"
+  },
+  {
+   "n": "retail_on_hand",
+   "a": "item,fmt",
+   "d": "units on hand: about 3 days of demand for fresh food, 3-4 weeks otherwise; 4 percent of items out of stock — dependent: retail_on_hand(item, store_format)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_on_order",
+   "a": "item,on_hand,reorder_point,fmt",
+   "d": "units on open purchase orders: about 30 days of demand in whole cases when stock is at or below the reorder point, else 0 — dependent: retail_on_order(item, on_hand, reorder_point, store_format)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_order_date",
+   "a": "yr",
+   "d": "order date in a year (2022-2028, default 2025): more in December and on weekends, peaks on Black Friday, Cyber Monday and before Christmas, near zero on Dec 25 — dependent: retail_order_date(year)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_order_number",
+   "a": "chan,order_date",
+   "d": "order number with a channel letter and the order date (W250412-0048213) — dependent: retail_order_number(channel, order_date)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_order_status",
+   "a": "order_time,delivery_date,as_of",
+   "d": "order status on the as_of date (default 2026-09-30): processing, shipped until the delivery date, then completed; about 2.5 percent cancelled — dependent: retail_order_status(order_time, delivery_date, as_of)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_order_time",
+   "a": "order_date,chan",
+   "d": "order timestamp on the order date: store hours 8-21 with lunch and after-work peaks, online all day with an evening peak — dependent: retail_order_time(order_date, channel)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_payment_method",
+   "a": "chan",
+   "d": "payment method: cash and EBT only in store, buy now pay later only online — dependent: retail_payment_method(channel)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_product_name",
+   "a": "item",
+   "d": "product title: gender, brand, descriptor and type with color and size (Women's Northvale Merino Crew Sweater - Navy, M); title and format for books — dependent: retail_product_name(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_product_type",
+   "a": "item",
+   "d": "product type within the category (Air Fryer, Chelsea Boot; the genre for books) — dependent: retail_product_type(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_quantity",
+   "a": "item",
+   "d": "units on an order line: up to 6-8 for groceries, 1 for TVs and furniture — dependent: retail_quantity(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_refund",
+   "a": "item,amount,reason",
+   "d": "refund (USD): the amount paid, less a 15 percent restocking fee on electronics and furniture returned without a fault; NULL when not returned — dependent: retail_refund(item, amount, reason)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_reorder_point",
+   "a": "item,fmt",
+   "d": "reorder point in units: demand over the lead time plus safety stock — dependent: retail_reorder_point(item, store_format)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_return_condition",
+   "a": "item,reason",
+   "d": "disposition of a return: resellable, open_box, damaged, return_to_vendor (defects) or disposed (food, health and beauty); NULL when not returned — dependent: retail_return_condition(item, reason)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_return_date",
+   "a": "delivery_date,returned",
+   "d": "date the item came back: days after delivery, within the 45-day window (extended for holiday purchases); NULL when not returned — dependent: retail_return_date(delivery_date, returned)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_return_reason",
+   "a": "item,returned",
+   "d": "return reason typical of the category (too_small for apparel, defective for electronics, damaged in furniture, expired for groceries, wrong_shade for makeup); NULL when not returned — dependent: retail_return_reason(item, returned)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_returned",
+   "a": "item,chan",
+   "d": "whether the line is returned: about a quarter of online apparel and footwear, 10 percent of electronics, almost no groceries; store sales a third as often — dependent: retail_returned(item, channel)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_safety_stock",
+   "a": "item,fmt",
+   "d": "safety stock in units for a 95 percent service level over the lead time — dependent: retail_safety_stock(item, store_format)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_shipping_cost",
+   "a": "fulfil,subtotal,tier",
+   "d": "shipping charge (USD): free over 35 and for gold or platinum members, 5.99 otherwise, 9.99 same-day, 0 for pickup and in store — dependent: retail_shipping_cost(fulfillment, subtotal, loyalty_tier)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_size",
+   "a": "item",
+   "d": "size in the category's system: XS-XXL, waist x inseam, US shoe sizes by gender, kids 2T-14, or capacity, screen, bed, volume and count sizes; NULL when the category has none — dependent: retail_size(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_sku",
+   "a": "item",
+   "d": "internal SKU: category code, item, color and size codes (SWT-0042-NAV-M) — dependent: retail_sku(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_stock_status",
+   "a": "on_hand,reorder_point",
+   "d": "stock status: out_of_stock, low_stock (at or below the reorder point), in_stock or overstock — dependent: retail_stock_status(on_hand, reorder_point)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_store_code",
+   "a": "store",
+   "d": "store code ST0001 for a store number — dependent: retail_store_code(store)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_store_format",
+   "a": "store",
+   "d": "store format for a store number (same number, same format): superstore, standard, express or outlet — dependent: retail_store_format(store)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_unit_cost",
+   "a": "item",
+   "d": "unit cost (USD): the category's cost ratio of list price (thin margins on groceries and TVs, wide on beauty and jewelry) — dependent: retail_unit_cost(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_unit_price",
+   "a": "item,discount_pct",
+   "d": "selling price (USD): list price less the discount — dependent: retail_unit_price(item, discount_pct)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_upc",
+   "a": "item",
+   "d": "12-digit UPC-A for items of US brands (the GTIN-13 without its leading 0), NULL otherwise — dependent: retail_upc(item)",
+   "pack": "retail",
+   "c": "retail"
+  },
+  {
+   "n": "retail_weight_kg",
+   "a": "item",
+   "d": "shipping weight in kg, typical of the category and size — dependent: retail_weight_kg(item)",
+   "pack": "retail",
+   "c": "retail"
   },
   {
    "n": "saas_billing_period",
@@ -1274,9 +4004,9 @@ window.RGEN_PACKS = {
    "d": "employee-count band (1-10 ... 5000+), SMB-heavy mix",
    "pack": "saas-analytics",
    "s": [
+    "1-10",
     "11-50",
-    "11-50",
-    "201-1000"
+    "11-50"
    ],
    "c": "saas"
   },
@@ -1321,9 +4051,9 @@ window.RGEN_PACKS = {
    "d": "experiment key such as pricing_page_v2_202605",
    "pack": "saas-analytics",
    "s": [
-    "pricing_page_v2_202511",
     "empty_state_templates_202604",
-    "trial_length_14_vs_30_202609"
+    "pricing_page_v2_202602",
+    "search_ranking_v3_202608"
    ],
    "c": "saas"
   },
@@ -1333,9 +4063,9 @@ window.RGEN_PACKS = {
    "d": "product feature name (SSO, Webhooks, Automations, AI assistant, ...)",
    "pack": "saas-analytics",
    "s": [
-    "Custom roles",
-    "Forms",
-    "Audit log"
+    "Reports",
+    "Sandbox environment",
+    "Calendar sync"
    ],
    "c": "saas"
   },
@@ -1345,7 +4075,7 @@ window.RGEN_PACKS = {
    "d": "customer industry for B2B accounts",
    "pack": "saas-analytics",
    "s": [
-    "Software",
+    "Healthcare",
     "Education",
     "Marketing & Advertising"
    ],
@@ -1373,7 +4103,7 @@ window.RGEN_PACKS = {
    "s": [
     "Free",
     "Free",
-    "Pro"
+    "Starter"
    ],
    "c": "saas"
   },
@@ -1385,7 +4115,7 @@ window.RGEN_PACKS = {
    "s": [
     "web",
     "ios",
-    "web"
+    "ios"
    ],
    "c": "saas"
   },
@@ -1416,9 +4146,9 @@ window.RGEN_PACKS = {
    "d": "traffic source as \"source / medium\" (google / organic, (direct) / (none), ...), realistic mix",
    "pack": "saas-analytics",
    "s": [
-    "google / cpc",
     "google / organic",
-    "google / cpc"
+    "chatgpt.com / referral",
+    "google / organic"
    ],
    "c": "saas"
   },
@@ -1428,9 +4158,9 @@ window.RGEN_PACKS = {
    "d": "realistic browser user agent, weighted by device/OS/browser share",
    "pack": "saas-analytics",
    "s": [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0",
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"
+    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
    ],
    "c": "saas"
   },
@@ -1441,8 +4171,8 @@ window.RGEN_PACKS = {
    "pack": "saas-analytics",
    "s": [
     "member",
-    "member",
-    "admin"
+    "guest",
+    "member"
    ],
    "c": "saas"
   },
@@ -1475,14 +4205,1319 @@ window.RGEN_PACKS = {
    "c": "saas"
   },
   {
+   "n": "sec_access_log",
+   "a": "ip,ts,method,path,status,bytes,ua,ref",
+   "d": "NGINX/Apache combined log line from its fields — dependent: sec_access_log(ip, ts, method, path, status, bytes, user_agent, referrer)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_alert_rule",
+   "a": "scen",
+   "d": "detection rule name that fires for a scenario — dependent: sec_alert_rule(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_alert_status",
+   "a": "",
+   "d": "SOC alert workflow status",
+   "pack": "security-logs",
+   "s": [
+    "false_positive",
+    "new",
+    "false_positive"
+   ],
+   "c": "security"
+  },
+  {
+   "n": "sec_any_technique",
+   "a": "",
+   "d": "any MITRE ATT&CK Enterprise technique or sub-technique ID",
+   "pack": "security-logs",
+   "s": [
+    "T1531",
+    "T1614.001",
+    "T1216.001"
+   ],
+   "c": "security"
+  },
+  {
+   "n": "sec_auth_log",
+   "a": "ts,host,ip,login,outcome",
+   "d": "syslog sshd line (auth.log) from its fields — dependent: sec_auth_log(ts, host, ip, user, outcome)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_bytes_out",
+   "a": "scen,action",
+   "d": "bytes sent in a flow: tens of MB for exfiltration, small fixed-size C2 beacons, 0 when denied — dependent: sec_bytes_out(scenario, action)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_audit_json",
+   "a": "ts,api,principal,ip,region,err",
+   "d": "CloudTrail-style JSON audit record from its fields — dependent: sec_cloud_audit_json(ts, event, user, ip, region, error)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_error",
+   "a": "scen",
+   "d": "error code of a cloud API call or NULL on success (attackers probing permissions hit AccessDenied) — dependent: sec_cloud_error(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_event",
+   "a": "scen",
+   "d": "cloud API call name (CloudTrail-style: GetObject, AssumeRole, CreateAccessKey, StopLogging, ...) for a scenario — dependent: sec_cloud_event(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_region",
+   "a": "",
+   "d": "cloud region code",
+   "pack": "security-logs",
+   "s": [
+    "eu-central-1",
+    "sa-east-1",
+    "us-east-1"
+   ],
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_service",
+   "a": "api",
+   "d": "service endpoint of a cloud API call (s3.amazonaws.com, iam.amazonaws.com, ...) — dependent: sec_cloud_service(event)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cloud_user",
+   "a": "scen",
+   "d": "calling principal (IAMUser:name or AssumedRole:name); attacks use a few compromised identities — dependent: sec_cloud_user(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cve",
+   "a": "scen",
+   "d": "CVE from the CISA Known Exploited Vulnerabilities catalog; with a scenario, the CVE that scenario exploits (Log4Shell: CVE-2021-44228) or NULL",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cve_name",
+   "a": "cve_id",
+   "d": "vulnerability name of a KEV CVE — dependent: sec_cve_name(cve)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cve_product",
+   "a": "cve_id",
+   "d": "affected product of a KEV CVE — dependent: sec_cve_product(cve)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cve_ransomware",
+   "a": "cve_id",
+   "d": "true when CISA lists known ransomware use of the CVE — dependent: sec_cve_ransomware(cve)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_cve_vendor",
+   "a": "cve_id",
+   "d": "vendor of a KEV CVE — dependent: sec_cve_vendor(cve)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_dst_ip",
+   "a": "scen",
+   "d": "destination IP for a network flow: external hosts for outbound traffic, attacker infrastructure for exfiltration and C2, internal hosts for scans — dependent: sec_dst_ip(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_dst_port",
+   "a": "scen",
+   "d": "destination port: common services for normal flows, sweeps across the range for port scans, 443/53/22 for exfiltration — dependent: sec_dst_port(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_event_time",
+   "a": "scen,actor,start_at,span_days",
+   "d": "event timestamp: normal traffic follows the working day, each attacker hits in one burst (C2 beacons every minute) within the window start_at + span_days — dependent: sec_event_time(scenario, src_ip)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_firewall_log",
+   "a": "ts,host,action,proto,src,dst,dport,bytes",
+   "d": "key=value firewall log line from its fields — dependent: sec_firewall_log(ts, host, action, protocol, src_ip, dst_ip, dst_port, bytes)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_fw_action",
+   "a": "scen",
+   "d": "firewall decision allow or deny (scans mostly denied, exfiltration and C2 slip through) — dependent: sec_fw_action(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_host",
+   "a": "role",
+   "d": "server hostname (web-01, db-02, bastion-01, ...); role web, app, db, bastion, ci or any",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_http_method",
+   "a": "scen",
+   "d": "HTTP method typical of a scenario (credential stuffing POSTs, scanners GET/HEAD) — dependent: sec_http_method(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_http_status",
+   "a": "scen",
+   "d": "HTTP status for a scenario (mostly 200 for people, 404 for scanners, 401 for credential stuffing) — dependent: sec_http_status(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_internal_ip",
+   "a": "",
+   "d": "internal (RFC 1918) host address in 10.0.0.0/16",
+   "pack": "security-logs",
+   "s": [
+    "10.0.14.75",
+    "10.0.39.163",
+    "10.0.17.67"
+   ],
+   "c": "security"
+  },
+  {
+   "n": "sec_ip_registry",
+   "a": "ip",
+   "d": "regional internet registry (ARIN, RIPE NCC, APNIC, LACNIC, AFRINIC) whose space contains an IP, or private — dependent: sec_ip_registry(ip)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_is_attack",
+   "a": "scen",
+   "d": "ground-truth label: true for attack rows — dependent: sec_is_attack(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_path",
+   "a": "scen",
+   "d": "request path: site pages and API calls for normal traffic, probes and URL-encoded payloads for attacks — dependent: sec_path(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_protocol",
+   "a": "port",
+   "d": "transport protocol for a port (UDP for DNS and NTP) — dependent: sec_protocol(port)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_public_ip",
+   "a": "",
+   "d": "public IPv4 address from space allocated to a regional registry, weighted by traffic share",
+   "pack": "security-logs",
+   "s": [
+    "115.51.160.172",
+    "38.141.104.166",
+    "115.180.106.205"
+   ],
+   "c": "security"
+  },
+  {
+   "n": "sec_referrer",
+   "a": "scen",
+   "d": "Referer header value or - — dependent: sec_referrer(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_response_bytes",
+   "a": "status",
+   "d": "response size in bytes for an HTTP status — dependent: sec_response_bytes(status)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_scenario",
+   "a": "src,attack_rate",
+   "d": "normal or an attack scenario for a log source (web, auth, network, cloud); attack_rate is the attack share (default 0.05) — e.g. sec_scenario('auth', 0.1)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_severity",
+   "a": "scen",
+   "d": "alert severity (low, medium, high, critical) of a scenario — dependent: sec_severity(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_src_ip",
+   "a": "scen",
+   "d": "source IP for a scenario: random public clients for normal traffic, a recurring attacker set per attack, compromised internal hosts for exfiltration and C2 — dependent: sec_src_ip(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_ssh_outcome",
+   "a": "scen,login",
+   "d": "sshd result: Accepted publickey/password, Failed password, or Invalid user for names that do not exist; rare successful brute force — dependent: sec_ssh_outcome(scenario, user)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_ssh_user",
+   "a": "scen",
+   "d": "SSH login name: staff and service accounts, or the usual brute-force wordlist (root, admin, oracle, pi, ...) — dependent: sec_ssh_user(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_tactic",
+   "a": "tid",
+   "d": "ATT&CK tactic of a technique (first one listed) — dependent: sec_tactic(technique)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_technique",
+   "a": "scen",
+   "d": "MITRE ATT&CK technique ID of a scenario (T1110.001, T1190, ...), NULL for normal — dependent: sec_technique(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_technique_name",
+   "a": "tid",
+   "d": "ATT&CK technique name — dependent: sec_technique_name(technique)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "sec_user_agent",
+   "a": "scen",
+   "d": "User-Agent: browsers and crawlers for normal traffic, scanners, sqlmap or JNDI payloads for attacks — dependent: sec_user_agent(scenario)",
+   "pack": "security-logs",
+   "c": "security"
+  },
+  {
+   "n": "telecom_activation_date",
+   "a": "sub,as_of",
+   "d": "activation date, spread over the 6 years before as_of (default 2026-09-30) — dependent: telecom_activation_date(sub, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_active_in_month",
+   "a": "sub,month_start,as_of",
+   "d": "whether the subscriber was active in the month (activated before it ended, not churned before it began) — dependent: telecom_active_in_month(sub, month_start, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_active_subscriber",
+   "a": "n,from_date,to_date,as_of",
+   "d": "random subscriber (1 to n) that was active at some point between from_date and to_date, for CDRs and sessions in a window — dependent: telecom_active_subscriber(n, from_date, to_date, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_apn",
+   "a": "sub",
+   "d": "access point name: internet, corp.internet for business, iot.m2m for IoT — dependent: telecom_apn(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_app_category",
+   "a": "sub",
+   "d": "app category of a data session: video, social, browsing, messaging, music, gaming, maps, software_update, cloud_sync; telemetry for IoT — dependent: telecom_app_category(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_bill_amount",
+   "a": "sub,overage,other",
+   "d": "monthly bill in USD: plan fee plus overage and other charges, plus the country's taxes and fees (12 percent US, VAT in Europe, 30 percent Brazil) — dependent: telecom_bill_amount(sub, overage, other)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_cause_code",
+   "a": "oc",
+   "d": "ITU-T Q.850 release cause: 16 normal clearing, 17 busy, 19 no answer, 41 temporary failure for drops, 1/21/34/38/41 for failures — dependent: telecom_cause_code(outcome)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_cell_id",
+   "a": "sub",
+   "d": "serving cell as MCC-MNC-eNodeB-sector; 70 percent of records come from the subscriber's three usual sites (home, work, commute) — dependent: telecom_cell_id(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_charge",
+   "a": "sub,rtype,dest,secs,roaming",
+   "d": "rated charge in USD outside the plan: international and roaming minutes (per started minute) and messages; domestic usage is included (0) — dependent: telecom_charge(sub, record_type, destination_type, duration_sec, roaming)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_churn_date",
+   "a": "sub,as_of",
+   "d": "date the subscriber left, NULL while active on as_of: monthly hazard about 3.5 percent prepaid, 0.9 percent postpaid, lower for family, business and IoT plans, higher with complaints — dependent: telecom_churn_date(sub, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_churn_reason",
+   "a": "sub,as_of",
+   "d": "why a churned subscriber left (inactivity is the top prepaid reason; network quality and customer service after complaints); NULL while active — dependent: telecom_churn_reason(sub, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_complaints",
+   "a": "sub",
+   "d": "customer-care complaints logged (0-3); each one raises the churn hazard by 60 percent — dependent: telecom_complaints(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_contract_months",
+   "a": "sub",
+   "d": "contract length in months (0 for prepaid) — dependent: telecom_contract_months(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_country",
+   "a": "sub",
+   "d": "country of the subscriber (ISO 3166 alpha-2; GB for the United Kingdom), 14 countries weighted by market size — dependent: telecom_country(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_data_allowance_gb",
+   "a": "sub",
+   "d": "monthly data allowance in GB, NULL for unlimited plans — dependent: telecom_data_allowance_gb(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_destination_type",
+   "a": "sub",
+   "d": "other party: on_net (same operator), off_net, international or voicemail (more international for business) — dependent: telecom_destination_type(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_device",
+   "a": "sub",
+   "d": "handset model (budget models on prepaid, flagships on postpaid and business; a Cat-M1 module on IoT plans) — dependent: telecom_device(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_device_5g",
+   "a": "sub",
+   "d": "whether the handset supports 5G — dependent: telecom_device_5g(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_device_manufacturer",
+   "a": "sub",
+   "d": "handset manufacturer — dependent: telecom_device_manufacturer(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_device_os",
+   "a": "sub",
+   "d": "handset OS: iOS, Android or RTOS (IoT) — dependent: telecom_device_os(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_direction",
+   "a": "",
+   "d": "mobile originated (MO) or terminated (MT)",
+   "pack": "telecom",
+   "s": [
+    "MT",
+    "MO",
+    "MT"
+   ],
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_downlink_bytes",
+   "a": "app,secs,rat",
+   "d": "bytes downloaded: the app's bitrate times the session length (HD video on 5G), or link speed for updates and sync — dependent: telecom_downlink_bytes(app, session_sec, rat)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_duration_sec",
+   "a": "sub,rtype,oc",
+   "d": "billable seconds: long-tailed (median about 75 s, longer for business and video), 0 for unanswered calls and messages — dependent: telecom_duration_sec(sub, record_type, outcome)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_event_time",
+   "a": "sub,from_date,to_date,as_of",
+   "d": "timestamp between from_date and to_date while the subscriber is active (NULL if never): consumers peak at lunch and evening, business in office hours, IoT around the clock — dependent: telecom_event_time(sub, from_date, to_date, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_iccid",
+   "a": "sub",
+   "d": "20-digit SIM ICCID: 89 (telecom), the country calling code, the operator's MNC as issuer, and a Luhn check digit — dependent: telecom_iccid(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_imei",
+   "a": "sub",
+   "d": "15-digit IMEI with a Luhn check digit; one synthetic TAC per handset model, so models group by the first 8 digits — dependent: telecom_imei(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_imsi",
+   "a": "sub",
+   "d": "15-digit IMSI: the operator's MCC and MNC plus the subscriber's MSIN — dependent: telecom_imsi(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_mcc",
+   "a": "sub",
+   "d": "mobile country code of the home operator (E.212) — dependent: telecom_mcc(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_mnc",
+   "a": "sub",
+   "d": "mobile network code of the home operator (2 or 3 digits) — dependent: telecom_mnc(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_monthly_data_gb",
+   "a": "sub",
+   "d": "data used in a month (GB): around half the allowance on capped plans (prepaid stops at the cap, postpaid can go over), 20-30 GB on unlimited, megabytes for IoT — dependent: telecom_monthly_data_gb(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_monthly_fee",
+   "a": "sub",
+   "d": "monthly plan fee in USD, scaled to the country's price level (before tax) — dependent: telecom_monthly_fee(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_monthly_sms",
+   "a": "sub",
+   "d": "SMS sent in a month (IoT devices report by SMS) — dependent: telecom_monthly_sms(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_monthly_voice_min",
+   "a": "sub",
+   "d": "voice minutes in a month (more for business; 0 for IoT) — dependent: telecom_monthly_voice_min(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_msisdn",
+   "a": "sub",
+   "d": "mobile number in E.164 (+447712345678) that libphonenumber accepts as a mobile number of the country — dependent: telecom_msisdn(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_operator",
+   "a": "sub",
+   "d": "home mobile operator of the subscriber, weighted by market share in the country — dependent: telecom_operator(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_other_party",
+   "a": "sub,dest",
+   "d": "the other party's E.164 number: same country for on_net and off_net, another country for international, a voicemail access number — dependent: telecom_other_party(sub, destination_type)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_outcome",
+   "a": "rtype,rat",
+   "d": "call outcome: answered, no_answer, busy, failed or dropped (drops most on UMTS, least on 5G); delivered or failed for SMS and MMS — dependent: telecom_outcome(record_type, rat)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_overage",
+   "a": "sub,gb",
+   "d": "data overage in USD: 10 per started GB over the allowance (scaled to the country) on capped postpaid plans; prepaid is throttled instead — dependent: telecom_overage(sub, data_gb)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_payment_status",
+   "a": "sub",
+   "d": "bill payment: paid, paid_late or unpaid (worse after complaints); prepaid for prepaid plans — dependent: telecom_payment_status(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_plan",
+   "a": "sub",
+   "d": "plan code (PRE-10, POST-UNL, FAM-4, BIZ-STD, IOT-1, ...) — dependent: telecom_plan(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_plan_name",
+   "a": "sub",
+   "d": "plan name — dependent: telecom_plan_name(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_plan_type",
+   "a": "sub",
+   "d": "prepaid, postpaid or iot — dependent: telecom_plan_type(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_ported_in",
+   "a": "sub",
+   "d": "whether the number was ported in from another operator (about 18 percent) — dependent: telecom_ported_in(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_rat",
+   "a": "sub",
+   "d": "radio access technology: 5G NR only on 5G handsets and plans (more where 5G coverage is wider), LTE, a little UMTS, LTE-M for IoT — dependent: telecom_rat(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_record_type",
+   "a": "sub",
+   "d": "CDR record type: voice, sms, mms or video (SMS only for IoT) — dependent: telecom_record_type(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_roaming",
+   "a": "sub",
+   "d": "whether the record was made abroad (2.5 percent consumer, 8 percent business) — dependent: telecom_roaming(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_segment",
+   "a": "sub",
+   "d": "customer segment: consumer, business or iot — dependent: telecom_segment(sub)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_session_sec",
+   "a": "app",
+   "d": "session length in seconds typical of the app (minutes of video and music, seconds for messaging and IoT telemetry) — dependent: telecom_session_sec(app)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_status",
+   "a": "sub,as_of",
+   "d": "status on as_of: active, suspended (non-payment) or churned — dependent: telecom_status(sub, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_subscriber",
+   "a": "n",
+   "d": "random subscriber number from 1 to n (default 10000); every other provider derives the subscriber from it",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_tenure_months",
+   "a": "sub,as_of",
+   "d": "whole months from activation to churn, or to as_of while active — dependent: telecom_tenure_months(sub, as_of)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "telecom_uplink_bytes",
+   "a": "app,down",
+   "d": "bytes uploaded relative to the download: tiny for streaming, larger for messaging and gaming, more than the download for cloud backups and IoT telemetry — dependent: telecom_uplink_bytes(app, downlink_bytes)",
+   "pack": "telecom",
+   "c": "telecom"
+  },
+  {
+   "n": "travel_aircraft",
+   "a": "f",
+   "d": "aircraft type for the stage length: regional jets and A320/737 short-haul, 787/A330 medium long-haul, 777/A350/A380 ultra long-haul — dependent: travel_aircraft(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airline",
+   "a": "f",
+   "d": "airline name — dependent: travel_airline(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airline_code",
+   "a": "f",
+   "d": "IATA airline designator of the flight (AA, LH, EK, ...), weighted by airline size — dependent: travel_airline_code(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airline_model",
+   "a": "f",
+   "d": "network or low_cost carrier — dependent: travel_airline_model(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airport_city",
+   "a": "code",
+   "d": "city served by an airport — dependent: travel_airport_city(iata)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airport_country",
+   "a": "code",
+   "d": "country of an airport (ISO 3166 alpha-2) — dependent: travel_airport_country(iata)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_airport_name",
+   "a": "code",
+   "d": "airport name for an IATA code — dependent: travel_airport_name(iata)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_block_minutes",
+   "a": "f",
+   "d": "scheduled gate-to-gate minutes from the distance (cruise about 810 km/h plus taxi), rounded to 5 — dependent: travel_block_minutes(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_booking_channel",
+   "a": "purp",
+   "d": "where the ticket was sold: corporate travel agencies for business, airline site and app or online travel agencies for leisure — dependent: travel_booking_channel(purpose)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_booking_status",
+   "a": "fare_class,dep_date,as_of",
+   "d": "booking status: flown, no_show, cancelled (more often on refundable fares), or ticketed/changed for future departures — dependent: travel_booking_status(fare_class, departure_date, as_of)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_cabin",
+   "a": "f,purp",
+   "d": "cabin: premium cabins mostly for business trips, premium economy and first only on long-haul, economy only on low-cost carriers — dependent: travel_cabin(flight, purpose)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_delay_cause",
+   "a": "delay_minutes,status",
+   "d": "delay or cancellation cause (US BTS categories: late_aircraft, carrier, nas, weather, security) for delays of 15 minutes or more; NULL otherwise — dependent: travel_delay_cause(delay_minutes, status)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_delay_minutes",
+   "a": "f,dep_date,status",
+   "d": "departure delay in minutes (negative = early); delays grow through the day and in summer and December, with a long tail; NULL if not operated — dependent: travel_delay_minutes(flight, departure_date, status)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_departure_time",
+   "a": "f",
+   "d": "scheduled local departure time: morning and evening banks, late-night departures for some long-haul flights — dependent: travel_departure_time(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_destination",
+   "a": "f",
+   "d": "destination airport (IATA): mostly domestic (at least 250 km) for US carriers, international gateways for Gulf and Asian carriers — dependent: travel_destination(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_destination_city",
+   "a": "f",
+   "d": "city of the flight's destination airport — dependent: travel_destination_city(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_distance_km",
+   "a": "f",
+   "d": "great-circle distance of the flight in km — dependent: travel_distance_km(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_fare",
+   "a": "f,cabin,lead_days,dep_date",
+   "d": "base fare in USD: rises with distance and cabin, higher for last-minute bookings, summer and December, Fridays and Sundays; about 30 percent lower on low-cost carriers — dependent: travel_fare(flight, cabin, lead_days, departure_date)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_fare_class",
+   "a": "cabin,lead_days",
+   "d": "booking class: full fares (Y, B, J, F) close in, discounted buckets (Q, V, K, L, T, I) booked early — dependent: travel_fare_class(cabin, lead_days)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_flight",
+   "a": "n",
+   "d": "random flight number from 1 to n (default 2000, at most 9999); every flight provider derives the scheduled flight from it",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_flight_number",
+   "a": "f",
+   "d": "marketed flight number (UA1432), unique per flight number up to 9999 — dependent: travel_flight_number(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_flight_status",
+   "a": "f,dep_date",
+   "d": "operated, cancelled (about 1.5 percent, twice as often in winter) or diverted — dependent: travel_flight_status(flight, departure_date)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_gate",
+   "a": "code",
+   "d": "departure gate (B23); more concourses at hubs — dependent: travel_gate(airport)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_hotel_channel",
+   "a": "",
+   "d": "hotel booking channel: direct, ota, gds or wholesale",
+   "pack": "travel",
+   "s": [
+    "direct",
+    "gds",
+    "direct"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_hotel_city",
+   "a": "",
+   "d": "destination of a stay as the IATA code of a large airport, weighted toward hub cities (travel_airport_city gives the city name)",
+   "pack": "travel",
+   "s": [
+    "IAD",
+    "DRS",
+    "ORD"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_hotel_name",
+   "a": "tier,code",
+   "d": "hotel name: an invented chain for the class plus the city (Harbor Suites Chicago) — dependent: travel_hotel_name(tier, iata)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_hotel_tier",
+   "a": "",
+   "d": "hotel class: economy, midscale, upscale or luxury",
+   "pack": "travel",
+   "s": [
+    "economy",
+    "economy",
+    "upscale"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_international",
+   "a": "f",
+   "d": "whether the flight crosses a border — dependent: travel_international(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_lead_days",
+   "a": "purp",
+   "d": "days between booking and departure: about 12 for business trips, 5-6 weeks for leisure — dependent: travel_lead_days(purpose)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_load_factor",
+   "a": "f,dep_date",
+   "d": "share of seats filled (about 83 percent; fuller in summer, December, Fridays and Sundays) — dependent: travel_load_factor(flight, departure_date)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_loyalty_tier",
+   "a": "",
+   "d": "frequent-flyer tier: none, basic, silver, gold or platinum",
+   "pack": "travel",
+   "s": [
+    "basic",
+    "basic",
+    "gold"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_miles",
+   "a": "f,fare_class,tier",
+   "d": "frequent-flyer miles earned: flown miles times the fare-class and tier bonuses, 0 for non-members — dependent: travel_miles(flight, fare_class, tier)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_nightly_rate",
+   "a": "tier,code,checkin",
+   "d": "average nightly rate in USD for the class, the country's price level and the season — dependent: travel_nightly_rate(tier, iata, checkin)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_nights",
+   "a": "purp",
+   "d": "length of stay in nights: about 2 for business, 4 for leisure — dependent: travel_nights(purpose)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_origin",
+   "a": "f",
+   "d": "origin airport (IATA): one end of every flight is a hub of the airline — dependent: travel_origin(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_origin_city",
+   "a": "f",
+   "d": "city of the flight's origin airport — dependent: travel_origin_city(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_pnr",
+   "a": "",
+   "d": "6-character booking reference (record locator) without look-alike characters (no 0, 1, I, O)",
+   "pack": "travel",
+   "s": [
+    "BJW44T",
+    "BK32G7",
+    "NWFM63"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_purpose",
+   "a": "",
+   "d": "trip purpose: leisure, business or visiting_friends_relatives",
+   "pack": "travel",
+   "s": [
+    "leisure",
+    "business",
+    "business"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_rate_plan",
+   "a": "",
+   "d": "hotel rate plan: flexible, non_refundable, corporate or package",
+   "pack": "travel",
+   "s": [
+    "flexible",
+    "non_refundable",
+    "flexible"
+   ],
+   "c": "travel"
+  },
+  {
+   "n": "travel_refund",
+   "a": "fare_class,total,status",
+   "d": "amount refunded: all of a refundable fare (Y, B, W, J, C, F), taxes only (about 15 percent) for discounted fares, 0 unless cancelled — dependent: travel_refund(fare_class, total, status)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_room_type",
+   "a": "tier",
+   "d": "room type (more suites at luxury hotels) — dependent: travel_room_type(tier)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_seat",
+   "a": "f,cabin",
+   "d": "seat for the cabin and aircraft: rows 1-2 first, business up front, letters A-K on wide-bodies, A-F on narrow-bodies, A-D on regional jets — dependent: travel_seat(flight, cabin)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_seats",
+   "a": "f",
+   "d": "seats on the aircraft type — dependent: travel_seats(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_stay_status",
+   "a": "rate_plan,channel",
+   "d": "stayed, cancelled (a third of flexible OTA bookings, few non-refundable) or no_show — dependent: travel_stay_status(rate_plan, channel)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_taxes",
+   "a": "f,fare",
+   "d": "taxes, fees and charges in USD (higher on international flights) — dependent: travel_taxes(flight, fare)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "travel_ticket_number",
+   "a": "f",
+   "d": "13-digit e-ticket number starting with the airline's 3-digit ticketing prefix (001 American, 220 Lufthansa, 176 Emirates) — dependent: travel_ticket_number(flight)",
+   "pack": "travel",
+   "c": "travel"
+  },
+  {
+   "n": "weather_climate_zone",
+   "a": "",
+   "d": "climate zone: tropical, arid, temperate, continental or polar, roughly by populated land share",
+   "pack": "weather",
+   "s": [
+    "arid",
+    "continental",
+    "arid"
+   ],
+   "c": "weather"
+  },
+  {
+   "n": "weather_compass",
+   "a": "deg",
+   "d": "16-point compass label (N, NNE, ... NNW) of a wind direction in degrees — dependent: weather_compass(wind_direction)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_daily_sky",
+   "a": "st,d",
+   "d": "prevailing sky of a station on a date, consistent with its temperatures (snow only below freezing-ish) — dependent: weather_daily_sky(station_id, date)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_daylight_hours",
+   "a": "st,d",
+   "d": "hours of daylight at a station on a date (0 in polar night, 24 in midnight sun) — dependent: weather_daylight_hours(station_id, date)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_dew_point",
+   "a": "t_c,rh",
+   "d": "dew point in C from temperature and relative humidity (Magnus formula), never above the temperature — dependent: weather_dew_point(temperature_c, humidity)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_feels_like",
+   "a": "t_c,rh,wind",
+   "d": "apparent (\"feels like\") temperature in C from temperature, humidity and wind in km/h (Steadman apparent temperature) — dependent: weather_feels_like(temperature_c, humidity, wind_kmh)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_humidity",
+   "a": "sk,z",
+   "d": "relative humidity in % (5-100) for a sky condition and climate zone (dry deserts, saturated fog) — dependent: weather_humidity(sky, zone)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_is_daylight",
+   "a": "st,ts",
+   "d": "true when the sun is up at a station and timestamp (local solar time) — dependent: weather_is_daylight(station_id, ts)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_precipitation_mm",
+   "a": "sk,hours,climate",
+   "d": "precipitation in mm (water equivalent) for a sky condition over hours := 1 (24 for daily totals; storms are short so they scale less), optionally scaled by climate zone (tropical downpours, light desert rain); 0 when not precipitating — dependent: weather_precipitation_mm(sky[, hours[, zone]])",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_pressure_hpa",
+   "a": "sk",
+   "d": "sea-level air pressure in hPa for a sky condition (high under clear skies, low in storms) — dependent: weather_pressure_hpa(sky)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_season",
+   "a": "mon,hemi",
+   "d": "meteorological season (winter, spring, summer, autumn) of a month 1-12, flipped for hemi := 'S' — dependent: weather_season(month)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_sky",
+   "a": "z,mon,hemi",
+   "d": "sky condition (sunny, partly cloudy, cloudy, fog, drizzle, rain, storm, snow, sleet, dust) weighted by climate zone and season; no snow in tropical or arid zones — dependent: weather_sky(zone, month[, hemi])",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_sky_at",
+   "a": "st,ts",
+   "d": "sky at a station and timestamp: follows the day's prevailing sky most of the time, changes in 6-hour blocks, 'clear' instead of sunny at night — dependent: weather_sky_at(station_id, ts)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_snowfall_cm",
+   "a": "sk,precip",
+   "d": "fresh snow in cm from a sky condition and its precipitation (about 1 cm per mm for snow), 0 otherwise — dependent: weather_snowfall_cm(sky, precipitation_mm)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station",
+   "a": "",
+   "d": "weather station id (e.g. GB-LON-42) in one of 105 cities across all climate zones",
+   "pack": "weather",
+   "s": [
+    "CA-TOR-44",
+    "RU-NOR-88",
+    "FI-HEL-53"
+   ],
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_city",
+   "a": "st",
+   "d": "city of a station — dependent: weather_station_city(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_country",
+   "a": "st",
+   "d": "country (or territory) of a station — dependent: weather_station_country(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_country_code",
+   "a": "st",
+   "d": "ISO 3166-1 alpha-2 code of a station's country — dependent: weather_station_country_code(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_elevation",
+   "a": "st",
+   "d": "station elevation in metres — dependent: weather_station_elevation(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_hemisphere",
+   "a": "st",
+   "d": "hemisphere of a station, N or S (seasons are flipped in S) — dependent: weather_station_hemisphere(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_in",
+   "a": "z",
+   "d": "weather station id in a climate zone: tropical, arid, temperate, continental or polar — dependent: weather_station_in(zone)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_lat",
+   "a": "st",
+   "d": "station latitude in decimal degrees — dependent: weather_station_lat(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_lon",
+   "a": "st",
+   "d": "station longitude in decimal degrees — dependent: weather_station_lon(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_name",
+   "a": "st",
+   "d": "station name such as \"Madrid Observatory\" — dependent: weather_station_name(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_nth",
+   "a": "i",
+   "d": "the i-th station (0-based, wraps around); the order interleaves zones so any first 5k stations cover all five evenly — use for station x time grids: weather_station_nth(i)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_station_zone",
+   "a": "st",
+   "d": "climate zone of a station (tropical, arid, temperate, continental, polar) — dependent: weather_station_zone(station_id)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_temp_max",
+   "a": "st,d",
+   "d": "daily maximum temperature in C of a station on a date (smaller swing on cloudy days) — dependent: weather_temp_max(station_id, date)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_temp_mean",
+   "a": "st,d",
+   "d": "daily mean temperature in C of a station on a date (seasonal normal + multi-day anomaly + sky effect) — dependent: weather_temp_mean(station_id, date)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_temp_min",
+   "a": "st,d",
+   "d": "daily minimum temperature in C of a station on a date — dependent: weather_temp_min(station_id, date)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_temperature",
+   "a": "z,mon,hemi",
+   "d": "air temperature in C at a random time of day for a climate zone and month 1-12 (zone normal + day anomaly + diurnal swing); hemi := 'S' flips seasons — dependent: weather_temperature(zone, month[, hemi])",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_temperature_at",
+   "a": "st,ts",
+   "d": "air temperature in C at a station and timestamp: seasonal, multi-day and diurnal (min ~05:00, max ~15:00) cycles, smooth hour to hour — dependent: weather_temperature_at(station_id, ts)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_visibility_km",
+   "a": "sk",
+   "d": "horizontal visibility in km (max 50) for a sky condition: under 1 km in fog, low in snow and dust — dependent: weather_visibility_km(sky)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_wind_direction",
+   "a": "",
+   "d": "wind direction in degrees (0-350 in 10 degree steps, 0 = from the north), prevailing westerly/south-westerly",
+   "pack": "weather",
+   "s": [
+    "210",
+    "240",
+    "20"
+   ],
+   "c": "weather"
+  },
+  {
+   "n": "weather_wind_gust_kmh",
+   "a": "wind",
+   "d": "peak gust in km/h, always above the mean wind — dependent: weather_wind_gust_kmh(wind_kmh)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
+   "n": "weather_wind_kmh",
+   "a": "sk",
+   "d": "mean wind speed in km/h for a sky condition (calm fog, windy storms and dust) — dependent: weather_wind_kmh(sky)",
+   "pack": "weather",
+   "c": "weather"
+  },
+  {
    "n": "job_title_composed",
    "a": "",
    "d": "composed job title: modifier + base role",
    "pack": "jobs-pro",
    "s": [
-    "Artist Agitator",
-    "Planning Anthropologist",
-    "Personalized Anatomist"
+    "Dental Actor",
+    "Night CPA",
+    "Home Anesthesiologist"
    ],
    "c": "work"
   },
@@ -1492,9 +5527,9 @@ window.RGEN_PACKS = {
    "d": "job title from 10k+ real-world titles",
    "pack": "jobs-pro",
    "s": [
-    "Theatre Director",
-    "Relationship Associate",
-    "Manager Army"
+    "Accounting Manager",
+    "Parole Supervisor",
+    "Program Architect"
    ],
    "c": "work"
   }

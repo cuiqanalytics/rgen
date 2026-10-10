@@ -1,22 +1,11 @@
 (() => {
   const D = window.RGEN || { providers: [], hist: [], stats: [] };
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const store = {
-    get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
-    set: (k, v) => { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
-  };
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-  // ---------- theme ----------
+  // ---------- theme (toggle and saved choice live in brand/brand.js) ----------
   const root = document.documentElement;
-  const saved = store.get('rgen-theme');
-  if (saved === 'light' || saved === 'dark') root.dataset.theme = saved;
-  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-    root.dataset.theme = isDark() ? 'light' : 'dark';
-    store.set('rgen-theme', root.dataset.theme);
-    drawGalton(true);
-  });
+  document.addEventListener('cq-themechange', () => drawGalton(true));
 
   // ---------- install tabs ----------
   document.querySelectorAll('[data-tabs]').forEach((box) => {

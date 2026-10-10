@@ -1,6 +1,6 @@
 ---
 name: rgen
-description: Use when the user wants fake, synthetic, mock, seed or test data — a CSV/JSON/Parquet/XLSX file, a populated DuckDB/SQLite database, multiple related tables with foreign keys, a time series, an event log, or a privacy-safe copy of a real dataset; including test card numbers, IBANs, Latin American IDs (RUT, CURP, CPF), employees and salaries, or product-analytics events — or mentions rgen, a `rgen run`/`rgen twin` command, rgen data packs, or an rgen `.toml` config.
+description: Use when the user wants fake, synthetic, mock, seed or test data — a CSV/JSON/Parquet/XLSX file, a populated DuckDB/SQLite database, multiple related tables with foreign keys, a time series, an event log, or a privacy-safe copy of a real dataset; including test card numbers, IBANs, Latin American IDs (RUT, CURP, CPF), employees and salaries, product-analytics events, weather data, patients, diagnoses and medical claims, or security logs with labelled attacks, insurance policies and claims, shipping and logistics data, retail catalogs, orders, returns and inventory, telecom subscribers, CDRs and churn, smart-meter energy reads, solar and bills, students, grades and course data, or flights, airline bookings, fares and hotel stays — or mentions rgen, a `rgen run`/`rgen twin` command, rgen data packs, or an rgen `.toml` config.
 ---
 
 # Generating data with rgen
@@ -31,6 +31,16 @@ domain, run `rgen packs list` first:
 | people, IDs, addresses or phones in CL, AR, MX, BR, CO, PE, UY | `latam` | `references/packs/latam.md` |
 | employees, org charts, job titles, skills, salaries | `hr` | `references/packs/hr.md` |
 | analytics events, user agents, UTM/channels, funnels, MRR, A/B tests | `saas-analytics` | `references/packs/saas-analytics.md` |
+| weather stations, daily/hourly observations, sensor feeds, climate | `weather` | `references/packs/weather.md` |
+| patients, diagnoses (ICD-10), prescriptions (NDC), labs, NPIs, medical claims | `healthcare` | `references/packs/healthcare.md` |
+| web/SSH/firewall/cloud audit logs, labelled attacks, SIEM alerts, MITRE ATT&CK, CVEs | `security-logs` | `references/packs/security-logs.md` |
+| insurance policies, premiums, claims, VINs, auto/home/renters/life | `insurance` | `references/packs/insurance.md` |
+| containers, ports, air cargo, air waybills, parcels, tracking numbers, warehouse moves | `logistics` | `references/packs/logistics.md` |
+| product catalogs, GTIN/UPC/EAN barcodes, SKUs, orders, returns, store inventory | `retail` | `references/packs/retail.md` |
+| mobile subscribers, MSISDN/IMSI/ICCID/IMEI, CDRs, data sessions, telecom churn and bills | `telecom` | `references/packs/telecom.md` |
+| smart meters, interval reads, electricity load, rooftop/utility solar, energy bills, grid outages | `energy` | `references/packs/energy.md` |
+| students, majors/CIP programs, enrollments, grades, GPA, retention, LMS events | `education` | `references/packs/education.md` |
+| flights, airlines, airports, PNRs, tickets, fares, delays, hotel bookings | `travel` | `references/packs/travel.md` |
 | many varied job titles | `jobs-pro` | `references/packs/jobs-pro.md` |
 
 - **Listed as `licensed`:** read that reference before writing commands. Pack providers chain

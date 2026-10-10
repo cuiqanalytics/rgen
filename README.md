@@ -174,6 +174,16 @@ state machines, scenarios, `profile` and `twin`.
 | `latam` | People, IDs with valid check digits (RUT, CUIT, CURP, RFC, CPF, CNPJ, NIT, RUC, CI), 17k weighted places, postal codes and phones for CL, AR, MX, BR, CO, PE, UY |
 | `hr` | 1,016 occupations, 54k job titles, departments and ladders, BLS salaries by level and state |
 | `saas-analytics` | User agents that parse back, UTM traffic sources, event taxonomies with JSON properties, plans and MRR, funnel and A/B templates |
+| `weather` | Stations in 105 cities, season- and climate-aware sky and temperature, consistent daily/hourly series, IoT sensor feed with faults |
+| `healthcare` | Patients, ICD-10-CM diagnoses consistent with age and sex, FDA NDC drugs matched to conditions, labs that shift with disease, valid NPIs, payers and claims |
+| `security-logs` | Web, SSH, firewall and CloudTrail-style logs in real formats with labelled attack scenarios, bursty attackers, MITRE ATT&CK techniques, CISA KEV CVEs, SIEM alerts |
+| `insurance` | Auto, home, renters and term life policies with factor-based premiums, VINs with valid check digits, and claims whose causes and lifecycle follow the line and state peril |
+| `logistics` | Containers (ISO 6346), air waybills, UPS/USPS tracking numbers and SSCCs with valid check digits, real ports, airports and lanes, transit, rates, parcel tracking histories, warehouse moves |
+| `retail` | Category-aware product catalog with GTIN-13/UPC-A/GTIN-14/ISBN-13 check digits, seasonal orders with channels and discounts, category-driven returns, store inventory with reorder points |
+| `telecom` | Subscribers on 51 real operators (MCC/MNC) with valid mobile numbers, IMSI, ICCID and IMEI, CDRs with Q.850 causes, data sessions, monthly bills, and churn driven by plan and complaints |
+| `energy` | Smart-meter premises and hourly/15-minute reads driven by temperature, time of day and the sun, rooftop and utility solar, monthly bills on flat/tiered/TOU/demand tariffs, outages |
+| `education` | Students in real CIP programs weighted by IPEDS completions, retention and graduation, GPAs and credits, course grades by ability and difficulty, LMS clickstreams |
+| `travel` | Real airlines, hubs and airports with distances and aircraft, bookings with PNRs, ticket numbers, cabins and fares by lead time and season, delays and causes, hotel stays |
 | `jobs-pro` | 10k+ custom job titles and composed role names |
 
 **$79 per pack per year, or $199 per year for all packs.** To buy, email

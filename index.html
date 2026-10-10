@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-product="rgen">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,16 +16,28 @@
 <meta property="og:video:type" content="video/mp4">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cuiqanalytics.github.io/rgen/media/rgen-hero-poster.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316182b'/%3E%3Cg fill='%23f5a524'%3E%3Ccircle cx='16' cy='24' r='3'/%3E%3Ccircle cx='10' cy='24' r='3'/%3E%3Ccircle cx='22' cy='24' r='3'/%3E%3Ccircle cx='16' cy='17.5' r='3'/%3E%3Ccircle cx='13' cy='11' r='3' fill='%238e9cff'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="brand/icon-rgen.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand/brand.css">
+<script src="brand/brand.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="cq-bar">
+  <div class="cq-bar-in">
+    <a class="cq-logo" href="https://www.cuiqanalytics.com/"><img src="brand/icon-cuiq.svg" alt="" width="18" height="18"><span>cuiq<b>analytics</b></span></a>
+    <nav class="cq-products" aria-label="cuiqanalytics tools">
+      <a href="https://cuiqanalytics.github.io/rgen/" aria-current="page"><span class="dot dot-rgen" aria-hidden="true"></span>rgen</a>
+      <a href="https://cuiqanalytics.github.io/qdata/"><span class="dot dot-qdata" aria-hidden="true"></span>qdata</a>
+      <a href="https://www.asql.dev/"><span class="dot dot-asql" aria-hidden="true"></span>asql</a>
+    </nav>
+  </div>
+</div>
 <header class="site-header">
   <nav class="nav" aria-label="Main">
     <a href="#top" class="brand" aria-label="rgen home">rgen</a>
@@ -384,7 +396,7 @@ Generating synthetic twin → twin.duckdb
         <h3>All packs</h3>
         <p class="price"><span class="price-value">$199</span> <span class="price-period">per year</span></p>
         <ul>
-          <li>Every current pack: fintech, latam, hr, saas-analytics, jobs-pro</li>
+          <li>Every current pack: fintech, latam, hr, saas-analytics, weather, healthcare, security-logs, insurance, logistics, retail, telecom, energy, education, travel, jobs-pro</li>
           <li>New packs as they ship, at no extra cost</li>
           <li>Updates for the year</li>
           <li>Works offline, on any machine you use</li>
@@ -429,6 +441,15 @@ Generating synthetic twin → twin.duckdb
       <a href="https://github.com/cuiqanalytics/rgen/tree/main/examples">Examples</a>
       <a href="https://github.com/cuiqanalytics/rgen/blob/main/LICENSE">License</a>
     </nav>
+  </div>
+  <div class="wrap cq-footer">
+    <div>
+      <a class="cq-logo" href="https://www.cuiqanalytics.com/"><img src="brand/icon-cuiq.svg" alt="" width="22" height="22"><span>cuiq<b>analytics</b></span></a>
+      <p class="cq-footer-note">Small, sharp command-line tools for data work. Local-first, built on DuckDB.</p>
+    </div>
+    <a class="cq-prod" href="https://cuiqanalytics.github.io/rgen/" aria-current="page"><img src="brand/icon-rgen.svg" alt="" width="28" height="28"><b>rgen</b><span>Realistic test data from one command.</span></a>
+    <a class="cq-prod" href="https://cuiqanalytics.github.io/qdata/"><img src="brand/icon-qdata.svg" alt="" width="28" height="28"><b>qdata</b><span>SQL pipelines on your laptop.</span></a>
+    <a class="cq-prod" href="https://www.asql.dev/"><img src="brand/icon-asql.svg" alt="" width="28" height="28"><b>asql</b><span>Write SQL. Get a dashboard.</span></a>
   </div>
   <p class="wrap copyright">© 2026 cuiqanalytics. The data you generate is yours.</p>
 </footer>
