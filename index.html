@@ -353,7 +353,14 @@ Generating synthetic twin → twin.duckdb
   <section id="packs" class="wrap packs">
     <h2>Data packs</h2>
     <p class="section-lede">Packs add curated reference data, new providers and ready-made templates on top of the free CLI. Every pack is checked with automated tests, and identifiers are verified with independent validators.</p>
-    <div class="pack-grid" id="pack-grid"></div>
+    <div class="pack-toolbar">
+      <label class="filter"><span class="visually-hidden">Filter packs</span><input type="search" id="pack-filter" placeholder="Filter packs: iban, claims, sensor…" autocomplete="off"></label>
+      <p class="pack-count" id="pack-count" aria-live="polite"></p>
+    </div>
+    <div class="pack-browser" id="pack-browser">
+      <div class="pack-index" id="pack-index" role="tablist" aria-label="Data packs" aria-orientation="vertical"></div>
+      <div class="pack-detail" id="pack-grid"></div>
+    </div>
     <div class="pack-steps">
       <h3>How packs work</h3>
       <ol>

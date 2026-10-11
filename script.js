@@ -68,26 +68,94 @@
 
   // ---------- data packs ----------
   const grid = document.getElementById('pack-grid');
-  if (grid && P.packs.length) {
+  const index = document.getElementById('pack-index');
+  if (grid && index && P.packs.length) {
     const single = P.prices.single || {};
+    index.innerHTML = P.packs.map((k) => `<button type="button" role="tab" id="pack-tab-${esc(k.name)}" aria-controls="pack-${esc(k.name)}" data-pack="${esc(k.name)}">
+        <span class="pi-title">${esc(k.title)}</span>
+        <span class="pi-meta">${k.providers} providers${k.templates.length ? ` · ${k.templates.length} templates` : ''}</span>
+      </button>`).join('') + '<p class="pack-empty" hidden>No pack matches that. Try a broader word, like <code>bank</code> or <code>events</code>.</p>';
     grid.innerHTML = P.packs.map((k) => {
       const mail = `mailto:${P.contact}?subject=${encodeURIComponent('rgen data pack: ' + k.name)}&body=${encodeURIComponent('Pack: ' + k.name + '\nName or company: \n')}`;
       const head = k.sample.columns.map((c) => `<th>${esc(c)}</th>`).join('');
       const body = k.sample.rows.map((r) => `<tr>${r.map((v) => `<td title="${esc(v)}">${esc(v)}</td>`).join('')}</tr>`).join('');
       const tmpl = k.templates.map((t) => `<li><code>${esc(k.name)}/${esc(t.name)}</code> ${esc(t.description)}</li>`).join('');
       const src = k.sources.map((x) => `${esc(x.source)} (${esc(x.license)})`).join('; ');
-      return `<article class="pack" id="pack-${esc(k.name)}">
-        <header><h3>${esc(k.title)}</h3><code class="pack-name">${esc(k.name)}</code></header>
+      return `<article class="pack" id="pack-${esc(k.name)}" role="tabpanel" aria-labelledby="pack-tab-${esc(k.name)}" tabindex="-1" hidden>
+        <header><h3>${esc(k.title)}</h3><code class="pack-name">${esc(k.name)} v${esc(k.version)}</code></header>
         <p class="pack-pitch">${esc(k.pitch)}</p>
         <ul class="pack-bullets">${k.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>
         <div class="table-scroll pack-sample" tabindex="0" aria-label="Sample rows from the ${esc(k.name)} pack"><table class="data compact"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-        <details class="pack-more"><summary>${k.providers} providers${k.templates.length ? `, ${k.templates.length} templates` : ''}, sources</summary>
-          ${tmpl ? `<ul class="pack-templates">${tmpl}</ul>` : ''}
-          <p class="pack-sources">Sources: ${src}</p>
-        </details>
+        ${tmpl ? `<div class="pack-block"><h4>Templates</h4><ul class="pack-templates">${tmpl}</ul></div>` : ''}
+        <details class="pack-more"><summary>Sources and licenses</summary><p class="pack-sources">${src}</p></details>
         <footer><span class="pack-price">${esc(single.price || '')} <small>${esc(single.period || '')}</small></span><a class="btn btn-outline" href="${mail}">Buy ${esc(k.name)}</a></footer>
       </article>`;
     }).join('');
+
+    const tabs = [...index.querySelectorAll('[role="tab"]')];
+    const empty = index.querySelector('.pack-empty');
+    const packFilter = document.getElementById('pack-filter');
+    const packCount = document.getElementById('pack-count');
+    const haystack = Object.fromEntries(P.packs.map((k) => [k.name, [k.name, k.title, k.pitch, ...k.bullets,
+      ...k.templates.flatMap((t) => [t.name, t.description]), ...k.sample.columns].join(' ').toLowerCase()]));
+    const visible = () => tabs.filter((t) => !t.hidden);
+    function selectPack(tab, focus) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (!tab) return;
+      if (index.scrollWidth > index.clientWidth) {
+        index.scrollTo({ left: tab.offsetLeft - (index.clientWidth - tab.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+      if (focus) tab.focus({ preventScroll: true });
+    }
+    tabs.forEach((t) => {
+      t.addEventListener('click', () => {
+        selectPack(t);
+        history.replaceState(null, '', `#pack-${t.dataset.pack}`);
+      });
+      t.addEventListener('keydown', (e) => {
+        const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+        const list = visible(), i = list.indexOf(t);
+        let next;
+        if (e.key in keys) next = list[(i + keys[e.key] + list.length) % list.length];
+        else if (e.key === 'Home') next = list[0];
+        else if (e.key === 'End') next = list[list.length - 1];
+        else return;
+        e.preventDefault();
+        selectPack(next, true);
+        history.replaceState(null, '', `#pack-${next.dataset.pack}`);
+      });
+    });
+    function applyPackFilter() {
+      const term = packFilter.value.trim().toLowerCase();
+      tabs.forEach((t) => { t.hidden = !!term && !haystack[t.dataset.pack].includes(term); });
+      const list = visible();
+      empty.hidden = list.length > 0;
+      const current = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
+      if (!list.includes(current)) selectPack(list[0]);
+      packCount.textContent = term ? `${list.length} of ${tabs.length} packs match "${packFilter.value.trim()}".` : `${tabs.length} packs. Pick one to see its sample data and templates.`;
+    }
+    function openFromHash() {
+      const m = location.hash.match(/^#pack-(.+)$/);
+      const tab = m && tabs.find((t) => t.dataset.pack === decodeURIComponent(m[1]));
+      if (!tab) return false;
+      if (tab.hidden) { packFilter.value = ''; applyPackFilter(); }
+      selectPack(tab);
+      document.getElementById('pack-browser').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      return true;
+    }
+    packFilter.addEventListener('input', applyPackFilter);
+    window.addEventListener('hashchange', openFromHash);
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#pack-"]');
+      if (a && a.getAttribute('href') === location.hash) openFromHash();
+    });
+    applyPackFilter();
+    if (!openFromHash()) selectPack(tabs[0]);
   }
   document.querySelectorAll('[data-price]').forEach((el) => {
     const pr = P.prices[el.dataset.price];
