@@ -208,7 +208,7 @@ Licenses are checked offline. Details, sample rows and FAQ:
 rgen                  ← run this
 bin/rgen              the binary (lookup data embedded)
 bin/libduckdb.so      matching DuckDB build
-bin/DUCKDB_VERSION    e.g. "v1.4.4"
+bin/DUCKDB_VERSION    e.g. "v1.5.6"
 install-skills.sh     install the Claude Code skill (install-skills.ps1 on Windows)
 examples/             ready-to-run commands and configs
 skills/rgen/          the Claude Code skill
