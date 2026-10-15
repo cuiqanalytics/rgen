@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>rgen — realistic test data</title>
-<meta name="description" content="rgen generates realistic synthetic data from one command: 101 providers, foreign keys that join, time series, lifecycles and digital twins of real datasets. CSV, JSON, Parquet, Excel, DuckDB, SQLite. Data packs add fintech, Latin America, HR and product analytics data.">
+<meta name="description" content="rgen generates realistic synthetic data from one command: 101 providers, foreign keys that join, time series, lifecycles and digital twins of real datasets. CSV, JSON, Parquet, Excel, DuckDB, SQLite. A browser editor (rgen ui) if you prefer clicking. Data packs add industry data: fintech, healthcare, insurance, logistics, retail, telecom and more.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cuiqanalytics.github.io/rgen/">
 <meta property="og:title" content="rgen — realistic test data, one command">
@@ -104,6 +104,7 @@
       <h2>One line in. A table out.</h2>
       <p>List the columns you want, separated by semicolons. Rename them with <code>as</code>. Let later columns build on earlier ones: here the email is made from the generated name, so the rows hold together when someone reads them.</p>
       <p>Pick the format with the file extension. <code>.parquet</code>, <code>.json</code> and <code>.xlsx</code> work the same way.</p>
+      <p>Prefer clicking? <code>rgen ui</code> opens the same thing in your browser: search the providers, add columns, look at sample rows, then save the file. It runs on your machine and listens only there.</p>
     </div>
     <div class="split-demo">
       <pre class="terminal"><code><span class="sigil">$</span> rgen run -n 1000 -p "first_name;last_name;
@@ -384,6 +385,7 @@ Generating synthetic twin → twin.duckdb
           <li>Relational configs with foreign keys</li>
           <li>Time series, lifecycles and scenarios</li>
           <li><code>rgen profile</code> and <code>rgen twin</code> digital twins</li>
+          <li><code>rgen ui</code>, a visual editor in your browser</li>
           <li>Impurity profiles, your own DuckDB macros, the Claude Code skill</li>
         </ul>
         <a class="btn btn-solid" href="#install">Install rgen</a>
@@ -420,6 +422,7 @@ Generating synthetic twin → twin.duckdb
       <details><summary>Is any of the generated data real?</summary><p>No. Every row is generated. Reference lists such as city names, occupations, merchant categories and wage statistics come from public datasets, but the people, accounts and IDs are random. A generated ID can still match a real one by chance, so never use it to contact, verify or charge anyone.</p></details>
       <details><summary>Can I use the data commercially?</summary><p>Yes. The data you generate is yours: put it in demos, tests, docs or products. <code>rgen packs info &lt;pack&gt;</code> lists the public sources inside each pack and their licenses.</p></details>
       <details><summary>Does rgen need internet access or an account?</summary><p>No. It's a single binary that runs offline, and pack licenses are verified offline too. No telemetry.</p></details>
+      <details><summary>Is there a graphical interface?</summary><p>Yes. <code>rgen ui</code> opens an editor in your browser: search the providers, add and reorder columns, preview rows, then save the file. It runs on your machine, listens only on localhost and needs no internet. <code>--port</code> changes the port (default 7842).</p></details>
       <details><summary>Does it run on macOS and Windows?</summary><p>The native binary is for Linux (x86-64). On macOS and Windows, use the Docker image: <code>docker pull ghcr.io/cuiqanalytics/rgen</code>.</p></details>
       <details><summary>Are the IDs and bank numbers valid?</summary><p>Pack identifiers pass the same checks real systems use: Luhn for cards, IBAN mod-97 with national check digits, US routing numbers, CLABE, and the check digits of RUT, CUIT, CURP, RFC, CPF, CNPJ, NIT, RUC and CI. We test them against python-stdnum and schwifty on every pack build.</p></details>
       <details><summary>What happens when a pack license expires?</summary><p>That pack stops loading. Everything else keeps working, and data you already generated is unaffected.</p></details>
@@ -435,7 +438,7 @@ Generating synthetic twin → twin.duckdb
   <div class="wrap footer-grid">
     <div>
       <p class="brand"><img src="brand/icon-rgen.svg" alt="" width="28" height="28">rgen</p>
-      <p class="footer-note">Realistic test data, one command. Linux binary and Docker image.</p>
+      <p class="footer-note">Realistic test data, one command or a browser editor. Linux binary and Docker image.</p>
     </div>
     <div class="cmd">
       <code><span class="sigil" aria-hidden="true">$</span>curl -fsSL https://cuiqanalytics.github.io/rgen/install.sh | sh</code>

@@ -11,7 +11,8 @@
 | `rgen scenarios SCENARIOS.toml OUTPUT_DIR` | Generate variants of a base config |
 | `rgen templates [NAME]` | List or print built-in TOML templates (`users`, `orders`, `events`...) |
 | `rgen init [--template NAME]` | Scaffold a TOML config |
-| `rgen serve` | Local HTTP API + web UI on port 7842 |
+| `rgen ui [--port N] [--no-open]` | Visual editor in your browser at `http://localhost:7842/ui` (listens on 127.0.0.1 only) |
+| `rgen serve [--port N]` | Same server on 0.0.0.0, for the HTTP API (`/api/providers`, `/api/preview`, `/api/run`) |
 | `rgen ask "REQUEST"` | Natural language → data (needs `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`) |
 | `rgen packs list\|install\|info\|remove` | Manage data packs (`install` takes a pack name or a `.rgenpack` file) |
 | `rgen license install KEY` | Install a license that unlocks data packs (stored in `~/.cuiq/license.json`) |

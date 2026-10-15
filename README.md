@@ -64,7 +64,8 @@ rgen run -n 1000 -p "uuid;name;email" users.csv
 - **File ownership (Linux):** `--user "$(id -u):$(id -g)"` makes output files yours
   instead of root's.
 - **Data packs:** add `-v ~/.cuiq:/home/rgen/.cuiq:ro -v ~/.local/share/rgen/packs:/home/rgen/.local/share/rgen/packs:ro` so the container sees your license and installed packs.
-- `rgen serve` binds to localhost inside the container. Use a native install for it.
+- `rgen ui` listens only on localhost inside the container, so the browser can't reach it.
+  Use a native install for it.
 
 ---
 
@@ -77,6 +78,10 @@ rgen run --preview -p "name;iso2;ip4"  # look before you write
 
 rgen run -n 5000 -p "uuid;name;email;country;int(18,90) as age" users.parquet
 ```
+
+Prefer clicking? `rgen ui` opens a visual editor at `http://localhost:7842/ui`: search
+providers, add columns, preview rows, save the file. `--port N` changes the port,
+`--no-open` skips opening the browser.
 
 **Flags go before the output file** (`rgen run -n 10 out.csv`, not `rgen run out.csv -n 10`).
 
