@@ -44,6 +44,7 @@
     <div class="nav-links">
       <a href="#demo">Demo</a>
       <a href="#providers">Providers</a>
+      <a href="#ui">Editor</a>
       <a href="#relational">Relational</a>
       <a href="#recipes">Recipes</a>
       <a href="#packs">Data packs</a>
@@ -104,7 +105,7 @@
       <h2>One line in. A table out.</h2>
       <p>List the columns you want, separated by semicolons. Rename them with <code>as</code>. Let later columns build on earlier ones: here the email is made from the generated name, so the rows hold together when someone reads them.</p>
       <p>Pick the format with the file extension. <code>.parquet</code>, <code>.json</code> and <code>.xlsx</code> work the same way.</p>
-      <p>Prefer clicking? <code>rgen ui</code> opens the same thing in your browser: search the providers, add columns, look at sample rows, then save the file. It runs on your machine and listens only there.</p>
+      <p>Prefer clicking? <a href="#ui">The editor</a> builds the same command for you.</p>
     </div>
     <div class="split-demo">
       <pre class="terminal"><code><span class="sigil">$</span> rgen run -n 1000 -p "first_name;last_name;
@@ -124,6 +125,25 @@
         </table>
       </div>
     </div>
+  </section>
+
+  <section id="ui" class="wrap editor">
+    <div class="editor-head">
+      <div>
+        <h2>Prefer clicking? Use the editor</h2>
+        <p class="section-lede">Run <code>rgen ui</code> and the editor opens in your browser. Pick columns from the list, rename them, check ten sample rows, then save the file as CSV, JSON, Parquet or Excel. It also shows the matching <code>rgen run</code> command, ready to paste into a script.</p>
+      </div>
+      <div class="cmd">
+        <code><span class="sigil" aria-hidden="true">$</span>rgen ui</code>
+        <button class="copy" data-copy="rgen ui">Copy</button>
+      </div>
+    </div>
+    <figure class="editor-card">
+      <div class="editor-bar" aria-hidden="true"><span></span><span></span><span></span><code>localhost:7842/ui</code></div>
+      <img class="shot-light" src="media/ui/editor-light.webp" width="2560" height="1520" loading="lazy" alt="The rgen editor: a list of column types on the left, ten sample rows of a customers table in the middle, and file options with the matching rgen run command on the right">
+      <img class="shot-dark" src="media/ui/editor-dark.webp" width="2560" height="1520" loading="lazy" alt="">
+      <figcaption>Runs on your machine and listens only on localhost. No account, no upload.</figcaption>
+    </figure>
   </section>
 
   <section id="providers" class="wrap catalog">
